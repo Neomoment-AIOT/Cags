@@ -1,0 +1,44 @@
+.pageSection {
+  padding: 60px 0;
+  background-color: #f5f5f5;
+}
+/* fluid container is not strictly needed with this approach */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.textContainer {
+  flex: 1;
+  min-width: 320px;
+  padding: 30px 4%;
+  text-align: left;
+}
+.imageContainer {
+  flex: 1;
+  min-width: 320px;
+}
+.textContainer h1 {
+  font-size: 2.5rem; /* 40px */
+  line-height: 1.2;
+}
+.fontLight {
+  font-weight: 300;
+}
+.line {
+  width: 70px;
+  height: 3px;
+  background-color: #000;
+  margin: 20px 0;
+}
+.textContainer p {
+  font-family: lato, arial, helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.7; /* Increased for better readability */
+  text-align: justify;
+}
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column-reverse; /* Stack image on top on mobile */
+  }
+}

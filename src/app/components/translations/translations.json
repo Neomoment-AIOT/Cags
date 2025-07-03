@@ -1,0 +1,38 @@
+{
+  "en": {
+    "nav_brand": "MyWebsite",
+    "nav_home": "Home",
+    "nav_about": "About",
+    "nav_language": "Language",
+    "welcome_title": "Welcome to Our Website!",
+    "welcome_message": "This is a demonstration of a multi-language website. Select a language from the dropdown menu to see the content change dynamically.",
+    "learn_more_button": "Learn More"
+  },
+  "fr": {
+    "nav_brand": "MonSiteWeb",
+    "nav_home": "Accueil",
+    "nav_about": "À propos",
+    "nav_language": "Langue",
+    "welcome_title": "Bienvenue sur notre site web!",
+    "welcome_message": "Ceci est une démonstration d'un site web multilingue. Sélectionnez une langue dans le menu déroulant pour voir le contenu changer.",
+    "learn_more_button": "En savoir plus"
+  },
+  "ru": {
+    "nav_brand": "МойСайт",
+    "nav_home": "Главная",
+    "nav_about": "О нас",
+    "nav_language": "Язык",
+    "welcome_title": "Добро пожаловать на наш сайт!",
+    "welcome_message": "Это демонстрация многоязычного веб-сайта. Выберите язык из выпадающего меню, чтобы увидеть, как контент меняется.",
+    "learn_more_button": "Узнать больше"
+  },
+  "ar": {
+    "nav_brand": "موقعي",
+    "nav_home": "الرئيسية",
+    "nav_about": "حول",
+    "nav_language": "لغة",
+    "welcome_title": "مرحبا بكم في موقعنا!",
+    "welcome_message": "هذه نسخة تجريبية لموقع ويب متعدد اللغات. حدد لغة من القائمة المنسدلة لترى المحتوى يتغير ديناميكيًا.",
+    "learn_more_button": "اعرف المزيد"
+  }
+}

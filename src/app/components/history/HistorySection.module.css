@@ -1,0 +1,75 @@
+/* HistorySection.module.css */
+
+.pageSection {
+  padding: 60px 0;
+}
+
+.containerFluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* Reverse the visual order if you want the image on the left */
+  /* flex-direction: row-reverse; */
+}
+
+.textContainer {
+  flex: 1; /* Each column takes up 50% of the space */
+  min-width: 320px; /* Prevents columns from getting too narrow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer {
+  flex: 1;
+  min-width: 320px;
+}
+
+.textContent {
+  padding: 30px 4%; /* Responsive padding */
+  max-width: 600px;
+}
+
+.textContent h1 {
+  font-size: 2.5rem; /* ~40px */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.fontLight {
+  font-weight: 300;
+}
+
+.line {
+  width: 70px;
+  height: 3px;
+  background-color: #000;
+  margin: 25px 0;
+}
+
+.textContent p {
+  font-family: lato, arial, helvetica, sans-serif;
+  font-size: 1rem; /* 16px */
+  line-height: 1.7; /* Increased for better readability */
+  text-align: justify;
+  color: #000000;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+  .grid {
+    /* Stacks the columns vertically, with the image appearing first */
+    flex-direction: column-reverse;
+  }
+  .textContent {
+    padding: 30px 20px;
+  }
+}

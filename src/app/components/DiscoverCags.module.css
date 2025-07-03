@@ -1,0 +1,105 @@
+/* components/DiscoverCags.module.css */
+
+/* Main Section Layout */
+.pageSection {
+  padding: 80px 0;
+  background-color: #f5f5f5; /* Assuming a white background */
+}
+
+.container {
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* This is the key change: Using Flexbox for the layout */
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  align-items: flex-start; /* Aligns items to the top */
+  gap: 30px; /* Creates space between the columns */
+}
+
+/* Left Column (Heading) */
+.leftColumn {
+  flex: 1; /* Allows the column to grow */
+  min-width: 250px; /* Ensures it doesn't get too squished */
+  margin-bottom: 50px;
+    color: #1c242d;
+    border-left: #1c242d 2px solid;
+  padding-left: 3%;
+
+}
+
+.sectionTitle {
+  font-size: 2rem; /* 48px */
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0;
+  position: sticky; /* Makes the heading 'stick' as you scroll past */
+  top: 20px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 30px;
+    
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* Right Column (Content and Button) */
+.rightColumn {
+  flex: 2; /* Makes this column twice as wide as the left one */
+  min-width: 300px;
+  font-family:Aptos,sans-serif;
+}
+
+.textContent p {
+  font-size: 12pt;
+  font-family: 'Aptos', sans-serif;
+  color: #000000;
+  margin-bottom: 1.2em; /* Adds spacing between paragraphs */
+}
+
+.textContent strong {
+    font-weight: bold;
+}
+
+/* Button Styles */
+.buttonContainer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.button {
+  font-weight: 900;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #000;
+  color: #000;
+  background-color: transparent;
+  padding: 12px 24px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  letter-spacing: 1px;
+  word-spacing: 1.7px;
+}
+
+.button:hover {
+  background-color: #85898c;
+  color: #000000;
+  border: 0;
+
+}
+
+/* Style for the icon inside the button */
+.button img {
+    display: inline-block;
+    vertical-align: right;
+    padding-left: 3px;
+}

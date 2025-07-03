@@ -1,0 +1,159 @@
+/* styles/EventsPage.module.css */
+
+/* --- General Layout & Typography --- */
+.pageSection {
+  background-color: #f5f5f5;
+  width: 100%;
+}
+.container {
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.containerFluid {
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.column {
+  flex: 1 1 50%;
+  min-width: 320px;
+}
+.fontLight {
+  font-weight: 300;
+}
+.description {
+  font-family: 'lato', arial, helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: justify;
+  color: #333;
+}
+
+/* --- Breadcrumbs --- */
+.pageTitleContainer {
+  padding: 20px 0;
+  background-color:#f5f5f5;
+  border-bottom: 0px solid #e9ecef;
+}
+.breadcrumbs {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.breadcrumbs a, .breadcrumbs span {
+  color: #6c757d;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  color: #1f2020;
+}
+.breadcrumbs .current {
+    color: #343a40;
+    font-weight: 700;
+}
+.divider {
+  margin: 0 10px;
+}
+
+/* --- Hero Section --- */
+.textContainer {
+  padding: 40px 50px;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.lineSeparator {
+  height: 3px;
+  width: 70px;
+  background-color: #dee2e6;
+  margin: 1.5rem 0;
+}
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+}
+
+/* --- Events List --- */
+.eventsListSection {
+  padding: 50px 0;
+  background-color: #f5f5f5;
+}
+.eventRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px 0;
+}
+.eventLogoColumn {
+  flex: 0 0 33.33%; /* Corresponds to col-md-4 */
+  padding-right: 30px;
+  text-align: center;
+}
+.eventDetailsColumn {
+  flex: 1 1 60%; /* Corresponds to col-md-6, allows wrapping */
+}
+.eventTitle {
+  margin: 0 0 15px 0;
+  font-size: 1.8rem;
+}
+.eventMeta {
+  margin-top: 15px;
+  font-weight: 600;
+  line-height: 1.8;
+}
+.separator {
+  border: 0;
+  height: 1px;
+  background-color: #e9ecef;
+  margin: 10px 0 30px 0;
+}
+
+/* --- Closing Section --- */
+.closingSection {
+    background-color:#f5f5f5;
+    padding: 80px 0 50px 0;
+}
+.closingBox {
+    padding: 30px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    text-align: justify;
+    font-family: 'open sans', arial, helvetica, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .row, .eventRow {
+    flex-direction: column;
+  }
+  .textContainer {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  .lineSeparator {
+      margin: 1.5rem auto;
+  }
+  .imageWrapper {
+    min-height: 40vh;
+  }
+  .eventLogoColumn, .eventDetailsColumn {
+      flex: 1 1 100%;
+      padding: 0;
+      text-align: center;
+  }
+  .eventLogoColumn {
+      margin-bottom: 20px;
+  }
+  .eventDetailsColumn .description {
+      text-align: center;
+  }
+}

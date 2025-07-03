@@ -1,0 +1,37 @@
+{
+  "discoverCags": {
+    "title": "Découvrez",
+    "boldTitle": "CAGS",
+    "line1": "<strong>Définir l'avenir, honorer le passé.</strong>",
+    "line2": "Notre voyage a commencé il y a plus de 40 ans en Turquie...",
+    "line3": "Des papiers à rouler aux tubes à cigarettes...",
+    "button": "En savoir plus"
+  },
+  "statsCounter": {
+    "stats": [
+      { "number": 33, "title": "Pays" },
+      { "number": 14, "title": "Marques phares" },
+      { "number": 100, "title": "Marques génériques" },
+      { "number": 110, "title": "Marques déposées" }
+    ]
+  },
+  "journeySection": {
+    "title": "Suivez notre parcours remarquable",
+    "description": "Découvrez CAGS, une marque de tabac familiale dotée d'un riche héritage..."
+  },
+  "productGrid": {
+    "products": [
+      { "title": "CAGS", "subtitle": "PAPIERS À ROULER", "link": "/Home/Papers" },
+      { "title": "CAGS", "subtitle": "TUBES À CIGARETTES", "link": "/Home/CigaretteTubes" },
+      { "title": "CAGS", "subtitle": "TABAC", "link": "/Home/Tobacco" },
+      { "title": "CAGS", "subtitle": "TABAC POUR NARGGUILÉ", "link": "http://www.my10bak.com/", "isExternal": true }
+    ]
+  },
+  "joinNetwork": {
+    "title": "Rejoignez",
+    "boldTitle": "notre réseau",
+    "description": "Tout au long de son histoire, CAGS s'est engagé à fournir des produits du tabac de haute qualité...",
+    "link1": "En savoir plus",
+    "link2": "Contactez-nous"
+  }
+}

@@ -1,0 +1,57 @@
+/* components/OurValuesSection.module.css */
+
+.pageSection {
+  background: #1c242d;
+  padding: 100px 0 80px 0; /* Adjusted bottom padding */
+  color: #fff;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Modern CSS Grid for the layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+  gap: 40px; /* Space between the items */
+  text-align: left;
+}
+
+.featureBox {
+  text-align: left;
+}
+
+.iconWrapper {
+  margin-bottom: 20px;
+}
+
+.iconWrapper svg {
+  color: #fff; /* Ensures SVG stroke color is white */
+}
+
+.featureBox h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.featureBox p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.85; /* Slightly less bright than the heading */
+}
+
+/* Responsive adjustments for tablets and mobile */
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: 1fr; /* Stack to a single column */
+    gap: 60px; /* Increase gap for vertical stacking */
+  }
+
+  .pageSection {
+    padding: 80px 0 60px 0;
+  }
+}

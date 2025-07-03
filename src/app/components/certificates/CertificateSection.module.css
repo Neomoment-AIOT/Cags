@@ -1,0 +1,114 @@
+/* CertificateSection.module.css */
+
+/* General Layout Styles (from your HTML) */
+.pageSection {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.paddedSection {
+  padding: 60px 0;
+}
+
+.containerFluid {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1150px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  flex: 1;
+  min-width: 550px; /* Prevents columns from getting too small */
+  padding: 15px 10px; /* Replicates Bootstrap's column padding */
+  align-items: center;
+}
+
+/* Section 1: Hero Content Styles */
+.mainTextContainer {
+  padding: 30px 20px;
+  padding-left: 20px;
+}
+
+.title h1 {
+  font-weight: 700;
+  margin: 0;
+  font-size: 32px;
+    line-height: 45px;
+    margin: 40px 0 32px 0;
+}
+
+.fontLight {
+  font-weight: 300;
+}
+
+.lineSeparator {
+  /* Replicates .line-3-70 */
+  height: 3px;
+  width: 70px;
+  background-color: #161616;
+  margin: 1rem 0;
+}
+
+.textContent p {
+  font-family: lato, arial, helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 1.6; /* Improved line-height for readability */
+  text-align: left;
+  color: #000000;
+  margin: 0;
+}
+
+.heroImageWrapper {
+  position: relative;
+  width: 95%;
+  height: 70%;
+  min-height: 70vh; /* Give it a minimum height */
+}
+
+/* Section 2: Certificate Grid Styles */
+.certificateCard {
+  flex: 1 1; /* Allows two cards per row with some space */
+  min-width: 300px;
+  max-width: 600px;
+  height: auto;
+  padding: 15px;
+}
+
+.certificateLink {
+  display: block;
+  padding: 30px;
+  border: 1px solid #000;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificateLink:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.certificateImageWrapper {
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  .column {
+    width: 100%;
+  }
+}

@@ -1,0 +1,83 @@
+/* General Section and Container Styles */
+.pageSection {
+  padding: 80px 0;
+}
+
+.bgLightGray {
+  background-color: #eee; /* A standard light gray */
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Core Layout Styles using Flexbox */
+.contentWrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+  align-items: flex-start; /* Aligns columns to the top */
+  gap: 40px; /* Creates space between the left and right columns */
+}
+
+/* Left Column (Heading) */
+.leftColumn {
+  flex: 1; /* Takes up 1 part of the available space */
+  min-width: 250px; /* Prevents the column from getting too narrow */
+}
+
+.sectionTitle {
+    margin: 0;
+    padding: 22px 25px 24px 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 36px;
+    color: #1c242d;
+    border-left: #1c242d 2px solid;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+/* Right Column (Content) */
+.rightColumn {
+  flex: 2; /* Takes up 2 parts of the space, making it wider */
+  min-width: 300px;
+}
+
+.linksContainer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: block;
+}
+
+.learnMoreLink {
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  display: inline;
+}
+
+.learnMoreLink h4 {
+  display: flex;
+  align-items: center;
+    font-size: 20px;
+    letter-spacing: normal;
+    line-height: 25px;
+    margin: 21px 0 19px 0;
+}
+
+/* Responsive Media Query */
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column; /* Stack columns on top of each other */
+  }
+
+  .sectionTitle {
+    position: static; /* Unstick the heading on mobile */
+    margin-bottom: 20px;
+  }
+}

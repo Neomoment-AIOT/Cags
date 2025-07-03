@@ -24,3 +24,59 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/*Slider Styling start*/
+/* app/globals.css */
+
+/* ... keep the existing @tailwind directives at the top ... */
+
+/* Custom styles for Swiper Navigation/Pagination */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff !important; /* White arrows */
+  --swiper-navigation-size: 30px; /* Adjust size if needed */
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5) !important; /* Semi-transparent white dots */
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ffffff !important; /* Solid white for the active dot */
+}
+
+/* Keyframe animations for slide text */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 1s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out 0.5s forwards; /* 0.5s delay */
+  opacity: 0; /* Start hidden */
+}
+/*Slider styling end*/

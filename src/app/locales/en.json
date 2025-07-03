@@ -1,0 +1,54 @@
+{
+  "discoverCags": {
+    "title": "Discover",
+    "boldTitle": "CAGS",
+    "line1": "<strong>Defining the future, honoring the past.</strong>",
+    "line2": "Our journey begun more then 40 years ago in Turkey, the land of legendary Turkish Tobacco, as the first Rolling Paper Manufacturer producing with international standards. We’ve been the creator, producer and distributer of products enjoyed by millions around the world since then.",
+    "line3": "From Rolling papers to cigarette tubes, from waterpipe tobacco to accessories… With a great range of innovative products, we are happy to serve the high quality our customers expect and we take great pride in pushing the boundaries for doing even better.",
+    "button": "Learn More"
+  },
+  "statsCounter": {
+    "stats": [
+      { "number": 33, "title": "Countries" },
+      { "number": 14, "title": "Flagship Brands" },
+      { "number": 100, "title": "Generic Brands" },
+      { "number": 110, "title": "Registered Trademarks" }
+    ]
+  },
+  "journeySection": {
+    "title": "Follow Our remarkable journey",
+    "description": "Discover CAGS, a family-owned tobacco brand with a rich heritage and a commitment to excellence. Experience our state-of-the-art facilities, innovation, and customer satisfaction. Join our journey in shaping the future of the tobacco industry with a trusted and preferred brand."
+  },
+  "productGrid": {
+    "products": [
+      {
+        "title": "CAGS",
+        "subtitle": "ROLLING PAPERS",
+        "link": "/Home/Papers"
+      },
+      {
+        "title": "CAGS",
+        "subtitle": "CIGARETTE TUBES",
+        "link": "/Home/CigaretteTubes"
+      },
+      {
+        "title": "CAGS",
+        "subtitle": "TOBACCO",
+        "link": "/Home/Tobacco"
+      },
+      {
+        "title": "CAGS",
+        "subtitle": "WATERPIPE TOBACCO",
+        "link": "http://www.my10bak.com/",
+        "isExternal": true
+      }
+    ]
+  },
+  "joinNetwork": {
+    "title": "Join",
+    "boldTitle": "our network",
+    "description": "Throughout its history, CAGS has been committed to providing high-quality tobacco products to customers around the world. The company's dedication to innovation and meeting market demands has helped it to achieve significant growth and success. CAGS is a trusted brand that is known for its quality, consistency, and customer service.",
+    "link1": "Learn more",
+    "link2": "Contact us"
+  }
+}

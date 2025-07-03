@@ -1,0 +1,205 @@
+/* styles/ContactPage.module.css */
+/* --- General Layout & Typography --- */
+.pageSection {
+  background-color: #f5f5f5;
+  padding: 40px 0;
+}
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.container {
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.containerFluid {
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px; /* Gutter simulation */
+}
+.column {
+  flex: 1 1 50%; /* Two columns */
+  padding: 0 15px;
+  margin-bottom: 20px;
+}
+.fontLight {
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 32px;
+  text-align: left;
+  margin: 20px ;
+}
+.bold {
+  font-weight: 700;
+}
+
+/* --- Breadcrumbs --- */
+.pageTitleContainer {
+  padding: 20px 0;
+  background-color:#f5f5f5;
+  border-bottom: 0px solid #161616;
+}
+.breadcrumbs {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.breadcrumbs a {
+  color: #7e8082;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.breadcrumbs span {
+  color: #6c757d;
+}
+.divider {
+  margin: 0 10px;
+}
+
+/* --- Form Section --- */
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.introText {
+  font-size: 14px;
+  text-align: justify;
+  margin-bottom: 30px;
+}
+.formWrapper {
+  text-align: left;
+}
+.formControl {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.formControl:focus {
+  outline: none;
+  border-color: #007bff;
+}
+textarea.formControl {
+    resize: vertical;
+}
+
+/* --- Consent & Submit --- */
+.consentRow {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.checkboxWrapper {
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+.consentText {
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: justify;
+    color: #666;
+}
+.submitRow {
+    text-align: right;
+}
+.submitButton {
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.submitButton:hover {
+    background-color: #0056b3;
+}
+.submitButton:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+/* --- Status Alerts --- */
+.alertSuccess, .alertError {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+.alertSuccess {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.alertError {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+/* --- Maps & Contact Info --- */
+.mapWrapper {
+    padding: 20px 0;
+}
+.contactInfoSection {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+.contactInfoColumn {
+    flex: 1 1 25%;
+    padding: 0 15px;
+}
+.contactInfoBlock {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+}
+.iconWrapper {
+    font-size: 2rem; /* Requires an icon font library like FontAwesome or custom icons */
+    margin-right: 20px;
+    color: #007bff;
+}
+.textWrapper h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+.textWrapper p {
+    margin: 0;
+    color: #666;
+}
+.textWrapper a {
+    color: #007bff;
+    text-decoration: none;
+}
+.textWrapper a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .column {
+    flex: 1 1 100%; /* Stack columns */
+  }
+  .submitRow {
+      text-align: center;
+  }
+  .contactInfoColumn {
+      flex: 1 1 50%;
+      margin-bottom: 30px;
+  }
+}

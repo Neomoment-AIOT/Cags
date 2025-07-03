@@ -1,0 +1,70 @@
+/* components/StatsCounter.module.css */
+
+.pageSection {
+  padding: 80px 0;
+  background-color: #f5f5f5; /* Example background color */
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Using CSS Grid for a responsive layout */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
+  gap: 20px; /* Space between the items */
+  border:1px solid #dadada;
+  
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-left:1px solid #dadada;
+  
+}
+
+.countNumber {
+    margin-top: 17px;
+    font-size: 45px;
+    line-height: 45px;
+    color: #1c242d;
+    font-weight: 600;
+}
+
+.countDescr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.countTitle {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 400;
+  color: #555;
+}
+
+/* Responsive adjustments for tablets and mobile devices */
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+  }
+  .countNumber {
+    font-size: 3rem; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+    .statsGrid {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+    .statItem {
+        padding: 10px;
+    }
+}

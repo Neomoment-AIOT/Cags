@@ -66,23 +66,23 @@ const TimelineSection = () => {
           {timelineData.map((item, index) => (
             <div key={index} className={styles.timelineBlock}>
               <div className={styles.timelineImg}></div>
-              <div className={styles.timelineContent}>
-                <div className={styles.contentGrid}>
-                  <div className={styles.text}>
-                    <p>{item.description}</p>
-                  </div>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={item.imageUrl}
-                      alt={`Milestone from year ${item.year}`}
-                      width={200} // Example width, adjust as needed
-                      height={150} // Example height, adjust as needed
-                      style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-                    />
-                  </div>
-                </div>
-                <span className={styles.date}>{item.year}</span>
-              </div>
+                        <div className={styles.timelineContent}>
+                              <div className={styles.contentGrid}>
+                                <div className={styles.text}>
+                                  <p>{item.description}</p>
+                                </div>
+                                <div className={styles.imageWrapper}>
+                                  <Image
+                                    src={item.imageUrl}
+                                    alt={`Milestone from year ${item.year}`}
+                                    width={200} // Example width, adjust as needed
+                                    height={150} // Example height, adjust as needed
+                                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                                  />
+                                </div>
+                              </div>
+                          <span className={styles.date}>{item.year}</span>
+                        </div>
             </div>
           ))}
 

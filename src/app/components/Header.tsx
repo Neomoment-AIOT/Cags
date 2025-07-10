@@ -1,7 +1,10 @@
 "use client"; // This is a Client Component, necessary for using state and event handlers.
 
 import React, { useState, useEffect } from 'react';
-import SubMenu from './SubMenu';
+import CompanySubMenu from './CompanySubMenu';
+import ProductSubMenu from './ProductSubMenu';
+import ContactSubMenu from './ContactSubMenu';
+
 
 // --- Icon Components (replaces react-icons) ---
 const IconChevronDown = ({ className }: { className: string }) => (
@@ -98,31 +101,32 @@ export default function TranslatedHeader() {
                   <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
                 </a>
                 {/* The SubMenu component will be controlled by the parent's group-hover state */}
-                <SubMenu/>
+                <CompanySubMenu/>
               </div>
 
               <a href="/brands" className="font-medium text-gray-700 hover:text-blue-600">{t('brands')}</a>
               
-              <div className="relative">
-                <button onClick={() => toggleDropdown('products')} className="flex items-center font-medium text-gray-700 hover:text-blue-600">
-                  <span>{t('products')}</span>
-                  <IconChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${openDropdown === 'products' ? 'transform rotate-180' : ''}`} />
-                </button>
-                {openDropdown === 'products' && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
-                    <a href="/products/papers" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{t('products_papers')}</a>
-                    <a href="/products/tubes" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{t('products_tubes')}</a>
-                    <a href="/products/tobacco" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{t('products_tobacco')}</a>
-                    <a href="http://www.my10bak.com/" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{t('products_waterpipe')}</a>
-                    <a href="/products/accessories" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{t('products_accessories')}</a>
-                  </div>
-                )}
+              <div className="relative group">
+                <a href="#" className="flex items-center font-medium text-gray-700 hover:text-blue-600 cursor-default">
+                  <span>{t('product')}</span>
+                  {/* The chevron is optional for a hover menu but can be kept for consistency */}
+                  <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                </a>
+                 <ProductSubMenu/>
               </div>
               
               <a href="/distribution" className="font-medium text-gray-700 hover:text-blue-600">{t('distribution')}</a>
               <a href="/events" className="font-medium text-gray-700 hover:text-blue-600">{t('news')}</a>
-              <a href="/contact" className="font-medium text-gray-700 hover:text-blue-600">{t('contact')}</a>
 
+              <div className="relative group">
+                <a href="/contact" className="flex items-center font-medium text-gray-700 hover:text-blue-600 cursor-default">
+                  <span>{t('contact')}</span>
+                  {/* The chevron is optional for a hover menu but can be kept for consistency */}
+                  <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                </a>
+                 <ContactSubMenu/>
+              </div>
+              
               <div className="relative">
                 <button onClick={() => toggleDropdown('language')} className="flex items-center font-medium text-gray-700 hover:text-blue-600">
                   <span>{t('language')}</span>
@@ -157,13 +161,13 @@ export default function TranslatedHeader() {
                     {t('company')}
                     <IconChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${openDropdown === 'company-mobile' ? 'transform rotate-180' : ''}`} />
                   </button>
-                  {openDropdown === 'company-mobile' && (
+                  {/* {openDropdown === 'company-mobile' && (
                     <div className="pl-4 mt-1 space-y-1">
                       <a href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50">{t('company_overview')}</a>
                       <a href="/history" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50">{t('company_history')}</a>
                       <a href="/certificates" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50">{t('company_certs')}</a>
                     </div>
-                  )}
+                  )} */}
                 </div>
               
               <a href="/brands" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">{t('brands')}</a>
@@ -173,7 +177,7 @@ export default function TranslatedHeader() {
                     {t('products')}
                     <IconChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${openDropdown === 'products-mobile' ? 'transform rotate-180' : ''}`} />
                   </button>
-                  {openDropdown === 'products-mobile' && (
+                  {/* {openDropdown === 'products-mobile' && (
                     <div className="pl-4 mt-1 space-y-1">
                       <a href="/products/papers" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50">{t('products_papers')}</a>
                       <a href="/products/tubes" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50">{t('products_tubes')}</a>
@@ -181,13 +185,19 @@ export default function TranslatedHeader() {
                       <a href="http://www.my10bak.com/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50">{t('products_waterpipe')}</a>
                       <a href="/products/accessories" className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-50">{t('products_accessories')}</a>
                     </div>
-                  )}
+                  )} */}
                 </div>
 
               <a href="/distribution" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">{t('distribution')}</a>
               <a href="/news" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">{t('news')}</a>
-              <a href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">{t('contact')}</a>
-
+              {/* <a href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">{t('contact')}</a>
+               */}
+              <div>
+                  <button onClick={() => toggleDropdown('company-mobile')} className="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+                    {t('contact')}
+                    <IconChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${openDropdown === 'company-mobile' ? 'transform rotate-180' : ''}`} />
+                  </button>
+              </div>
                 <div>
                   <button onClick={() => toggleDropdown('language-mobile')} className="w-full text-left flex justify-between items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
                     {t('language')}

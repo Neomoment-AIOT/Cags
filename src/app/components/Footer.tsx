@@ -1,104 +1,117 @@
+// components/Footer.js
+'use client';
+
+import { useActionState } from 'react';      // Correctly imported from 'react'
+import { useFormStatus } from 'react-dom';    // Correctly imported from 'react-dom'
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// Optional: If you want to use icons for social media
-// import { FaInstagram, FaTwitter, FaFacebook } from 'react-icons/fa';
+import style from './footer.module.css';
+import { subscribeNewsletter } from '@/app/actions'; // Correct path to your server action
+
+// A separate button component to manage the form's pending state
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="w-fit px-4 py-2 border border-white text-white uppercase transition hover:bg-white hover:text-black disabled:opacity-50"
+    >
+      {pending ? 'Subscribing...' : 'Subscribe'}
+    </button>
+  );
+}
 
 export default function Footer() {
-  return (
-    <footer className="bg-[#1c242d] text-gray-300 pt-16 pb-10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Main grid for footer content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8">
+  // useActionState handles the form's state transitions
+  // const [state, formAction] = useActionState(subscribeNewsletter, { message: null });
+  // const formRef = useRef(null);
 
+  // This effect hook reliably resets the form after a successful submission
+  // useEffect(() => {
+  //   if (state.message?.includes('Success')) {
+  //     formRef.current?.reset();
+  //   }
+  // }, [state]);
+
+  return (
+    <footer className={style.footer}>
+      <div className={style.container}>
+        <div className={style.colboxes}>
+          
           {/* Column 1: Logo */}
-          <div className="lg:col-span-1 flex items-start">
-            <Link href="/">
-              <Image 
-                src="/favwhite.png" 
-                alt="Footer Logo"
-                width={80} // Adjust to your logo's actual width
-                height={80} // Adjust to your logo's actual height
-              />
+          <div className={style.col}>
+            <Link href="/home">
+              <Image className={style.logo} src="/favwhite.png" alt="Footer Logo" width={60} height={60} />
             </Link>
           </div>
 
-          {/* Column 2: Links */}
-          <div className="lg:col-span-2">
-            <ul className="space-y-3 font-semibold">
-              <li><Link href="/products" className="hover:text-white transition-colors">Products</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors">Company</Link></li>
-              <li><Link href="/brands" className="hover:text-white transition-colors">Our Brands</Link></li>
+          {/* Column 2: Navigation */}
+          <div className={style.col}>
+            <ul className="space-y-2 font-semibold">
+              <li><Link href="/products" className="hover:text-white">Products</Link></li>
+              <li><Link href="/about" className="hover:text-white">Company</Link></li>
+              <li><Link href="/brands" className="hover:text-white">Our Brands</Link></li>
             </ul>
           </div>
 
           {/* Column 3: More Links */}
-          <div className="lg:col-span-2">
-            <ul className="space-y-3 font-semibold">
-              <li><Link href="/distribution" className="hover:text-white transition-colors">Distribution</Link></li>
-              <li><Link href="/news" className="hover:text-white transition-colors">News</Link></li>
-              <li><Link href="/career" className="hover:text-white transition-colors">Careers</Link></li>
-              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+          <div className={style.col}>
+            <ul className="space-y-2 font-semibold">
+              <li><Link href="/distribution" className="hover:text-white">Distribution</Link></li>
+              <li><Link href="/events" className="hover:text-white">News</Link></li>
+              <li><Link href="/career" className="hover:text-white">Careers</Link></li>
+              <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Newsletter Signup */}
-          <div className="lg:col-span-4">
-            <h4 className="font-bold text-lg text-white mb-2">Sign up to the newsletter</h4>
-            <p className="text-sm mb-4">
-              Be the first to know about new products and updates.
+          {/* Column 4: Newsletter */}
+          <div className={style.col}>
+            <h4 className={style.newsletter}>Sign up to the newsletter</h4>
+            <p className="text-sm mb-4 text-gray-400 w-[90%]">
+              Enter your email address Be the first to know about new products and updates.
             </p>
-            {/* The form action and method are preserved from your original code */}
-            <form 
-              action="http://abcgomel.us9.list-manage.com/subscribe/post-json?u=ba37086d08bdc9f56f3592af0&amp;id=e38247f7cc&amp;c=?" 
-              method="post" 
-              name="mc-embedded-subscribe-form"
-              target="_blank" 
-              noValidate
-              className="flex flex-col items-start space-y-4"
-            >
-              <input 
-               type="email" 
-                name="EMAIL" 
-                className="w-full sm:w-3/4 g-transparent border-0 border-b-[1px] border-white text-white placeholder:text-gray-400 py-4 my-6 focus:outline-none focus:ring-0 focus:border-white transition-colors"
-                placeholder="Enter your email" 
-                required 
+            <form
+            //  ref={formRef} action={formAction} 
+             className="flex flex-col">
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                className="w-[70%] bg-transparent border-b border-white text-white placeholder:text-gray-400 py-2 focus:outline-none mb-4"
+                required
               />
-              <button 
-                type="submit"
-                // --- BUTTON STYLES MODIFIED AS PER YOUR REQUEST ---
-                  className="w-full sm:w-1/2 bg-transparent border-[2px] border-white text-white uppercase font-semibold py-3 rounded-md hover:bg-white hover:text-[#1c242d] transition-colors text-center"
-              
-              >
-                SUBSCRIBE
-              </button>
+              <SubmitButton />
+              {/* This paragraph will display the 'Success' or 'Error' message from the server action */}
+              {/* {state.message && (
+                <p className="mt-2 text-sm text-white">{state.message}</p>
+              )} */}
             </form>
           </div>
-          
-          {/* Column 5: Social & Legal Links */}
-          <div className="lg:col-span-3">
-             <h4 className="font-bold text-lg text-white mb-2">Follow CAGS</h4>
-             <ul className="space-y-3 font-semibold mb-8">
-                {/* Use standard <a> tags for external links */}
-                <li><a href="https://www.instagram.com/cagssocial/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a></li>
-                <li><a href="https://twitter.com/cagssocial" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Twitter</a></li>
-                <li><a href="https://www.facebook.com/cagssocial" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a></li>
-             </ul>
-             <ul className="space-y-3 font-semibold">
-                <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="hover:text-white transition-colors">Terms &amp; Conditions</Link></li>
-                <li><Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link></li>
-                <li><Link href="/accessibility" className="hover:text-white transition-colors">Accessibility Statement</Link></li>
-             </ul>
+
+          {/* Column 5: Social & Legal */}
+          <div className={style.col}>
+            <h4 className={style.social}>Follow CAGS</h4>
+            <ul className="space-y-2 font-semibold mb-6">
+              <li><a href="https://www.instagram.com/cagssocial/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a></li>
+              <li><a href="https://twitter.com/cagssocial" target="_blank" rel="noopener noreferrer" className="hover:text-white">Twitter</a></li>
+              <li><a href="https://www.facebook.com/cagssocial" target="_blank" rel="noopener noreferrer" className="hover:text-white">Facebook</a></li>
+            </ul>
+            <ul className="space-y-2 font-semibold text-sm">
+              <li><Link href="/privacypolicy" className="hover:text-white">Privacy Policy</Link></li>
+              <li><Link href="/privacypolicy" className="hover:text-white">Terms & Conditions</Link></li>
+              <li><Link href="/privacypolicy" className="hover:text-white">Cookie Policy</Link></li>
+              <li><Link href="/home" className="hover:text-white">Accessibility Statement</Link></li>
+            </ul>
           </div>
-
         </div>
 
-        {/* Bottom Copyright Section */}
-        <div className="mt-12 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
-           <p>&copy; {new Date().getFullYear()} CAGS. All Rights Reserved.</p>
+        {/* Bottom bar */}
+        <div className="mt-12 pt-8 border-t border-gray-700 text-left text-sm text-gray-400">
+          <p>&copy; {new Date().getFullYear()} CAGS. All Rights Reserved.</p>
         </div>
-        
       </div>
     </footer>
   );

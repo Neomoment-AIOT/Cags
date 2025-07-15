@@ -59,8 +59,8 @@ const CertificateSection = () => {
                     src="/belcert.jpg"
                     alt="BEL Certificate"
                     layout="responsive"
-                    width={600}
-                    height={450}
+                    width={650}
+                    height={500}
                   />
                 </div>
               </a>
@@ -75,8 +75,8 @@ const CertificateSection = () => {
                     src="/cert9001.jpg"
                     alt="ISO 9001 Certificate"
                     layout="responsive"
-                    width={600}
-                    height={450}
+                    width={650}
+                    height={550}
                   />
                 </div>
               </a>

@@ -11,7 +11,7 @@ const Breadcrumb = () => {
           {/* This link can be updated if you create a "Company" page */}
           <Link href="#">COMPANY</Link>
           <span className={styles.divider}>/</span>
-          <span className={styles.current}>CERTICICATES</span>
+          <span className={styles.current}>CERTIFICATES</span>
         </div>
       </div>
     </div>

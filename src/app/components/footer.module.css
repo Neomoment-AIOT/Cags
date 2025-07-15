@@ -1,0 +1,98 @@
+.footer {
+  background-color: #1c242d;
+  color: white;
+  width: 100%;
+  /* Default padding for desktop */
+  padding: 4rem 10% 0.5rem 10%;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.colboxes {
+  display: grid;
+  /* Desktop: 5-column layout with specific percentage widths */
+  grid-template-columns: 6% 12% 12% 38% 36%;
+  gap: 2rem;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer a, .footer .newsletter {
+  outline: none !important;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: bold;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  color: rgba(255, 255, 255, .7);
+}
+
+.footer .newsletter {
+  padding-right: 10%;
+  font-size: 21px;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: white;
+  padding-right: 30px;
+}
+
+.footer .social {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 700;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  color: rgba(255, 255, 255, .7);
+}
+
+.footer ul {
+  padding-left: 0;
+}
+
+/* --- RESPONSIVE ENHANCEMENTS --- */
+
+/* For Tablets */
+@media (max-width: 1024px) {
+  .footer {
+    /* Reduce horizontal padding on tablets */
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .colboxes {
+    /* A 3-column grid is more balanced for 5 items */
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* For Mobile */
+@media (max-width: 768px) {
+  .footer {
+    /* Use fixed padding on mobile to prevent content from being too squished */
+    padding: 3rem 1.5rem;
+    /* Center-align all text for a cleaner mobile view */
+    text-align: center; 
+  }
+
+  .colboxes {
+    /* Stack all columns into a single vertical line */
+    grid-template-columns: 1fr;
+    /* Increase gap for better vertical spacing */
+    gap: 2.5rem; 
+  }
+
+  .col {
+    /* Center the content within each column */
+    align-items: center;
+  }
+  
+  .footer .newsletter {
+    /* Remove padding that can cause alignment issues on mobile */
+    padding-right: 0;
+  }
+}

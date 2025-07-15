@@ -3,23 +3,15 @@
 import Link from "next/link";
 import Image from "next/image";
 
-/*
-  NOTE: For the hover effect to work, you must add the `group` class
-  and padding (e.g., `pb-4`) to the parent element of this component.
-*/
-
 export default function ProductSubMenu() {
   return (
     // UPDATED: Changed `top-13` to `top-full` and added `group-focus-within:block`
-    <div className="absolute top-full hidden w-full min-w-[1440px] 
-    z-40 group-hover:block group-focus-within:block">
+    <div className="absolute top-full hidden w-full min-w-[1440px]
+    z-40 group-hover:block group-focus-within:block ml-0 b-0
+    md:ml-[-580px] lg:ml-[-870px]">
       
       {/* This inner div is the centered container for your content. */}
-      <div className="container subMenu-container
-      mx-auto px-6 mt-7 
-      bg-[#e7e6e6] 
-    shadow-lg border-t 
-    ml-[-51.8%]
+      <div className="container subMenu-container mx-auto px-6 mt-7 bg-[#e7e6e6] shadow-lg
     ">
         
         {/* Flex container for columns. */}

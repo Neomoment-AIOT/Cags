@@ -7,7 +7,7 @@
 }
 
 .paddedSection {
-  padding: 60px 0;
+  padding: 60px 0%;
 }
 
 .containerFluid {
@@ -16,37 +16,39 @@
 
 .container {
   width: 100%;
-  max-width: 1150px;
-  padding-right: 15px;
-  padding-left: 15px;
+  max-width: 1400px;
+  padding-right: 8%;
+  padding-left: 8%;
 }
 
 .row {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
 }
 
 .column {
   flex: 1;
-  min-width: 550px; /* Prevents columns from getting too small */
+  min-width: 650px; /* Prevents columns from getting too small */
   padding: 15px 10px; /* Replicates Bootstrap's column padding */
   align-items: center;
 }
 
 /* Section 1: Hero Content Styles */
 .mainTextContainer {
-  padding: 30px 20px;
-  padding-left: 20px;
+  padding-left: 18%;
+  padding-right: 8%;
+  width: fit-content;
 }
 
 .title h1 {
-  font-weight: 700;
-  margin: 0;
   font-size: 32px;
     line-height: 45px;
     margin: 40px 0 32px 0;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+        color: #1c242d;
 }
 
 .fontLight {
@@ -54,36 +56,36 @@
 }
 
 .lineSeparator {
-  /* Replicates .line-3-70 */
-  height: 3px;
-  width: 70px;
-  background-color: #161616;
-  margin: 1rem 0;
+ margin-top: 11px;
+    height: 3px;
+    width: 70px;
+    background: #1c242d;
 }
 
 .textContent p {
-  font-family: lato, arial, helvetica, sans-serif;
-  font-size: 17px;
-  line-height: 1.6; /* Improved line-height for readability */
+ line-height: 1.6; /* Improved line-height for readability */
   text-align: left;
   color: #000000;
   margin: 0;
+ margin-top: 30px;
+      font-family: lato, arial, helvetica, sans-serif;
+    font-size: 15px;
+
 }
 
 .heroImageWrapper {
-  position: relative;
-  width: 95%;
-  height: 70%;
-  min-height: 70vh; /* Give it a minimum height */
+   position: relative;
+  width: 100%;
+  min-height: 80vh;
+      max-width: 100%;
+    height: auto;
 }
 
 /* Section 2: Certificate Grid Styles */
 .certificateCard {
-  flex: 1 1; /* Allows two cards per row with some space */
-  min-width: 300px;
-  max-width: 600px;
-  height: auto;
-  padding: 15px;
+ /* Allows two cards per row with some space */
+ width: fit-content;
+  margin: 0 2%;
 }
 
 .certificateLink {
@@ -100,7 +102,8 @@
 }
 
 .certificateImageWrapper {
-  position: relative;
+  width: fit-content;
+  min-width: 500px;
 }
 
 /* Responsive adjustments */
@@ -111,4 +114,73 @@
   .column {
     width: 100%;
   }
+}
+
+
+
+
+/* --- Breadcrumbs --- */
+.pageTitleContainer {
+  padding: 20px 0;
+  background-color:#f5f5f5;
+  border-bottom: 0px solid #e9ecef;
+}
+/* --- Breadcrumbs --- */
+.pageTitleContainer {
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+.breadcrumbs {
+  font-size: 11px;
+  font-weight: normal;
+      letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.breadcrumbs a, .breadcrumbs span {
+  color: #6c757d;
+  text-decoration: none;
+
+}
+.breadcrumbs a:hover {
+  color: #121213;
+}
+.breadcrumbs .current {
+  color: #343a40;
+  font-weight: 700;
+}
+.divider {
+  margin: 0 10px;
+}
+
+
+
+/* --- Closing Section --- */
+.closingSection {
+  padding: 80px 15px;
+  background-color:#f5f5f5;
+}
+.closingBox {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
+  text-align: center;
+}
+.closingBox p {
+  font-family: 'open sans', arial, helvetica, sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.closingBox p:last-child {
+    margin-bottom: 0;
 }

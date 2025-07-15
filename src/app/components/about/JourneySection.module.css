@@ -11,16 +11,21 @@
 .textContainer {
   flex: 1;
   min-width: 320px;
-  padding: 30px 4%;
   text-align: left;
+  padding-left: 9%;
+  padding-right: 9%;
 }
 .imageContainer {
   flex: 1;
   min-width: 320px;
 }
 .textContainer h1 {
-  font-size: 2.5rem; /* 40px */
-  line-height: 1.2;
+    font-size: 32px;
+    line-height: 45px;
+    margin: 40px 0 32px 0;
+    color: #1c242d;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+  
 }
 .fontLight {
   font-weight: 300;

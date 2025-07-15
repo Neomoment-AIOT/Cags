@@ -9,8 +9,16 @@
   padding: 0 15px;
 }
 .contentWrapper {
-  max-width: 1400px; /* Constrain width for readability */
-  margin: 0 auto;
+  /* max-width: 1400px; /* Constrain width for readability */
+  /* margin: 0 auto;  */
+  width: fit-content;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: 14px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #1c242d;
 }
 .textBox {
   margin-bottom: 30px;

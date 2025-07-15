@@ -26,7 +26,7 @@ const slides = [
 
 export default function Slider() {
   return (
-    <div className="relative w-full h-screen"> {/* Full screen height */}
+    <div className="relative w-full h-[500px]"> {/* Full screen height */}
       <Swiper
         // Install Swiper modules
         modules={[Navigation, Pagination, Autoplay]}
@@ -34,13 +34,13 @@ export default function Slider() {
         slidesPerView={1}
         loop={true}
         autoplay={{
-          delay: 4000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         // 3. Removed the effect="fade" prop to revert to the default 'slide'
         navigation // Enables Next/Prev arrows
         pagination={{ clickable: true }} // Enables clickable dots
-        className="h-full"
+        className="h-full min-h-[630px] "
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>

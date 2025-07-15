@@ -1,6 +1,4 @@
 .pageTitleCont {
-  padding: 20px 0;
-  border-bottom: none;
   background-color:#f5f5f5;
 }
 .container {
@@ -14,26 +12,35 @@
 .alignLeft {
   text-align: left;
 }
+
 .breadcrumbs {
-  font-size: 12.5px;
-  font-weight: 500;
-    color: #888;
-    letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: normal;
+      letter-spacing: 2px;
     text-transform: uppercase;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    padding-top: 4%;
 }
-.breadcrumbs a {
-  color: #555;
+.breadcrumbs a, .breadcrumbs span {
+  color: #6c757d;
   text-decoration: none;
-  transition: color 0.3s ease;
+
 }
 .breadcrumbs a:hover {
-  color: #000;
+  color: #121213;
+}
+.breadcrumbs .current {
+  color: #343a40;
+  font-weight: 700;
 }
 .divider {
   margin: 0 10px;
 }
+
 .current {
   color: #000;
 }

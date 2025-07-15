@@ -1,4 +1,44 @@
 /* styles/ContactPage.module.css */
+
+/*--- Contact Last Section  ---*/
+
+.contactInfoSection{
+    background-color: #eee;
+}
+.icon{
+font-family: "linea-icons" !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1;
+    font-size: 24px;
+    color: #121213;
+}
+.textWrapper{
+border-left: 1px solid #bdbdbd;
+    padding: 16px 0px 18px 25px;
+}
+.textWrapper .bold{
+font-weight: bold;
+font-size: 16px;
+line-height: 26px;
+color: #1c242d;
+font-family: 'Lato', Arial, Helvetica, sans-serif;
+}
+.textWrapper p{
+    font-size: 12px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #1c242d;
+        -webkit-font-smoothing: antialiased ;
+        -webkit-text-size-adjust: 100% ;
+}
+.textleft{
+  align-items: left;
+  font-size: 13px;
+    text-align: justify;
+  text-align: left;
+}
 /* --- General Layout & Typography --- */
 .pageSection {
   background-color: #f5f5f5;
@@ -11,9 +51,10 @@
 }
 .container {
   width: 100%;
-  max-width: 1140px;
-  padding: 0 15px;
+  /* max-width: 860px; */
+  padding: 0 ;
   margin: 0 auto;
+  align-items: center;
 }
 .containerFluid {
   width: 100%;
@@ -29,11 +70,15 @@
   margin-bottom: 20px;
 }
 .fontLight {
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 32px;
+  font-weight: 600;
   text-align: left;
-  margin:20px ;
+  font-size: 28px;
+    line-height: 32px;
+color: #1c242d;
+font-family: 'Lato', Arial, Helvetica, sans-serif;
+padding-left: 16%;
+padding-right: 16%;
+width: fit-content;
 }
 .bold {
   font-weight: 700;
@@ -46,13 +91,20 @@
   border-bottom: 0px solid #161616;
 }
 .breadcrumbs {
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  width: fit-content;
+  padding-left: 8%;
+  padding-right: 8%;
 }
 .breadcrumbs a {
   color: #7e8082;
-  text-decoration: none;
+  outline: none !important;
+    text-decoration: none;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
 }
 .breadcrumbs a:hover {
   text-decoration: underline;
@@ -66,25 +118,44 @@
 
 /* --- Form Section --- */
 .formContainer {
-  max-width: 800px;
-  margin: 0 auto;
+
+  margin: 0 4% ;
   text-align: center;
+  align-items: center;
+
 }
 .introText {
-  font-size: 14px;
+  font-size: 13px;
   text-align: justify;
-  margin-bottom: 30px;
+      line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #1c242d;
+padding-left: 18%;
+padding-right: 18%;
+width: fit-content;
 }
 .formWrapper {
   text-align: left;
+  width: fit-content;
+  align-items: center;
+  margin: 3%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 .formControl {
   width: 100%;
   padding: 12px 15px;
-  margin-bottom: 25px;
-  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 14px;
+  border-bottom: 1px solid #a6a7a9;
+    border-radius: 0px;
+}
+.label{
+  display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
 }
 .formControl:focus {
   outline: none;
@@ -153,11 +224,14 @@ textarea.formControl {
 
 /* --- Maps & Contact Info --- */
 .mapWrapper {
-    padding: 20px;
+    padding: 10px;
 }
 .contactInfoSection {
-    background-color: #f8f9fa;
+    background-color: #eee;
     padding: 80px 0;
+    width: fit-content;
+  padding-left: 8%;
+   padding-right: 8%;
 }
 .contactInfoColumn {
     flex: 1 1 25%;

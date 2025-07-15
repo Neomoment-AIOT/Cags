@@ -9,7 +9,7 @@ const JourneySection = () => {
           {/* Left Column: Text Content */}
           <div className={styles.textContainer}>
             <h1>
-              Follow<br />
+              <b>Follow</b><br />
               <span className={styles.fontLight}>Our remarkable journey</span>
             </h1>
             <div className={styles.line}></div>

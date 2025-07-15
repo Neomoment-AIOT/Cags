@@ -1,0 +1,93 @@
+.productName{
+    font-size: 24px;
+    color: #1c242d;
+    letter-spacing: normal;
+    line-height: 33px;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+.branding{
+ display: inline-flex;
+ width: 653px;
+    margin-top: 14px;
+}
+.brandName{
+    display: flex;
+}
+.brand{
+    text-transform: capitalize;
+    font-size: 14px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #1c242d;
+}
+.rightcontainer{
+    width: 100%;
+    min-width: 652px;
+    /* line-height: 4; */
+    text-align: justify;
+    margin: 0 10% 0 0;
+}
+.itemprice {
+    font-size: 24px;
+    color: #1c242d;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-left: 5px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+.rightsidedtip{
+  margin-left: 140px;
+  width: 100%;
+    text-align: right;
+    font-size: 14px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #1c242d;
+    padding: 0;
+}
+.description{
+    font-size: 14px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #1c242d;
+}
+.certification{
+    border-top: 1px solid black;
+   padding-top: 3%;
+    margin-bottom: 10%;
+}
+.labelname{
+font-size:10px;
+font-weight: 700;
+margin-bottom: 12px;
+}
+.value{
+font-size:12px;
+font-weight: 300;
+}
+.specification{
+display: inline-grid;
+grid-template-columns: repeat(3, 1fr);
+ vertical-align: top;
+max-width: 500px;
+gap: 10px;
+width: 600px;
+vertical-align: top;
+}
+.specification .card{
+ display: block;
+  text-align: center;
+  width: 100%;
+  padding:5%;
+  margin: 2%;
+}
+.specification .card .value{
+margin: 0;
+padding: 0;
+}
+

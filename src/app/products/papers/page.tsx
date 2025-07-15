@@ -13,25 +13,59 @@ type Product = {
   brand: string;
   name: string;
   size: '1 1/4' | 'Regular' | 'King Size' | 'King Size Slim' | 'King Size XXL';
+  description: string;
   imageUrl: string;
   detailUrl: string;
 };
 
 // The list of all paper products
 const allProducts: Product[] = [
-    { id: 325, brand: 'CRP', name: 'CRP 1 1/4 - Closing Flap Blue', size: '1 1/4', imageUrl: '/products/papers/c3afe70350844fc2b329831d3ada741b.png', detailUrl: '/Home/PaperDetail/325' },
-    { id: 326, brand: 'CRP', name: 'CRP 1 1/4 - Closing Flap Black', size: '1 1/4', imageUrl: '/products/papers/1a27a04563b240dc8edb543b8ff1b36c.png', detailUrl: '/Home/PaperDetail/326' },
-    { id: 327, brand: 'CRP', name: 'CRP 1 1/4 - Closing Flap Beige', size: '1 1/4', imageUrl: '/products/papers/9f2544277d534d12ba7b21f6fa92cea8.png', detailUrl: '/Home/PaperDetail/327' },
-    { id: 332, brand: 'CRP', name: 'CRP King Size + Tips - Closing Flap Beige', size: 'King Size', imageUrl: '/products/papers/565c5a5256e54fd8aa619854d35392a8.png', detailUrl: '/Home/PaperDetail/332' },
-    { id: 333, brand: 'CRP', name: 'CRP King Size + Tips - Closing Flap Black', size: 'King Size', imageUrl: '/products/papers/78036dfccb5b4747b38ffb32b6897bd0.png', detailUrl: '/Home/PaperDetail/333' },
-    { id: 354, brand: 'CRP', name: 'CRP Regular Beige', size: 'Regular', imageUrl: '/products/papers/6e9d659f3148473f8bd5cdcf9edd73da.png', detailUrl: '/Home/PaperDetail/354' },
-    { id: 361, brand: 'Sir Badger', name: 'Sir Badger 1 1/4 - Closing Flap Beige', size: '1 1/4', imageUrl: '/products/papers/dfa0b41ada4b4630bd795e8ecf244453.png', detailUrl: '/Home/PaperDetail/361' },
-    { id: 363, brand: 'Sir Badger', name: 'Sir Badger King Size Slim Beige', size: 'King Size Slim', imageUrl: '/products/papers/6b348c75c8da49a294cb0c5329b063a5.png', detailUrl: '/Home/PaperDetail/363' },
-    { id: 372, brand: 'The Saint', name: 'The Saint Regular White', size: 'Regular', imageUrl: '/products/papers/674b0c0c32004bdfa53333c682067255.png', detailUrl: '/Home/PaperDetail/372' },
-    { id: 373, brand: 'Watson', name: 'Watson 1 1/4 - Closing Flap Beige', size: '1 1/4', imageUrl: '/products/papers/4726061228c74094bd68c6e0a0de7555.png', detailUrl: '/Home/PaperDetail/373' },
-    { id: 409, brand: 'Young Master', name: 'Young Master King Size Slim + Tips', size: 'King Size Slim', imageUrl: '/products/papers/4ebde2b8c795482e856ce179ce6e65c7.png', detailUrl: '/Home/PaperDetail/409' },
-    { id: 416, brand: 'Young Master', name: 'Young Master King Size XXL + Tips', size: 'King Size XXL', imageUrl: '/products/papers/087a921322314928ae8dd45fa00931df.png', detailUrl: '/Home/PaperDetail/416' },
-  // ... Add all your other paper products here
+    { id: 325, brand: 'CRP', name: 'CRP 1 1/4 - Closing Flap Blue', size: '1 1/4',
+      description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+      imageUrl: '/products/papers/c3afe70350844fc2b329831d3ada741b.png', detailUrl: '/products/papers/325'},
+    { id: 326, brand: 'CRP', name: 'CRP 1 1/4 - Closing Flap Black', size: '1 1/4',
+       description:'Introducing CRP 1 1/4 Rolling Papers - Closing Flap Black. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 14gsm slow burning thin paper, they ensure a smooth and enjoyable smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with non-GMO French Paper and sealed with natural Arabic gum, they are suitable for vegans.',
+      imageUrl: '/products/papers/1a27a04563b240dc8edb543b8ff1b36c.png', detailUrl: '/products/papers/326' },
+    { id: 327, brand: 'CRP', name: 'CRP 1 1/4 - Closing Flap Beige', size: '1 1/4',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/9f2544277d534d12ba7b21f6fa92cea8.png', detailUrl: '/products/papers/327' },
+    { id: 332, brand: 'CRP', name: 'CRP King Size + Tips - Closing Flap Beige', size: 'King Size', 
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/565c5a5256e54fd8aa619854d35392a8.png', detailUrl: '/products/papers/332' },
+    { id: 333, brand: 'CRP', name: 'CRP King Size + Tips - Closing Flap Black', size: 'King Size',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/78036dfccb5b4747b38ffb32b6897bd0.png', detailUrl: '/products/papers/333' },
+    { id: 354, brand: 'CRP', name: 'CRP Regular Beige', size: 'Regular',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/6e9d659f3148473f8bd5cdcf9edd73da.png', detailUrl: '/products/papers/354' },
+    { id: 361, brand: 'Sir Badger', name: 'Sir Badger 1 1/4 - Closing Flap Beige', size: '1 1/4',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/dfa0b41ada4b4630bd795e8ecf244453.png', detailUrl: '/products/papers/361' },
+    { id: 363, brand: 'Sir Badger', name: 'Sir Badger King Size Slim Beige', size: 'King Size Slim',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/6b348c75c8da49a294cb0c5329b063a5.png', detailUrl: '/products/papers/363' },
+    { id: 372, brand: 'The Saint', name: 'The Saint Regular White', size: 'Regular',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/674b0c0c32004bdfa53333c682067255.png', detailUrl: '/products/papers/372' },
+    { id: 373, brand: 'Watson', name: 'Watson 1 1/4 - Closing Flap Beige', size: '1 1/4',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/4726061228c74094bd68c6e0a0de7555.png', detailUrl: '/products/papers/373' },
+    { id: 409, brand: 'Young Master', name: 'Young Master King Size Slim + Tips', size: 'King Size Slim',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/4ebde2b8c795482e856ce179ce6e65c7.png', detailUrl: '/products/papers/409' },
+    { id: 416, brand: 'Young Master', name: 'Young Master King Size XXL + Tips', size: 'King Size XXL',
+       description:'Introducing 1 1/4 Rolling Papers - Closing Flap Blue. These papers offer convenience and quality, with 32 leaves per booklet. The leaf size is 78 by 44 millimeters, providing a perfect fit for your smoking needs. Made with high-quality 21gsm fast-burning wood paper, they ensure a satisfying smoking experience. Individually wrapped in a single booklet cello wrap, they retain their freshness. Made with French Paper and sealed with natural Arabic gum, they are suitable for vegans. Test  Test',
+     
+      imageUrl: '/products/papers/087a921322314928ae8dd45fa00931df.png', detailUrl: '/products/papers/416' },
 ];
 
 // --- Static Filter Options (UPDATED) ---
@@ -62,7 +96,7 @@ export default function PapersPage() {
   const [tempSize, setTempSize] = useState('all');
   const [appliedBrand, setAppliedBrand] = useState('all');
   const [appliedSize, setAppliedSize] = useState('all');
-  
+
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product => {
       const brandMatch = appliedBrand === 'all' || product.brand === appliedBrand;
@@ -80,7 +114,7 @@ export default function PapersPage() {
     <section className={styles.pageSection}>
       <Breadcrumb />
       <div className={styles.container}>
-        
+
         {/* --- Filter Controls (UPDATED) --- */}
         <div className={styles.filterContainer}>
           {/* Brand Select now uses the static list */}
@@ -116,7 +150,7 @@ export default function PapersPage() {
               ))}
             </select>
           </div>
-          
+
           {/* Filter Button */}
           <div>
             <button

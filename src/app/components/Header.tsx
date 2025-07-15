@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import CompanySubMenu from './CompanySubMenu';
 import ProductSubMenu from './ProductSubMenu';
 import ContactSubMenu from './ContactSubMenu';
+import Styles from './style.module.css';
 
 
 // --- Icon Components (replaces react-icons) ---
@@ -72,63 +73,58 @@ export default function TranslatedHeader() {
 
   return (
     <header className={`w-full fixed top-0 z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-lg bg-white/95 backdrop-blur-sm' : 'bg-white'}`}>
-      <div className="border-b border-black/10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+      <div className="border-b border-black">
+        <div className="container-fluid mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20 p-2">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <a href="/" className="flex items-center">
+              <a href="/" className="flex items-center ">
                 <img
                   src="/Logo.png"
                   alt="Logo"
-                  width={150}
-                  height={40}
-                  className="h-10 w-auto"
+                  className="h-10 w-full mr-4 ml-2 p-1"
                   onError={(e) => e.currentTarget.src = 'https://placehold.co/150x40?text=Logo'}
                 />
               </a>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
-              <a href="/home" className="font-medium text-gray-700 hover:text-blue-600">{t('home')}</a>
+            <nav className="hidden Capitalize ml-[20px] md:flex md:items-center md:space-x-6 lg:space-x-8 
+             text-[13px] shadow-none font-thin tracking-[2px] ml-[20px]">
+              <a href="/home" className="font-medium  text-[#1c242d] hover:text-blue-600">{t('home')}</a>
               
               {/* MODIFIED: Company dropdown now uses group-hover */}
               <div className="relative group">
                 <a href="#" className="flex items-center font-medium text-gray-700 hover:text-blue-600 cursor-default">
-                  <span>{t('company')}</span>
-                  {/* The chevron is optional for a hover menu but can be kept for consistency */}
-                  <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
-                </a>
-                {/* The SubMenu component will be controlled by the parent's group-hover state */}
+                  <span>{t('company')}</span></a>
                 <CompanySubMenu/>
               </div>
 
-              <a href="/brands" className="font-medium text-gray-700 hover:text-blue-600">{t('brands')}</a>
+              <a href="/brands" className="font-medium text-[#1c242d] hover:text-blue-600">{t('brands')}</a>
               
               <div className="relative group">
                 <a href="#" className="flex items-center font-medium text-gray-700 hover:text-blue-600 cursor-default">
-                  <span>{t('product')}</span>
+                  <span>{t('Product')}</span>
                   {/* The chevron is optional for a hover menu but can be kept for consistency */}
-                  <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                  {/* <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" /> */}
                 </a>
                  <ProductSubMenu/>
               </div>
               
-              <a href="/distribution" className="font-medium text-gray-700 hover:text-blue-600">{t('distribution')}</a>
-              <a href="/events" className="font-medium text-gray-700 hover:text-blue-600">{t('news')}</a>
+              <a href="/distribution" className="font-medium text-[#1c242d] hover:text-[#1c242d]">{t('distribution')}</a>
+              <a href="/events" className="font-medium text-[#1c242d] hover:text-[#1c242d]">{t('news')}</a>
 
               <div className="relative group">
-                <a href="/contact" className="flex items-center font-medium text-gray-700 hover:text-blue-600 cursor-default">
+                <a href="/contact" className="flex items-center font-medium text-[#1c242d] hover:text-[#1c242d] cursor-default">
                   <span>{t('contact')}</span>
                   {/* The chevron is optional for a hover menu but can be kept for consistency */}
-                  <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+                  {/* <IconChevronDown className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" /> */}
                 </a>
                  <ContactSubMenu/>
               </div>
               
               <div className="relative">
-                <button onClick={() => toggleDropdown('language')} className="flex items-center font-medium text-gray-700 hover:text-blue-600">
+                <button onClick={() => toggleDropdown('language')} className="flex items-center font-medium text-[#1c242d] hover:text-[#1c242d]">
                   <span>{t('language')}</span>
                   <IconChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${openDropdown === 'language' ? 'transform rotate-180' : ''}`} />
                 </button>

@@ -1,0 +1,160 @@
+/* BrandsPage.module.css */
+body{
+  background-color: #f5f5f5;
+}
+
+/* --- General & Layout Styles --- */
+.pageSection {
+  width: 100%;
+  background-color:#f5f5f5;
+  overflow: hidden; /* Prevents horizontal scroll from animations */
+}
+
+.containerFluid {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  /* max-width: 1140px; */
+  padding: 0 9%;
+  margin: 0 auto;
+   background-color:#f5f5f5;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.column {
+  flex: 1 1 50%; /* Each column takes up 50% of the width */
+  min-width: 320px; /* Prevents columns from getting too narrow */
+}
+
+/* --- Breadcrumbs --- */
+.pageTitleContainer {
+  padding: 20px 0;
+  background-color:#f5f5f5;
+  border-bottom: 0px solid #161616;
+}
+.breadcrumbs {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.breadcrumbs a {
+  color: #7e8082;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.breadcrumbs span {
+  color: #6c757d;
+}
+.divider {
+  margin: 0 10px;
+}
+
+/* --- Content Styles (reusable for hero and features) --- */
+.textContainer {
+  padding: 40px 30px;
+}
+
+.title {
+  font-size: 1.5rem; /* Equivalent to 22px base */
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+.fontLight {
+    font-weight: 100;
+    margin: 10px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.lineSeparator {
+  height: 4px;
+  width: 100px;
+  background-color: #000;
+  margin: 1.5rem 0;
+}
+
+.description {
+  font-family: 'Lato', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: justify;
+  color: #343a40;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 60vh; /* Ensures the image container has height */
+}
+.mainHeading{
+  padding:10% 0 0 0;
+}
+.question, .mainHeading{
+    font-weight: 700;
+   color:#000000;
+   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.answer, .introParagraph{
+    padding: 0 0 3% 0;
+    font-size: 14px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+/* --- Closing Banner --- */
+.closingSection {
+    padding: 100px 0;
+    background-color: #f5f5f5;
+    min-width: 1440px;
+}
+.closingBanner {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+.closingBanner p {
+    color: #0e0d0d !important;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  
+  /* Reverse the order for odd-numbered feature sections on mobile */
+  .row:nth-child(odd) {
+    flex-direction: column-reverse;
+  }
+  
+  .textContainer {
+    padding: 30px 5% 0 0;
+  }
+  .column {
+    padding-left: 8%;
+  }
+  .imageWrapper {
+    min-height: 40vh;
+  }
+}

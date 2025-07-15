@@ -11,16 +11,12 @@ import Image from "next/image";
 export default function ContactSubMenu() {
   return (
     // UPDATED: Changed `top-13` to `top-full` and added `group-focus-within:block`
-    <div className="absolute top-full hidden w-full min-w-[1440px] 
-    z-40 group-hover:block group-focus-within:block">
+  <div className="absolute top-full hidden w-full min-w-[1440px]
+    z-40 group-hover:block group-focus-within:block ml-0
+    md:ml-[-580px] lg:ml-[-1170px]">
       
       {/* This inner div is the centered container for your content. */}
-      <div className="container subMenu-container
-      mx-auto px-6 mt-7 
-      bg-[#e7e6e6] 
-    shadow-lg border-t 
-    ml-[-71.8%]
-    ">
+  <div className="container subMenu-container mx-auto px-6 mt-7 bg-[#e7e6e6] shadow-lg">
         
         {/* Flex container for columns. */}
         <div className="flex flex-wrap w-full py-4 md:py-4 space-y-8 md:space-y-0">
@@ -46,7 +42,7 @@ export default function ContactSubMenu() {
                 </Link>
               </li>
               <li>
-                <Link href="/communication" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors duration-200 uppercase tracking-widest">
+                <Link href="/contact" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors duration-200 uppercase tracking-widest">
                   Communication
                 </Link>
               </li>

@@ -6,19 +6,19 @@ const products = [
   {
     title: 'CAGS',
     subtitle: 'ROLLING PAPERS',
-    link: '/Home/Papers',
+    link: '/products/papers',
     productImg: '/rollingpaper.png',
   },
   {
     title: 'CAGS',
     subtitle: 'CIGARETTE TUBES',
-    link: '/Home/CigaretteTubes',
+    link: '/products/tubes',
     productImg: '/cigarettetubes.png',
   },
   {
     title: 'CAGS',
     subtitle: 'TOBACCO',
-    link: '/Home/Tobacco',
+    link: '/products/tobacco',
     productImg: '/tobacco.png',
   },
   {

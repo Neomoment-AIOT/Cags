@@ -27,8 +27,8 @@
   font-weight: 300;
 }
 .description, .detailedTextContainer p {
-  font-family: 'lato', arial, helvetica, sans-serif;
-  font-size: 16px;
+font-family: lato, arial, helvetica, sans-serif;
+    font-size: 16px;
   line-height: 1.7;
   text-align: justify;
   color: #333;
@@ -41,12 +41,20 @@
   border-bottom: 1px solid #f5f5f5;
 }
 .breadcrumbs {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: normal;
+      letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 .breadcrumbs a, .breadcrumbs span {
   color: #6c757d;
   text-decoration: none;
+
 }
 .breadcrumbs a:hover {
   color: #121213;
@@ -61,23 +69,36 @@
 
 /* --- Hero Section --- */
 .textContainer {
-  padding: 40px 50px;
+  /* padding: 40px; */
+  padding-left: 18%;
+  padding-right: 8%;
+  width: fit-content;
 }
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+font-size: 32px;
+    line-height: 45px;
+    margin: 40px 0 32px 0;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+        color: #1c242d;
 }
 .lineSeparator {
-  height: 3px;
-  width: 70px;
-  background-color: #dee2e6;
-  margin: 1.5rem 0;
+     margin-top: 11px;
+    height: 3px;
+    width: 70px;
+    background: #1c242d;
+}
+.description{
+  margin-top: 30px;
+      font-family: lato, arial, helvetica, sans-serif;
+    font-size: 15px;
 }
 .heroImageWrapper {
   position: relative;
   width: 100%;
-  min-height: 50vh;
+  min-height: 80vh;
+      max-width: 100%;
+    height: auto;
 }
 
 /* --- Split-Screen Section --- */
@@ -150,7 +171,8 @@
     flex-direction: column;
   }
   .textContainer {
-    padding: 30px 20px;
+    width: fit-content;
+    padding: 30px 8%;
     text-align: center;
   }
   .lineSeparator {

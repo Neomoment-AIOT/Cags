@@ -37,8 +37,8 @@ const DiscoverCags = ({ content }: DiscoverCagsProps) => {
           {/* Left Column: Heading */}
           <div className={styles.leftColumn}>
             <h2 className={styles.sectionTitle}>
-              {content.title}<br />
-              <span className={styles.bold}>{content.boldTitle}</span>
+              Discover<br />
+              <span className={styles.bold}>Cags</span>
             </h2>
           </div>
 
@@ -47,7 +47,7 @@ const DiscoverCags = ({ content }: DiscoverCagsProps) => {
             <div className={styles.textContent} style={{ textAlign: 'start', lineHeight: '28px' }}>
               {/* The `dangerouslySetInnerHTML` is used for the line that contains <strong> tags */}
               <p dangerouslySetInnerHTML={{ __html: content.line1 }} />
-              <p>{content.line2}</p>
+              <p>Our journey begun more then 40 years ago in Turkey, the land of legendary Turkish Tobacco, as the first Rolling Paper Manufacturer producing with international standards. We’ve been the creator, producer and distributer of products enjoyed by millions around the world since then.</p>
               <p>{content.line3}</p>
             </div>
 

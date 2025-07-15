@@ -1,0 +1,186 @@
+
+
+/* --- General Layout & Typography --- */
+.pageSection {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.container {
+  width: 100%;
+  max-width: 1140px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.containerFluid {
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.column {
+  flex: 1 1 50%;
+  min-width: 320px;
+}
+.fontLight {
+  font-weight: 300;
+}
+.description, .detailedTextContainer p {
+font-family: lato, arial, helvetica, sans-serif;
+    font-size: 16px;
+  line-height: 1.7;
+  text-align: left;
+  color: #333;
+
+
+  
+}
+
+/* --- Breadcrumbs --- */
+.pageTitleContainer {
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+.breadcrumbs {
+  font-size: 11px;
+  font-weight: normal;
+      letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 20px 0 0 0;
+    padding: 0;
+    border: 0;
+}
+.breadcrumbs a, .breadcrumbs span {
+  color: #6c757d;
+  text-decoration: none;
+
+}
+.breadcrumbs a:hover {
+  color: #121213;
+}
+.breadcrumbs .current {
+  color: #343a40;
+  font-weight: 700;
+}
+.divider {
+  margin: 0 10px;
+}
+
+/* --- Hero Section --- */
+.textContainer {
+  /* padding: 40px; */
+  padding-left: 18%;
+  padding-right: 8%;
+  width: fit-content;
+}
+.title {
+font-size: 32px;
+    line-height: 45px;
+    margin: 40px 0 32px 0;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+        color: #1c242d;
+}
+.lineSeparator {
+     margin-top: 11px;
+    height: 3px;
+    width: 70px;
+    background: #1c242d;
+}
+.description{
+  margin-top: 30px;
+      font-family: lato, arial, helvetica, sans-serif;
+    font-size: 15px;
+}
+.heroImageWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+      max-width: 100%;
+    height: auto;
+}
+
+/* --- Split-Screen Section --- */
+.splitSection {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 80vh; /* Give the section some height */
+}
+.splitImageColumn, .splitTextColumn {
+  flex: 1 1 50%;
+  position: relative;
+}
+.splitTextColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detailedTextContainer {
+  padding: 50px;
+  width: fit-content;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.detailedTextContainer p {
+    margin-bottom: 1.5rem;
+}
+.detailedTextContainer p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- Closing Section --- */
+.closingSection {
+  padding: 80px 15px;
+  background-color:#f5f5f5;
+}
+.closingBox {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  border-radius: 8px;
+  text-align: center;
+}
+.closingBox p {
+  font-family: 'open sans', arial, helvetica, sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+.closingBox p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .splitSection {
+    flex-direction: column;
+  }
+  .splitImageColumn {
+    min-height: 40vh; /* Give image a fixed height on mobile */
+  }
+  .detailedTextContainer {
+      padding: 40px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  .textContainer {
+    width: fit-content;
+    padding: 30px 8%;
+    text-align: center;
+  }
+  .lineSeparator {
+    margin: 1.5rem auto;
+  }
+}

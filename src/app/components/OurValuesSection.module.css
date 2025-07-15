@@ -22,15 +22,35 @@
 
 .featureBox {
   text-align: left;
+  display: inline-flex;
 }
-
+.contentBox{
+  display: block;
+}
+.contentBox .titles{
+    font-weight: bold !important;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+.contentBox .description{
+    line-height: 25px;
+    font-family:lato, helvetica, sans-serif;
+    font-weight: lighter;
+    color: #fff;
+    text-shadow: none;
+    outline: none;
+}
+.iconbox{
+  padding:0 5%;
+}
 .iconWrapper {
-  margin-bottom: 20px;
+  font-size: 16px;
+  float: left;
+  font-family: "linea-icons" !important;
+    text-transform: none !important;
+    line-height: 1;
 }
 
-.iconWrapper svg {
-  color: #fff; /* Ensures SVG stroke color is white */
-}
 
 .featureBox h3 {
   font-size: 1.5rem;

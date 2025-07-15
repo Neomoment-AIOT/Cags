@@ -27,11 +27,12 @@
   font-weight: 300;
 }
 .description {
-  font-family: 'lato', arial, helvetica, sans-serif;
-  font-size: 15px;
   line-height: 1.6;
   text-align: justify;
   color: #333;
+  font-family: lato, arial, helvetica, sans-serif;
+    font-size: 15px;
+    margin-right: 10%;
 }
 
 /* --- Breadcrumbs --- */
@@ -40,44 +41,70 @@
   background-color:#f5f5f5;
   border-bottom: 0px solid #e9ecef;
 }
+/* --- Breadcrumbs --- */
+.pageTitleContainer {
+  padding: 20px 0;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
 .breadcrumbs {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: normal;
+      letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 .breadcrumbs a, .breadcrumbs span {
   color: #6c757d;
   text-decoration: none;
+
 }
 .breadcrumbs a:hover {
-  color: #1f2020;
+  color: #121213;
 }
 .breadcrumbs .current {
-    color: #343a40;
-    font-weight: 700;
+  color: #343a40;
+  font-weight: 700;
 }
 .divider {
   margin: 0 10px;
 }
-
 /* --- Hero Section --- */
 .textContainer {
-  padding: 40px 50px;
+  /* padding: 40px; */
+  padding-left: 18%;
+  padding-right: 8%;
+  width: fit-content;
 }
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+ font-size: 32px;
+    line-height: 45px;
+    margin: 40px 0 32px 0;
+    font-family: 'Lato', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+        color: #1c242d;
 }
 .lineSeparator {
-  height: 3px;
-  width: 70px;
-  background-color: #dee2e6;
-  margin: 1.5rem 0;
+   margin-top: 11px;
+    height: 3px;
+    width: 70px;
+    background: #1c242d;
+}
+.description{
+  margin-top: 30px;
+      font-family: lato, arial, helvetica, sans-serif;
+    font-size: 15px;
 }
 .imageWrapper {
-  position: relative;
+   position: relative;
   width: 100%;
-  min-height: 50vh;
+  min-height: 80vh;
+      max-width: 100%;
+    height: auto;
 }
 
 /* --- Events List --- */
@@ -89,7 +116,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  padding: 20px 0;
+  padding: 20px 0 4% 0;
+   border-bottom: 1px solid black;
+
 }
 .eventLogoColumn {
   flex: 0 0 33.33%; /* Corresponds to col-md-4 */
@@ -97,6 +126,7 @@
   text-align: center;
 }
 .eventDetailsColumn {
+ 
   flex: 1 1 60%; /* Corresponds to col-md-6, allows wrapping */
 }
 .eventTitle {
@@ -121,9 +151,6 @@
     padding: 80px 0 50px 0;
 }
 .closingBox {
-    padding: 30px;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
     text-align: justify;
     font-family: 'open sans', arial, helvetica, sans-serif;
     font-size: 17px;

@@ -1,8 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './TimelineSection.module.css';
 
-// --- Data for the timeline ---
-// Storing data like this makes your component clean and easy to update.
 const timelineData = [
   {
     year: '1982',
@@ -58,37 +57,39 @@ const TimelineSection = () => {
         <div className={styles.timelineContainer}>
           {/* Timeline Start */}
           <div className={styles.timelineStart}>
-            <div className={styles.startCaption}>CAGS</div>
-            <div className={styles.startDate}>A History of Milestones</div>
+            <h2 className={styles.startCaption}>CAGS</h2>
+            <p className={styles.startDate}>A History of Milestones</p>
           </div>
 
           {/* Timeline Blocks */}
           {timelineData.map((item, index) => (
             <div key={index} className={styles.timelineBlock}>
               <div className={styles.timelineImg}></div>
-                        <div className={styles.timelineContent}>
-                              <div className={styles.contentGrid}>
-                                <div className={styles.text}>
-                                  <p>{item.description}</p>
-                                </div>
-                                <div className={styles.imageWrapper}>
-                                  <Image
-                                    src={item.imageUrl}
-                                    alt={`Milestone from year ${item.year}`}
-                                    width={200} // Example width, adjust as needed
-                                    height={150} // Example height, adjust as needed
-                                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-                                  />
-                                </div>
-                              </div>
-                          <span className={styles.date}>{item.year}</span>
-                        </div>
+              <div className={styles.date}>{item.year}</div>
+              <div className={styles.timelineContent}>
+                <div className={styles.contentWrapper}>
+                  <div className={styles.text}>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+                {item.imageUrl && (
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={item.imageUrl}
+                      alt={`Milestone from year ${item.year}`}
+                      width={200}
+                      height={150}
+                      style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           ))}
 
           {/* Timeline End */}
-          <div className={`${styles.timelineStart} ${styles.final}`}>
-            <div className={styles.startCaption}>RECENT DAY</div>
+          <div className={`${styles.timelineEnd} ${styles.final}`}>
+            <h2 className={styles.EndCaption}>RECENT DAY</h2>
           </div>
         </div>
       </div>

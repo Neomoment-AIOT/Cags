@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './cookie.module.css';
 
+
 const CookiePolicy = () => {
   return (
     <>
@@ -20,7 +21,7 @@ const CookiePolicy = () => {
         
         <div className={styles.splitTextColumn}>
           <div className={styles.detailedTextContainer}>
-            <p>
+            <p className={styles.paragraph}>
               Data Controller: CAGS TOBACCO TOBACCO AND TOBACCO PRODUCTS INDUSTRY AND TRADE JOINT STOCK COMPANY.
 Fulya Mah. Büyükdere Cad. Torun Center A Blok No: 74a İç Kapı No: 19 Şişli/İstanbul <br/>
 

@@ -18,7 +18,7 @@ const JourneySection = () => {
       {/* Right side: Content */}
       <div className={styles.contentContainer}>
         <div className={styles.textContent}>
-          <h1>
+          <h1 className={styles.sectionheading}>
             <span className={styles.fontLight}>Follow Our remarkable journey</span>
           </h1>
           <p className={styles.mb60}>

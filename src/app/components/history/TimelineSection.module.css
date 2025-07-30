@@ -1,4 +1,4 @@
-/* --- TimelineSection.module.css (FINAL - CSS GRID UPDATE) --- */
+/* --- TimelineSection.module.css (FINAL - CENTERED WITH OPPOSITE YEARS) --- */
 
 .pageSection {
   padding: clamp(3rem, 8vw, 5rem) 0;
@@ -16,6 +16,8 @@
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 /* The vertical line */
@@ -23,11 +25,14 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 18px;
+  left: 50%;
+  transform: translateX(-50%);
   height: 100%;
   width: 3px;
-  background: #e0e0e0;
+  background: #f3f3f3;
   border-radius: 3px;
+  opacity: 0;
+  animation: growVertical 1.2s ease-out 0.3s forwards;
 }
 
 /* Start and End Caps */
@@ -41,11 +46,34 @@
   border-radius: 8px;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out 0.4s forwards;
 }
 .startCaption {
   font-size: clamp(1.5rem, 4vw, 1.8rem);
   color: #334155;
 }
+.timelineEnd {
+  position: relative;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out 0.4s forwards;
+}
+.endCaption {
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  color: #334155;
+}
+
+
 .startDate {
   font-size: clamp(0.9rem, 2vw, 1rem);
   color: #64748b;
@@ -53,122 +81,246 @@
 .final {
   margin-top: 3rem;
   margin-bottom: 0;
+  color: #334155;
 }
 
-/* --- MOBILE FIRST STYLES (Single Column) --- */
-
+/* --- TIMELINE ITEMS --- */
 .timelineBlock {
   position: relative;
   margin: 2.5rem 0;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+ 
 }
 
 .timelineImg {
   position: absolute;
-  top: 8px; /* Align with top of text */
-  left: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background: #334155;
   border: 4px solid #f7f9fc;
   z-index: 1;
+  opacity: 0;
+  animation: scaleIn 0.5s ease-out 0.3s forwards;
 }
 
 .timelineContent {
-  position: relative;
-  margin-left: 60px;
-  background: #ffffff;
+ width: calc(50% - 60px);
+  background: #f3f3f3;
   border-radius: 8px;
   padding: clamp(1.2rem, 3vw, 1.5rem);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-}
-
-.contentGrid {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06);
+  opacity: 0;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   gap: 1.5rem;
 }
 
+.contentWrapper {
+  flex: 1;
+  min-width: 0; /* Allows text to shrink properly */
+}
+
+.date {
+  width: calc(50% - 60px);
+  padding: 0.4rem 0;
+  color: #334155;
+  font-weight: 600;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  font-size: large;
+}
+
+/* Left-aligned content (with right-aligned date) */
+.timelineBlock:nth-child(odd) .timelineContent {
+  margin-right: auto;
+  transform: translateX(-20px);
+  animation: slideInFromLeft 0.6s ease-out 0.2s forwards;
+}
+
+.timelineBlock:nth-child(odd) .date {
+   order: 2;
+  justify-content: flex-end;
+  text-align: left;
+  padding-left: 1rem;
+  transform: translateX(20px);
+  animation: slideInFromRight 0.6s ease-out 0.3s forwards;
+}
+
+/* Right-aligned content (with left-aligned date) */
+.timelineBlock:nth-child(even) .timelineContent {
+  order: 2;
+  margin-left: auto;
+  transform: translateX(20px);
+  animation: slideInFromRight 0.6s ease-out 0.2s forwards;
+}
+
+.timelineBlock:nth-child(even) .date {
+ order: 1;
+  justify-content: flex-end;
+  text-align:right;
+  padding-left: 1rem;
+  transform: translateX(20px);
+  animation: slideInFromRight 0.6s ease-out 0.3s forwards;
+}
+
 .text {
-  flex: 1.5;
-  min-width: 200px;
   color: #475569;
   line-height: 1.7;
   font-size: clamp(0.9rem, 2vw, 1rem);
-}
-.imageWrapper {
-  flex: 1;
-  min-width: 150px;
-  text-align: center;
-}
-.timelineContent p { margin: 0; }
-
-.date {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  background: #334155;
-  color: white;
-  border-radius: 50px;
-  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-  font-weight: 600;
   margin-bottom: 1rem;
 }
 
+.imageWrapper {
+  flex: 0 0 150px;
+  text-align: center;
+}
 
-/* --- ZIGZAG DESKTOP LAYOUT (using robust CSS GRID) --- */
-@media (min-width: 1024px) {
-  /* Center the main vertical line */
+.timelineContent p { 
+  margin: 0;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes growVertical {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* --- MOBILE LAYOUT --- */
+@media (max-width: 1023px) {
   .timelineContainer::before {
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
+    transform: none;
   }
 
-  /* Make the entire block a grid container */
-  .timelineBlock {
-    display: grid;
-    /* Define 3 columns: [content] [marker] [content] */
-    grid-template-columns: 1fr auto 1fr;
-    gap: 2rem; /* The space between columns */
-    align-items: center;
-  }
-  
-  /* Reset mobile-specific styles */
-  .timelineContent {
-    margin-left: 0;
-  }
   .timelineImg {
-    position: static; /* Let the grid control the position */
-    grid-column: 2; /* Always in the middle column */
-    justify-self: center; /* Center itself within the column */
+    left: 20px;
+    transform: none;
+  }
+
+  .timelineContent {
+    width: calc(100% - 60px);
+    margin-left: 60px !important;
+    margin-right: 0 !important;
+    transform: none !important;
+    flex-direction: column;
+    animation: fadeInUp 0.6s ease-out 0.2s forwards !important;
   }
 
   .date {
-    margin-bottom: 0; /* No margin needed when in the grid */
+    width: auto;
+    margin-left: 60px !important;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    padding: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+    justify-content: flex-start !important;
+    animation: fadeIn 0.6s ease-out 0.3s forwards !important;
+  }
+
+  .imageWrapper {
+    margin-top: 1rem;
+    flex: 1 1 100%;
+  }
+
+  /* Adjust animation timing for mobile */
+  .timelineBlock {
+    animation-delay: calc(var(--index) * 0.1s + 0.2s);
+  }
+}
+
+@media (max-width: 480px) {
+  .timelineContainer {
+    width: 95%;
   }
   
-  /* --- ROW 1, 3, 5, etc. (ODD) --- */
-  /* Order: [Date] [Marker] [Content] */
-  .timelineBlock:nth-child(odd) .date {
-    grid-column: 1;
-    text-align: right;
+  .timelineContent {
+    padding: 1rem;
+    margin-left: 50px !important;
   }
-  .timelineBlock:nth-child(odd) .timelineContent {
-    grid-column: 3;
+  
+  .timelineImg {
+    width: 35px;
+    height: 35px;
+    left: 17px;
   }
-
-  /* --- ROW 2, 4, 6, etc. (EVEN) --- */
-  /* Order: [Content] [Marker] [Date] */
-  .timelineBlock:nth-child(even) .timelineContent {
-    grid-column: 1;
+  .timelineStart {
+  padding: 3% 1%;
+  width: 80%;
+  margin:0 50px;
   }
-  .timelineBlock:nth-child(even) .date {
-    grid-column: 3;
-    text-align: left;
+  .final {
+  text-align: center;
+   
+}
+ .timelineEnd {
+  padding: 3% 1%;
+  width: 100% !important;
+  margin:0 50px;
   }
-
-  /* Remove the connector arrow as grid provides clear visual grouping */
-  .timelineContent::before {
-    display: none;
+  .EndCaption{
+    padding: 5%;
+    text-align: center;
+    width: fit-content;
   }
 }

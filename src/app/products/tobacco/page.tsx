@@ -166,7 +166,7 @@ export default function TobaccoPage() {
                     </Link>
                   </h3>
                   <div className={styles.productMeta}>
-                    <span>{product.brand}</span> • <strong>{product.grammage} gr</strong>
+                    <span>{product.brand}</span> • {product.grammage} gr
                   </div>
                 </div>
               </div>

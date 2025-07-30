@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './JourneySection.module.css';
 
+
 const JourneySection = () => {
   return (
     <div className={styles.pageSection}>
@@ -13,7 +14,7 @@ const JourneySection = () => {
               <span className={styles.fontLight}>Our remarkable journey</span>
             </h1>
             <div className={styles.line}></div>
-            <p>
+            <p className={styles.paragraph}>
               Discover CAGS, a family-owned tobacco brand with a rich heritage and a commitment to excellence. Experience our state-of-the-art facilities, innovation, and customer satisfaction. Join our journey in shaping the future of the tobacco industry with a trusted and preferred brand.
             </p>
           </div>

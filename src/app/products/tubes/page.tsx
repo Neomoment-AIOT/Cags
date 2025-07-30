@@ -310,7 +310,7 @@ export default function TubesPage() {
                     </Link>
                   </h3>
                   <div className={styles.productMeta}>
-                    <span>{product.brand}</span> • <strong>{product.size}</strong>
+                    <span>{product.brand}</span> • {product.size}
                   </div>
                 </div>
               </div>

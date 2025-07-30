@@ -24,7 +24,7 @@ const JoinNetwork = () => {
             </p>
             <div className={styles.linksContainer}>
               <Link href="/distribution" className={styles.learnMoreLink}>
-                <h4>
+                <h4 className={styles.ctalink}>
                   Learn more&nbsp; &nbsp;
                   <Image
                     src="/righticon.png"
@@ -36,7 +36,7 @@ const JoinNetwork = () => {
                 </h4>
               </Link>
               <Link href="/contact" className={styles.learnMoreLink}>
-                <h4>
+                <h4 className={styles.ctalink}>
                   Contact us&nbsp; &nbsp;
                   <Image
                     src="/righticon.png"

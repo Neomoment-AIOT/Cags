@@ -25,9 +25,9 @@ const DistributionPage = () => {
             <div className={styles.column}>
               <div className={styles.textContainer}>
                 <h1 className={styles.title}>
-                  Join Our Distribution Network &amp;<br />
-                  <span className={styles.fontLight}>Grow Your Business</span>
-                </h1>
+                  Join Our Distribution Network &amp;<br className={styles.br} /></h1>
+                  <h2 className={styles.subtitle}><span className={styles.fontLight}> Grow Your Business</span>
+                </h2>
                 <div className={styles.lineSeparator}></div>
                 <p className={styles.description}>
                   We are very proud to share our global-scale, consistent growth that we have been maintaining since 1982, thanks to our passion for improvement and success with our distributors. We are expanding our staff around the world with our commitment to innovation and customer satisfaction and our production technologies meeting world standards.

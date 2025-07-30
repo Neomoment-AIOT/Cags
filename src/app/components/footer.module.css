@@ -54,6 +54,45 @@
 .footer ul {
   padding-left: 0;
 }
+.ul{
+  font-weight: 600;
+    margin-top: 0.5rem;
+}
+.NewsletterSubheading{
+   font-size: 0.875rem;    /* text-sm (14px) */
+  line-height: 1.25rem;   /* default line-height for text-sm */
+  margin-bottom: 1rem;    /* mb-4 (1rem = 16px) */
+  color: rgb(156 163 175); /* text-gray-400 */
+  width: 100%; 
+}
+.formSubscribe{
+  display: flex;
+  flex-direction: column;
+}
+.inputEmail{
+   width: 90%;                  /* w-[70%] */
+  background-color: transparent; /* bg-transparent */
+  border-bottom: 1px solid white; /* border-b border-white */
+  color: white;                /* text-white */
+  padding-top: 0.5rem;         /* py-2 */
+  padding-bottom: 0.5rem;      /* py-2 */
+  margin-bottom: 1rem;         /* mb-4 */
+  outline: none; 
+}
+.inputEmail::placeholder{
+  color: rgb(156 163 175);   
+}
+.inputEmail:focus{
+   outline: none; 
+}
+.bottombarCopyright{
+  margin-top: 3rem;        /* mt-12 */
+  padding-top: 2rem;       /* pt-8 */
+  border-top: 1px solid #4a5568; /* border-t border-gray-700 */
+  text-align: left;        /* text-left */
+  font-size: 0.875rem;     /* text-sm */
+  color: #9ca3af; 
+}
 
 /* --- RESPONSIVE ENHANCEMENTS --- */
 
@@ -65,8 +104,22 @@
     padding-right: 5%;
   }
   .colboxes {
-    /* A 3-column grid is more balanced for 5 items */
+    /* 2-row layout: first row has cols 1-3, second row has cols 4-5 */
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 2rem;
+  }
+  .col:nth-child(4) {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+  }
+  .col:nth-child(5) {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    margin-top: 15rem;
+  }
+  .inputEmail {
+    width: 100%;
   }
 }
 
@@ -76,23 +129,55 @@
     /* Use fixed padding on mobile to prevent content from being too squished */
     padding: 3rem 1.5rem;
     /* Center-align all text for a cleaner mobile view */
-    text-align: center; 
+    text-align: left; 
   }
 
   .colboxes {
-    /* Stack all columns into a single vertical line */
-    grid-template-columns: 1fr;
-    /* Increase gap for better vertical spacing */
-    gap: 2.5rem; 
-  }
-
-  .col {
-    /* Center the content within each column */
-    align-items: center;
+    /* 2-row layout: first row has cols 1-3, second row has cols 4-5 */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 2rem;
   }
   
+  .col {
+    /* Keep content left-aligned */
+    align-items: flex-start;
+  }
+  
+  /* Position columns 1-3 in first row */
+  .col:nth-child(1),
+  .col:nth-child(2),
+  .col:nth-child(3) {
+    grid-row: 1;
+  }
+  
+  /* Position columns 4-5 in second row */
+  .col:nth-child(4) {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+  }
+  
+  .col:nth-child(5) {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    margin-top:15rem;
+    
+  }
   .footer .newsletter {
     /* Remove padding that can cause alignment issues on mobile */
     padding-right: 0;
+  }
+  
+  .inputEmail {
+    width: 100%;
+  }
+  SubmitButton:hover{
+color:black;
+  }
+  
+  .bottombarCopyright {
+    text-align: left;
+    margin-top: 2rem;
+    padding-top: 1rem;
   }
 }

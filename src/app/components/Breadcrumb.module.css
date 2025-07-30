@@ -2,7 +2,7 @@
   background-color:#f5f5f5;
 }
 .container {
-  width: 1200px;
+  /* width: 1200px; */
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -14,16 +14,17 @@
 }
 
 .breadcrumbs {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: normal;
       letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 25px;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin:  0;
+    padding: 0 0 0;
     border: 0;
-    padding-top: 4%;
+    padding-top: 5%;
+    padding-left: 4%;
 }
 .breadcrumbs a, .breadcrumbs span {
   color: #6c757d;
@@ -43,4 +44,11 @@
 
 .current {
   color: #000;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    padding-top: 10%;
+    padding-left:2%;
+  }
 }

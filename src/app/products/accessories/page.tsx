@@ -138,12 +138,12 @@ export default function AccessoriesPage() {
                 </Link>
                 <div className={styles.cardContent}>
                   <h3 className={styles.productName}>
-                    <Link href={product.detailUrl}>
+                    <Link className='{styles.productNameLink}' href={product.detailUrl}>
                       {product.name}
                     </Link>
                   </h3>
                   <div className={styles.productMeta}>
-                    <span>{product.brand}</span> • <strong>{product.size}</strong>
+                    <span>{product.brand}</span> • {product.size}
                   </div>
                 </div>
               </div>

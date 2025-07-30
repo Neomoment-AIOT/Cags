@@ -19,19 +19,20 @@
   max-width: 1400px;
   padding-right: 8%;
   padding-left: 8%;
+  margin: 0 auto;
 }
 
 .row {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
 
 .column {
   flex: 1;
-  min-width: 650px; /* Prevents columns from getting too small */
-  padding: 15px 10px; /* Replicates Bootstrap's column padding */
+  min-width: 0; /* Changed from 650px to allow proper shrinking */
+  padding: 15px 10px;
   align-items: center;
 }
 
@@ -44,11 +45,11 @@
 
 .title h1 {
   font-size: 32px;
-    line-height: 45px;
-    margin: 40px 0 32px 0;
-    font-family: 'Lato', Arial, Helvetica, sans-serif;
-    font-weight: normal;
-        color: #1c242d;
+  line-height: 45px;
+  margin: 40px 0 32px 0;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  color: #1c242d;
 }
 
 .fontLight {
@@ -56,36 +57,35 @@
 }
 
 .lineSeparator {
- margin-top: 11px;
-    height: 3px;
-    width: 70px;
-    background: #1c242d;
+  margin-top: 11px;
+  height: 3px;
+  width: 70px;
+  background: #1c242d;
 }
 
 .textContent p {
- line-height: 1.6; /* Improved line-height for readability */
+  line-height: 1.6;
   text-align: left;
   color: #000000;
   margin: 0;
- margin-top: 30px;
-      font-family: lato, arial, helvetica, sans-serif;
-    font-size: 15px;
-
+  margin-top: 30px;
+  font-family: lato, arial, helvetica, sans-serif;
+  font-size: 15px;
 }
 
 .heroImageWrapper {
-   position: relative;
+  position: relative;
   width: 100%;
   min-height: 80vh;
-      max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Section 2: Certificate Grid Styles */
 .certificateCard {
- /* Allows two cards per row with some space */
- width: fit-content;
-  margin: 0 2%;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
 }
 
 .certificateLink {
@@ -102,69 +102,54 @@
 }
 
 .certificateImageWrapper {
-  width: fit-content;
-  min-width: 500px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .row {
-    flex-direction: column;
-  }
-  .column {
-    width: 100%;
-  }
-}
-
-
-
-
-/* --- Breadcrumbs --- */
-.pageTitleContainer {
-  padding: 20px 0;
-  background-color:#f5f5f5;
-  border-bottom: 0px solid #e9ecef;
-}
 /* --- Breadcrumbs --- */
 .pageTitleContainer {
   padding: 20px 0;
   background-color: #f5f5f5;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 0px solid #e9ecef;
 }
+
 .breadcrumbs {
   font-size: 11px;
   font-weight: normal;
-      letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 25px;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    border: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 25px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
+
 .breadcrumbs a, .breadcrumbs span {
   color: #6c757d;
   text-decoration: none;
-
 }
+
 .breadcrumbs a:hover {
   color: #121213;
 }
+
 .breadcrumbs .current {
   color: #343a40;
   font-weight: 700;
 }
+
 .divider {
   margin: 0 10px;
 }
 
-
-
 /* --- Closing Section --- */
 .closingSection {
   padding: 80px 15px;
-  background-color:#f5f5f5;
+  background-color: #f5f5f5;
 }
+
 .closingBox {
   max-width: 900px;
   margin: 0 auto;
@@ -174,6 +159,7 @@
   border-radius: 8px;
   text-align: center;
 }
+
 .closingBox p {
   font-family: 'open sans', arial, helvetica, sans-serif;
   font-size: 16px;
@@ -181,6 +167,121 @@
   margin-bottom: 1.5rem;
   text-align: justify;
 }
+
 .closingBox p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .container {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  
+  .mainTextContainer {
+    padding-left: 10%;
+    padding-right: 5%;
+  }
+}
+
+@media (max-width: 992px) {
+  .mainTextContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  
+  .heroImageWrapper {
+    min-height: 60vh;
+  }
+  
+  .certificateCard {
+    margin: 15px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .paddedSection {
+    padding: 40px 0;
+  }
+  
+  .row {
+    flex-direction: column;
+  }
+  
+  .column {
+    width: 100%;
+    padding: 10px 0;
+  }
+  
+  .mainTextContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 100%;
+  }
+  
+  .title h1 {
+    font-size: 28px;
+    line-height: 38px;
+    margin: 30px 0 25px 0;
+  }
+  
+  .heroImageWrapper {
+    min-height: 50vh;
+  }
+  
+  .certificateLink {
+    padding: 20px;
+  }
+  
+  .closingSection {
+    padding: 60px 15px;
+  }
+  
+  .closingBox {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .title h1 {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 20px 0 15px 0;
+  }
+  
+  .textContent p {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  
+  .heroImageWrapper {
+    min-height: 40vh;
+  }
+  
+  .certificateImageWrapper {
+    min-width: 0;
+  }
+  
+  .breadcrumbs {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .closingSection {
+    padding: 40px 10px;
+  }
+  
+  .closingBox {
+    padding: 20px;
+  }
+  
+  .closingBox p {
+    font-size: 14px;
+  }
 }

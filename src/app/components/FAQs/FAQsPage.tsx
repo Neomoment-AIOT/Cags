@@ -94,7 +94,7 @@ const FAQsPage = () => {
             <div className={styles.column}>
               <div className={styles.textContainer}>
                 <div className={styles.title}>
-                  <h1>
+                  <h1 className={styles.h1}>
                     Your Ultimate Resource for<br />
                     <span className={styles.fontLight}>Tobacco Information</span>
                   </h1>

@@ -3,9 +3,7 @@ import { allProducts, Product } from "@/app/products/data/products";
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-// import styles from '../../products.module.css';
-import { FaChevronRight } from 'react-icons/fa';
-import styles from './product.module.css';
+import styles from "@/app/products/products.module.css";
 
 // Define the type for a single Product 
 // This should match the structure of an object in your new allProducts array
@@ -36,47 +34,29 @@ export default function tubesDetailPage({ params }: { params: { id: string } }) 
   }
 
   return (
-    <section className={`${styles.pageSection} bg-gray-50 py-10`}>
+    <section className={styles.pageSection}>
         <div className={styles.container}>
-            <div className="flex items-center text-sm text-gray-500
-            text-[11px] tracking-[2px] uppercase
-             breadcrumbs ml-22 mr-22
-            mb-8">
-                <Link href="/" className="hover:text-gray-800
-                text-[#7e8082]
-                ">Home</Link>
-                <span className=" text-[#7e8082] m-2 
-                ">/</span>
-                <Link href="/products/tubes" className="hover:text-gray-800
-                 text-[#7e8082]
-                ">Products
-                </Link>
-                <span className=" text-[#7e8082] m-2 
-                ">/</span>
-                <span className="font-medium
-                bread-current color-black
-                text-gray-800">{product.name}</span>
-            </div>
-            <div className="md:flex md:gap-x-8
-             gap-12 items-start
-             ml-22 mr-22 pt-20
-            ">
-                <div className="
-                max-w-[390px] w-full
-                bg-[#f3f3f4] border border-[#cbcccd] rounded-none p-1
-             shadow-none outline-none
-                rounded-lg shadow-sm p-6 flex justify-center items-center">
-                    <Image src={product.imageUrl} alt={product.name} width={500} height={500} className="object-contain" />
-                </div>
-                <div className={styles.rightcontainer}
-               >
-                    <div className="border-b 
-                     tracking-normal
-                         text-[#1c242d] font-lato
-                    pb-2">
-                        <h3 className={styles.productName}
-                       >{product.name}</h3>
+            <div className={styles.pageTitleCont}>
+                  <div className={`${styles.container} ${styles.relative} ${styles.alignLeft}`}>
+                    <div className={styles.breadcrumbs}>
+                      <Link href="/">HOME</Link>
+                      <span className={styles.divider}>/</span>
+                      {/* This link can be updated if you create a "Company" page */}
+                      <Link href="#" className={styles.productsLink}>PRODUCTS</Link>
+                      <span className={styles.divider}>/</span>
+                      <span className={styles.currentProductName}>{product.name}</span>
                     </div>
+                  </div>
+                </div>
+             <div className={styles.singleproductContainer}>
+                            <div className={styles.singleproductLeftContainer}>
+                                <Image src={product.imageUrl} alt={product.name} width={500} height={500} className="object-contain" />
+                            </div>
+                            <div className={styles.rightcontainer} >
+                                <div className={styles.singleProductTextContainer}>
+                                    <h3 className={styles.SingleproductName}
+                                   >{product.name}</h3>
+                                </div>
                     <div className={styles.branding}
                     >
                         <div className={styles.brandName}
@@ -117,7 +97,7 @@ export default function tubesDetailPage({ params }: { params: { id: string } }) 
                                     <div key={spec.label} className={styles.card}
                                     >
                                          <Image src={spec.imageUrl}
-                                             alt=''
+                                             alt='specifications'
                                             //  {cert.name}
                                               width={150   } 
                                               height={150  }

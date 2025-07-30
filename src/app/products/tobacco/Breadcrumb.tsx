@@ -9,7 +9,7 @@ const Breadcrumb = () => {
           <Link href="/">HOME</Link>
           <span className={styles.divider}>/</span>
           {/* This link can be updated if you create a "Company" page */}
-          <Link href="#">PRODUCTS</Link>
+          <Link href="#" className={styles.productsLink}>PRODUCTS</Link>
           <span className={styles.divider}>/</span>
           <span className={styles.current}>TOBACCO</span>
         </div>

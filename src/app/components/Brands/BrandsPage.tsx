@@ -31,21 +31,21 @@ const brandsData = [
     imageUrl: '/brands/985aaee3ea4c4f449ed807614fcf7575.png',
     imagePosition: 'left'
   },
-    {
+  {
     title: 'ALLS',
     tagline: 'Rooted in Trust and Satisfaction.',
     description: "Built on the principles of trust and satisfaction, ALLS is a distinguished name in the world of rolling papers. With a precise understanding of smokers' preferences and desires, ALLS's products are carefully crafted to uphold the highest standards of quality. This commitment extends beyond mere products, forging a bond of reliability that resonates with those who value integrity and consistency.",
     imageUrl: '/brands/73ce0ed9b2e84356aef3a2b3de4eaaef.png',
     imagePosition: 'right'
   },
-    {
+  {
     title: 'Young Master',
     tagline: 'For the Bold and Adventurous.',
     description: "Inspired by the free-spirited and daring, the Young Master brand curates a selection of unbleached brown rolling papers, cigarette tubes, and paper tips that that echo the call of the wild. Designed for wanderers, rebels, and dreamers, each product, especially our distinctive rolling papers, celebrates the unconventional. Their unique specifications serve as a testament to the brand's daring nature. Immerse yourself in the thrill of Young Master's offerings, and let every roll of our unbleached brown paper ignite the adventurous spirit in you.",
     imageUrl: '/brands/860c9cdd0b974149bfbe914829c56c86.png',
     imagePosition: 'left'
   },
-    {
+  {
     title: '10BAK',
     tagline: 'Never Settle.',
     description: "In the realm of shisha tobacco, 10BAK embarks on a relentless hunt for the best, guided by the lion in its symbol, a proud emblem of royal standards. With three unique selections and hundreds of refined flavors, the pursuit of quality is endless and uncompromising. Experience a legacy of flavor crafted for those who seek the extraordinary and never settle.",
@@ -59,15 +59,16 @@ const brandsData = [
     imageUrl: '/brands/d107bcbd3bc04996aafbc37e52c7a496.png',
     imagePosition: 'left'
   },
-
-  // ... Add more brand objects here as needed
 ];
 
-// --- Reusable Component for each brand feature section ---
 const BrandFeature = ({ title, tagline, description, imageUrl, imagePosition }) => {
+  const desktopLayoutClass = imagePosition === 'right' 
+    ? styles.imageRightOnDesktop 
+    : styles.imageLeftOnDesktop;
+
   const textColumn = (
     <div className={styles.column}>
-      <div className={styles.textContainer}>
+      <div className={imagePosition === 'right' ? styles.textContainer : styles.textContainerRight}>
         <div className={styles.title}>
           {title}
           <br />
@@ -90,11 +91,17 @@ const BrandFeature = ({ title, tagline, description, imageUrl, imagePosition }) 
   return (
     <section className={styles.pageSection}>
       <div className={styles.containerFluid}>
-        <div className={styles.row}>
-          {imagePosition === 'right' ? (
-            <> {textColumn} {imageColumn} </>
+        <div className={`${styles.row} ${desktopLayoutClass}`}>
+          {imagePosition === 'left' ? (
+            <>
+              {textColumn}
+              {imageColumn}
+            </>
           ) : (
-            <> {imageColumn} {textColumn} </>
+            <>
+              {imageColumn}
+              {textColumn}
+            </>
           )}
         </div>
       </div>
@@ -102,8 +109,6 @@ const BrandFeature = ({ title, tagline, description, imageUrl, imagePosition }) 
   );
 };
 
-
-// --- The Main Page Component ---
 const BrandsPage = () => {
   return (
     <>
@@ -132,7 +137,10 @@ const BrandsPage = () => {
                 </div>
                 <div className={styles.lineSeparator}></div>
                 <p className={styles.description}>
-                    Our brand lineup boasts a rich history featuring renowned brands such as CRP<sup>®</sup>, SIR BADGER<sup>®</sup>, WATSON<sup>®</sup>, YOUNG MASTER<sup>®</sup>, 10BAK<sup>®</sup>, IMPRT<sup>®</sup>, ALLS<sup>®</sup>, and many others. With over four decades in the industry, our legacy is marked by innovation, outstanding product quality, and an enduring bond with our customers. Spanning 33 countries, our influence is strengthened by our variety of registered trademarks and esteemed brands that have won the hearts of global followers.
+                 
+
+Our brand lineup boasts a rich history featuring renowned brands such as CRP®, SIR BADGER®, WATSON®, YOUNG MASTER®, 10BAK®, IMPRT®, ALLS®, and many others. With over four decades in the industry, our legacy is marked by innovation, outstanding product quality, and an enduring bond with our customers. Spanning 33 countries, our influence is strengthened by our variety of registered trademarks and esteemed brands that have won the hearts of global followers.
+
                 </p>
               </div>
             </div>
@@ -145,7 +153,7 @@ const BrandsPage = () => {
         </div>
       </section>
 
-      {/* Map over the brandsData to render each feature section */}
+      {/* Brand Features */}
       {brandsData.map((brand) => (
         <BrandFeature
           key={brand.title}
@@ -159,11 +167,11 @@ const BrandsPage = () => {
       
       {/* Closing Banner Section */}
       <section className={`${styles.pageSection} ${styles.closingSection}`}>
-         <div className={styles.container}>
-            <div className={styles.closingBanner}>
-                <p>We are committed to quality, innovation, and satisfaction. Our products are made with the highest quality ingredients, and we are constantly innovating to create new and exciting flavors. We also offer a satisfaction guarantee, so you can be sure that you're getting the best possible product.</p>
-            </div>
-         </div>
+        <div className={styles.container}>
+          <div className={styles.closingBanner}>
+            <p>We are committed to quality, innovation, and satisfaction. Our products are made with the highest quality ingredients, and we are constantly innovating to create new and exciting flavors. We also offer a satisfaction guarantee, so you can be sure that you're getting the best possible product.</p>
+          </div>
+        </div>
       </section>
     </>
   );

@@ -4,34 +4,44 @@
 .pageSection {
   width: 100%;
   background-color: #f5f5f5;
+  overflow: hidden; /* Prevent horizontal scroll during animations */
 }
+
 .container {
   width: 100%;
   max-width: 1140px;
   padding: 0 15px;
   margin: 0 auto;
 }
+
 .containerFluid {
   width: 100%;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
+
 .column {
   flex: 1 1 50%;
   min-width: 320px;
 }
+
 .fontLight {
-  font-weight: 300;
+  font-weight: 100;
 }
+
 .description, .detailedTextContainer p {
-font-family: lato, arial, helvetica, sans-serif;
-    font-size: 16px;
+  font-family: lato, arial, helvetica, sans-serif;
+  font-size: 16px;
   line-height: 1.7;
   text-align: justify;
   color: #333;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
 /* --- Breadcrumbs --- */
@@ -40,117 +50,206 @@ font-family: lato, arial, helvetica, sans-serif;
   background-color: #f5f5f5;
   border-bottom: 1px solid #f5f5f5;
 }
+
 .breadcrumbs {
   font-size: 11px;
   font-weight: normal;
-      letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 25px;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    border: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 25px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
 }
+
 .breadcrumbs a, .breadcrumbs span {
   color: #6c757d;
   text-decoration: none;
-
 }
+
 .breadcrumbs a:hover {
   color: #121213;
 }
+
 .breadcrumbs .current {
   color: #343a40;
   font-weight: 700;
 }
+
 .divider {
   margin: 0 10px;
 }
 
 /* --- Hero Section --- */
 .textContainer {
-  /* padding: 40px; */
   padding-left: 18%;
   padding-right: 8%;
   width: fit-content;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInFromLeft 0.8s ease-out forwards;
+  animation-delay: 0.2s;
 }
+
 .title {
-font-size: 32px;
-    line-height: 45px;
-    margin: 40px 0 32px 0;
-    font-family: 'Lato', Arial, Helvetica, sans-serif;
-    font-weight: normal;
-        color: #1c242d;
+  font-size: 32px;
+  line-height: 45px;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-weight: normal !important;
+  color: #1c242d;
+  transform: translateX(-30px);
+  animation: slideInFromLeft 0.6s ease-out forwards;
+  animation-delay: 0.3s;
+  opacity: 1;
+}
+.subtitle{
+  color: #1c242d;
+  opacity: 1;
+ font-family: 'Lato';
+  font-size: 32px;
+  font-weight:lighter!important;
+  line-height: 45px;
 }
 .lineSeparator {
-     margin-top: 11px;
-    height: 3px;
-    width: 70px;
-    background: #1c242d;
+  margin-top: 11px;
+  height: 3px;
+  width: 70px;
+  background: #1c242d;
+  opacity: 0;
+  animation: growWidth 0.6s ease-out forwards;
+  animation-delay: 0.4s;
 }
-.description{
+
+.description {
   margin-top: 30px;
-      font-family: lato, arial, helvetica, sans-serif;
-    font-size: 15px;
+  font-family: lato, arial, helvetica, sans-serif;
+  font-size: 15px;
 }
+
 .heroImageWrapper {
   position: relative;
   width: 100%;
   min-height: 80vh;
-      max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 /* --- Split-Screen Section --- */
 .splitSection {
   display: flex;
   flex-wrap: wrap;
-  min-height: 80vh; /* Give the section some height */
+  min-height: 80vh;
 }
+
 .splitImageColumn, .splitTextColumn {
   flex: 1 1 50%;
   position: relative;
+  opacity: 0;
 }
+
+.splitImageColumn {
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
 .splitTextColumn {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: slideInFromRight 0.8s ease-out forwards;
+  animation-delay: 0.7s;
 }
+
 .detailedTextContainer {
   padding: 50px;
   max-width: 700px;
 }
+
 .detailedTextContainer p {
-    margin-bottom: 1.5rem;
-}
-.detailedTextContainer p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 1.5rem;
 }
 
+.detailedTextContainer p:last-child {
+  margin-bottom: 0;
+}
 
 /* --- Closing Section --- */
 .closingSection {
   padding: 80px 15px;
-  background-color:#f5f5f5;
+  background-color: #f5f5f5;
 }
+
 .closingBox {
-  max-width: 900px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 40px 0;
   background-color: #f5f5f5;
   border: 1px solid #f5f5f5;
   border-radius: 8px;
-  text-align: center;
+  text-align: left;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.8s;
 }
+
 .closingBox p {
   font-family: 'open sans', arial, helvetica, sans-serif;
   font-size: 16px;
   color: #333;
   margin-bottom: 1.5rem;
-  text-align: justify;
+  text-align: left;
 }
+
 .closingBox p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* --- Animation Keyframes --- */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes growWidth {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 70px;
+  }
 }
 
 /* --- Responsive Design --- */
@@ -158,11 +257,18 @@ font-size: 32px;
   .splitSection {
     flex-direction: column;
   }
+  
   .splitImageColumn {
-    min-height: 40vh; /* Give image a fixed height on mobile */
+    min-height: 40vh;
+    animation: fadeIn 0.8s ease-out forwards;
   }
+  
+  .splitTextColumn {
+    animation: slideInFromLeft 0.8s ease-out forwards;
+  }
+  
   .detailedTextContainer {
-      padding: 40px 30px;
+    padding: 40px 30px;
   }
 }
 
@@ -170,12 +276,33 @@ font-size: 32px;
   .row {
     flex-direction: column;
   }
+  
   .textContainer {
     width: fit-content;
     padding: 30px 8%;
-    text-align: center;
+    text-align: left;
+    transform: translateX(0);
+    animation: fadeIn 0.8s ease-out forwards;
   }
+  
+  .title {
+    transform: translateX(0);
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
   .lineSeparator {
-    margin: 1.5rem auto;
+    /* margin: 1.5rem auto; */
+  }
+  .br{
+    display:none;
+  }
+  
+  /* Reset animations for mobile */
+  .splitImageColumn, .splitTextColumn {
+    animation-delay: 0.3s !important;
+  }
+  
+  .closingBox {
+    animation-delay: 0.4s !important;
   }
 }

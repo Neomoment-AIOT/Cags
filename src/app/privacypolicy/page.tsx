@@ -18,7 +18,7 @@ export default function TermsPage() {
 
       <div className={styles.content}>
         <p>
-          <strong>Data Controller:</strong> CAGS TOBACCO TOBACCO AND TOBACCO PRODUCTS INDUSTRY AND TRADE JOINT STOCK COMPANY.
+          Data Controller: CAGS TOBACCO TOBACCO AND TOBACCO PRODUCTS INDUSTRY AND TRADE JOINT STOCK COMPANY.
           <br />
           Fulya Mah. Büyükdere Cad. Torun Center A Blok No: 74a İç Kapı No: 19 Şişli/İstanbul
         </p>
@@ -41,10 +41,10 @@ export default function TermsPage() {
 
         <h3 className={styles.subHeading}>Data Category: Identity Information</h3>
         <p>
-          <strong>Description:</strong> Data related to the identification of individuals.
-          <br /><strong>Source:</strong> We collect identity information from our job applicants, employees, customers, potential service recipients, platform users, business partners, and visitors.
-          <br /><strong>Content:</strong> Name, surname, gender, Turkish identification number, social security registration number, nationality, marital status, date of birth, place of birth, passport number, driver's license number, vehicle registration information, identity card/identification copy, driver's license copy, passport copy, etc.
-          <br /><strong>Purpose of Data Collection:</strong> We collect the identity information of our job applicants for the purpose of conducting human resources activities related to the applied position.
+          Description: Data related to the identification of individuals.
+          <br />Source: We collect identity information from our job applicants, employees, customers, potential service recipients, platform users, business partners, and visitors.
+          <br />Content: Name, surname, gender, Turkish identification number, social security registration number, nationality, marital status, date of birth, place of birth, passport number, driver's license number, vehicle registration information, identity card/identification copy, driver's license copy, passport copy, etc.
+          <br />Purpose of Data Collection: We collect the identity information of our job applicants for the purpose of conducting human resources activities related to the applied position.
           <br />We collect the identity information of our employees in accordance with our obligations arising from employment, social security, tax regulations, etc.
         </p>
         <p>
@@ -52,21 +52,21 @@ export default function TermsPage() {
           <br />We collect the identity information of our platform users to fulfill our legal obligations.
           <br />We collect the identity information of our visitors for the purpose of ensuring security during building entry and exit and for future service relationships.
           <br />We collect the identity information of our business partners to fulfill our legal obligations, provide support services, issue invoices, carry out audit processes, monitor joint projects, and fulfill our obligations under contracts.
-          <br /><strong>Legal Basis for Data Collection:</strong> The primary reason for collecting this data is compliance with relevant legislation.
+          <br />Legal Basis for Data Collection: The primary reason for collecting this data is compliance with relevant legislation.
           <br />Furthermore, we collect identity information based on the contractual relationship between us and the relevant individuals.
           <br />Sometimes, we collect identity information based on our legitimate interests and the principles adopted by our Company.
-          <br /><strong>Data Collection Method:</strong> We collect data through printed forms and sometimes directly through company-shared electronic areas and electronic devices.
+          <br />Data Collection Method: We collect data through printed forms and sometimes directly through company-shared electronic areas and electronic devices.
         </p>
 
         <h3 className={styles.subHeading}>Data Category: Education Information</h3>
         <p>
-          <strong>Description:</strong> Information necessary for the smooth provision of services within the scope of contractual relationship.
-          <br /><strong>Source:</strong> We collect education data from our employees and job applicants.
-          <br /><strong>Content:</strong> Position/title information, diplomas and certificates, work history and details, resume, educational background, social security employment entry declaration, social security employment exit declaration, blood type, criminal record, other health reports, photographs, insurance data, military service status, etc.
-          <br /><strong>Purpose of Data Collection:</strong> We collect the education information of our employees and job applicants to fulfill our legal obligations, provide support services, fulfill commercial requirements and legal obligations, and for advertising and marketing purposes, audit processes, and security purposes.
-          <br /><strong>Legal Basis for Data Collection:</strong> The primary reason for collecting this data is compliance with relevant legislation.
+          Description: Information necessary for the smooth provision of services within the scope of contractual relationship.
+          <br />Source: We collect education data from our employees and job applicants.
+          <br />Content: Position/title information, diplomas and certificates, work history and details, resume, educational background, social security employment entry declaration, social security employment exit declaration, blood type, criminal record, other health reports, photographs, insurance data, military service status, etc.
+          <br />Purpose of Data Collection: We collect the education information of our employees and job applicants to fulfill our legal obligations, provide support services, fulfill commercial requirements and legal obligations, and for advertising and marketing purposes, audit processes, and security purposes.
+          <br />Legal Basis for Data Collection: The primary reason for collecting this data is compliance with relevant legislation.
           <br />Furthermore, we collect education information based on the contractual relationship between us and the relevant individuals.
-          <br /><strong>Data Collection Method:</strong> We collect data through printed forms and sometimes directly through company-shared electronic areas and electronic devices.
+          <br />Data Collection Method: We collect data through printed forms and sometimes directly through company-shared electronic areas and electronic devices.
         </p>
 
         {/* ...This pattern continues for all other data categories (Contact, Financial, etc.)... */}

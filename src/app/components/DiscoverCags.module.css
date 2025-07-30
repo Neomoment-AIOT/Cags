@@ -2,13 +2,13 @@
 
 /* Main Section Layout */
 .pageSection {
-  padding: 20% 0 5% 0;
+  padding: 10% 0 5% 0;
   background-color: #f5f5f5; 
-  
+ 
 }
 
 .container {
-  max-width: 1140px;
+  /* max-width: 1140px; */
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
@@ -103,4 +103,11 @@
     display: inline-block;
     vertical-align: right;
     padding-left: 3px;
+}
+@media (max-width: 768px){
+  .pageSection {
+ margin-top: 0%;
+ 
+}
+  
 }

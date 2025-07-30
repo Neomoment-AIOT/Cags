@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './HistorySection.module.css';
-
+import Link from 'next/link';
 const HistorySection = () => {
   return (
     <section className={styles.pageSection}>
@@ -10,7 +10,7 @@ const HistorySection = () => {
           <div className={styles.textContainer}>
             <div className={styles.textContent}>
               <h1>
-                CAGS:<br />
+                <b>CAGS:</b><br />
                 <span className={styles.fontLight}>
                   A History of Milestones
                 </span>

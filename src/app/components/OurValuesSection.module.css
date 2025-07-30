@@ -7,11 +7,13 @@
 }
 
 .container {
-  max-width: 1140px;
+  /* max-width: 1140px; */
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 2% 10%;
 }
-
+.setionjourney{
+  color: #1c242d;
+}
 /* Modern CSS Grid for the layout */
 .grid {
   display: grid;
@@ -30,25 +32,29 @@
 .contentBox .titles{
     font-weight: bold !important;
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 20px;
+}
+.contentBox p{
+  font-size: 12px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: #fff;
 }
 .contentBox .description{
-    line-height: 25px;
-    font-family:lato, helvetica, sans-serif;
-    font-weight: lighter;
-    color: #fff;
     text-shadow: none;
     outline: none;
 }
 .iconbox{
-  padding:0 5%;
+  /* max-width: 200px; */
+  padding-right: 4%;
 }
-.iconWrapper {
-  font-size: 16px;
-  float: left;
-  font-family: "linea-icons" !important;
-    text-transform: none !important;
-    line-height: 1;
+.iconImage{
+  width: 100%;
+  height:100%;
+  min-width: 60px;
+  min-height: 60px;
+  
 }
 
 
@@ -66,6 +72,9 @@
 
 /* Responsive adjustments for tablets and mobile */
 @media (max-width: 991px) {
+  .container{
+      padding: 2% 5% ;
+  }
   .grid {
     grid-template-columns: 1fr; /* Stack to a single column */
     gap: 60px; /* Increase gap for vertical stacking */

@@ -21,11 +21,13 @@
   flex: 1; /* Take up the other 50% of the width */
   min-width: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   padding: 80px 5%; /* Use percentage for responsive padding */
 }
-
+.sectionheading{
+  color: #1c242d;
+}
 .textContent {
   max-width: 500px; /* Constrain the width of the text for readability */
 }
@@ -61,6 +63,6 @@
 
   .contentContainer {
     padding: 60px 20px; /* Adjust padding for mobile */
-    text-align: center;
+    text-align: left;
   }
 }

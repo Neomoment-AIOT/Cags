@@ -8,11 +8,13 @@
 }
 
 .container {
-  max-width: 1140px;
+  /* max-width: 1140px; */
   margin: 0 auto;
-  padding: 0 15px;
+   padding: 2% 10%;
 }
-
+.ctalink{
+  color: #1c242d;
+}
 /* Core Layout Styles using Flexbox */
 .contentWrapper {
   display: flex;
@@ -72,6 +74,9 @@
 
 /* Responsive Media Query */
 @media (max-width: 768px) {
+  .container{
+     padding: 2% 5% ;
+  }
   .contentWrapper {
     flex-direction: column; /* Stack columns on top of each other */
   }

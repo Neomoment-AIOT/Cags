@@ -4,107 +4,137 @@
 .pageSection {
   background-color: #f5f5f5;
   width: 100%;
+  overflow: hidden; /* Prevent horizontal scroll during animations */
 }
+
 .container {
   width: 100%;
   max-width: 1140px;
   padding: 0 15px;
   margin: 0 auto;
 }
+
 .containerFluid {
   width: 100%;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
+
 .column {
   flex: 1 1 50%;
   min-width: 320px;
 }
+
 .fontLight {
   font-weight: 300;
+  color: #333;
 }
+
 .description {
   line-height: 1.6;
   text-align: justify;
   color: #333;
   font-family: lato, arial, helvetica, sans-serif;
-    font-size: 15px;
-    margin-right: 10%;
+  font-size: 15px;
+  margin-right: 10%;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
-/* --- Breadcrumbs --- */
-.pageTitleContainer {
-  padding: 20px 0;
-  background-color:#f5f5f5;
-  border-bottom: 0px solid #e9ecef;
-}
 /* --- Breadcrumbs --- */
 .pageTitleContainer {
   padding: 20px 0;
   background-color: #f5f5f5;
   border-bottom: 1px solid #f5f5f5;
 }
+
 .breadcrumbs {
   font-size: 11px;
   font-weight: normal;
-      letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 25px;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    border: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 25px;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
 }
+
 .breadcrumbs a, .breadcrumbs span {
   color: #6c757d;
   text-decoration: none;
-
 }
+
 .breadcrumbs a:hover {
   color: #121213;
 }
+
 .breadcrumbs .current {
   color: #343a40;
   font-weight: 700;
 }
+
 .divider {
   margin: 0 10px;
 }
+
 /* --- Hero Section --- */
 .textContainer {
-  /* padding: 40px; */
   padding-left: 18%;
   padding-right: 8%;
   width: fit-content;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInFromLeft 0.8s ease-out forwards;
+  animation-delay: 0.2s;
 }
+
 .title {
- font-size: 32px;
-    line-height: 45px;
-    margin: 40px 0 32px 0;
-    font-family: 'Lato', Arial, Helvetica, sans-serif;
-    font-weight: 100;
-        color: #1c242d;
+  font-size: 32px;
+  line-height: 45px;
+  margin: 40px 0 32px 0;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  color: #1c242d;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInFromLeft 0.6s ease-out forwards;
+  animation-delay: 0.3s;
 }
+
 .lineSeparator {
-   margin-top: 11px;
-    height: 3px;
-    width: 70px;
-    background: #1c242d;
+  margin-top: 11px;
+  height: 3px;
+  width: 70px;
+  background: #1c242d;
+  opacity: 0;
+  animation: growWidth 0.6s ease-out forwards;
+  animation-delay: 0.4s;
 }
-.description{
+
+.description {
   margin-top: 30px;
-      font-family: lato, arial, helvetica, sans-serif;
-    font-size: 15px;
+  font-family: lato, arial, helvetica, sans-serif;
+  font-size: 15px;
+  color: #333;
 }
+
 .imageWrapper {
-   position: relative;
+  position: relative;
   width: 100%;
   min-height: 80vh;
-      max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.5s;
 }
 
 /* --- Events List --- */
@@ -112,32 +142,56 @@
   padding: 50px 0;
   background-color: #f5f5f5;
 }
+
 .eventRow {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   padding: 20px 0 4% 0;
-   border-bottom: 1px solid black;
-
+  border-bottom: 1px solid black;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
 }
+
+.eventRow:nth-child(1) { animation-delay: 0.6s; }
+.eventRow:nth-child(2) { animation-delay: 0.7s; }
+.eventRow:nth-child(3) { animation-delay: 0.8s; }
+.eventRow:nth-child(4) { animation-delay: 0.9s; }
+
 .eventLogoColumn {
-  flex: 0 0 33.33%; /* Corresponds to col-md-4 */
+  flex: 0 0 33.33%;
   padding-right: 30px;
   text-align: center;
 }
-.eventDetailsColumn {
- 
-  flex: 1 1 60%; /* Corresponds to col-md-6, allows wrapping */
+
+.eventLogoColumn img {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.3s;
 }
+
+.eventDetailsColumn {
+  flex: 1 1 60%;
+}
+
 .eventTitle {
   margin: 0 0 15px 0;
   font-size: 1.8rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideInFromLeft 0.6s ease-out forwards;
 }
+
 .eventMeta {
   margin-top: 15px;
   font-weight: 600;
   line-height: 1.8;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: 0.2s;
+  color: #333;
 }
+
 .separator {
   border: 0;
   height: 1px;
@@ -147,14 +201,50 @@
 
 /* --- Closing Section --- */
 .closingSection {
-    background-color:#f5f5f5;
-    padding: 80px 0 50px 0;
+  background-color: #f5f5f5;
+  padding: 80px 0 50px 0;
 }
+
 .closingBox {
-    text-align: justify;
-    font-family: 'open sans', arial, helvetica, sans-serif;
-    font-size: 17px;
-    line-height: 1.7;
+  text-align: left;
+  font-family: 'open sans', arial, helvetica, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* --- Animation Keyframes --- */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes growWidth {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 70px;
+  }
 }
 
 /* --- Responsive --- */
@@ -162,25 +252,49 @@
   .row, .eventRow {
     flex-direction: column;
   }
+  
   .textContainer {
     padding: 30px 20px;
-    text-align: center;
+    text-align: left;
+    transform: translateX(0);
+    animation: fadeIn 0.8s ease-out forwards;
   }
+  
+  .title {
+    transform: translateX(0);
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
   .lineSeparator {
-      margin: 1.5rem auto;
+    margin: 0;
   }
+  
   .imageWrapper {
     min-height: 40vh;
   }
+  
   .eventLogoColumn, .eventDetailsColumn {
-      flex: 1 1 100%;
-      padding: 0;
-      text-align: center;
+    flex: 1 1 100%;
+    padding: 0;
+    text-align: left;
   }
+  
   .eventLogoColumn {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
+  
   .eventDetailsColumn .description {
-      text-align: center;
+    text-align: left;
+  }
+  
+  /* Reset animations for mobile */
+  .eventRow {
+    animation-delay: 0.2s !important;
+  }
+  
+  .eventTitle {
+    transform: translateX(0);
+    animation: fadeIn 0.8s ease-out forwards;
+    color: #334155;
   }
 }

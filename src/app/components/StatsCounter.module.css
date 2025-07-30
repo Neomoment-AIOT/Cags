@@ -1,9 +1,9 @@
 /* components/StatsCounter.module.css */
 
 .pageSection {
-  padding: 10px 0 20px 0;
+  padding: 5% 0 6% 0;
   background-color: #f5f5f5; /* Example background color */
-
+  
 }
 
 .container {
@@ -63,7 +63,8 @@
 
 @media (max-width: 480px) {
     .statsGrid {
-        grid-template-columns: 1fr; /* 1 column on mobile */
+        grid-template-columns: repeat(2, 1fr); /* 1 column on mobile */
+        text-align: center;
     }
     .statItem {
         padding: 10px;

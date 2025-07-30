@@ -1,73 +1,56 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import Styles from "./style.module.css";
 
-export default function ProductSubMenu() {
+export default function ProductSubMenu({ isOpen }: { isOpen: boolean }) {
+  if (!isOpen) return null;
+
   return (
-    // UPDATED: Changed `top-13` to `top-full` and added `group-focus-within:block`
-    <div className="absolute top-full hidden w-full min-w-[1440px]
-    z-40 group-hover:block group-focus-within:block ml-0 b-0
-    md:ml-[-580px] lg:ml-[-870px]">
-      
-      {/* This inner div is the centered container for your content. */}
-      <div className="container subMenu-container mx-auto px-6 mt-7 bg-[#e7e6e6] shadow-lg
-    ">
-        
-        {/* Flex container for columns. */}
-        <div className="flex flex-wrap w-full py-4 md:py-4 space-y-8 md:space-y-0">
-          
-          {/* Column 1: Company Title */}
-          <div className="w-full md:w-1/4 px-4 pr-8 border-r-2 border-white border-w-full p-4 m-0">
-            <h3 className="text-lg font-medium text-gray-800 pb-2 border-b border-gray-400">
-              Products
-            </h3>
+    <div className={Styles.SubmenuMainContainer}>
+      <div className={`${Styles.product_Submenu_container} ${Styles.submenu_Container_Row}`}>
+        <div className={Styles.ColumnConatiner}>
+          <div className={Styles.leftTitlecolumn}>
+            <h3 className={Styles.leftTitle}>Products</h3>
           </div>
-
-          {/* Column 2: Navigation Links */}
-          <div className="w-full md:w-1/3 px-4 md:border-l border-slate-200 p-4 m-0">
-            <ul className="space-y-4">
+          <div className={Styles.middleColumn}>
+            <ul className={Styles.ul}>
               <li>
-                <Link href="/products/papers" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors duration-200 uppercase tracking-widest">
+                <Link href="/products/papers" className={Styles.Submenu_Item}>
                   Rolling Papers
                 </Link>
               </li>
               <li>
-                <Link href="/products/tubes" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors duration-200 uppercase tracking-widest">
+                <Link href="/products/tubes" className={Styles.Submenu_Item}>
                   Cigarette Tubes
                 </Link>
               </li>
               <li>
-                <Link href="/products/tobacco" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors duration-200 uppercase tracking-widest">
+                <Link href="/products/tobacco" className={Styles.Submenu_Item}>
                   Tobacco
                 </Link>
               </li>
               <li>
-                <Link href="http://www.my10bak.com/" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors duration-200 uppercase tracking-widest">
+                <Link href="http://www.my10bak.com/" className={Styles.Submenu_Item}>
                   Water Pipe
                 </Link>
               </li>
               <li>
-                <Link href="/products/accessories" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors duration-200 uppercase tracking-widest">
+                <Link href="/products/accessories" className={Styles.Submenu_Item}>
                   Accessories
                 </Link>
               </li>
             </ul>
           </div>
-
-          {/* Column 3: Contact Us CTA */}
-          <div className="w-full md:w-2/5 px-4 p-4 m-0">
-            <p className="text-sm text-gray-700 mb-3">
+          <div className={Styles.contactRightColumn}>
+            <p className={Styles.subheading}>
               Join Our Distribution Network and Grow Your Business
             </p>
-            <Link href="/contact" className="inline-flex items-center text-gray-800 hover:text-black transition-colors duration-200">
-              <span className="text-sm font-semibold uppercase tracking-widest">
-                Contact us
-              </span>
-              <span className="ml-2 text-xl">→</span>
+            <Link href="/contact" className={Styles.contactSubMenu}>
+              <span className={Styles.contactSubMenu_Item}>Contact us</span>
+              <span className={Styles.contactSubMenu_ItemArrow}>→</span>
             </Link>
           </div>
-
         </div>
       </div>
     </div>

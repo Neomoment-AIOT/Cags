@@ -45,7 +45,7 @@ const CareerPage = () => {
               <div className={styles.imageWrapper}>
                 {/* Ensure you replace this src with the correct path to your image */}
                 <Image 
-                  src="/career/career.png" 
+                  src="/career/Career.png" 
                   alt="Tobacco production machinery" 
                   layout="fill" 
                   objectFit="cover" 
@@ -60,7 +60,7 @@ const CareerPage = () => {
       <section className={`${styles.pageSection} ${styles.closingSection}`}>
          <div className={styles.container}>
            <div className={styles.closingBanner}>
-              <h2>There are currently no open positions.</h2>
+              <h2 className={styles.h2}>There are currently no open positions.</h2>
               <p>As a CAGS employee, you will be part of a passionate and innovative workforce. You will have the opportunity to grow and develop your skills in a supportive and inclusive environment. We offer various career advancement opportunities and the resources you need to excel.</p>
               <p>We believe in the power of development and innovation, constantly striving to be industry leaders. Join us on our journey to shape the future of the tobacco sector.</p>
               <p>Explore our current openings and join CAGS today. Together, we can achieve remarkable milestones and create a successful future.</p>

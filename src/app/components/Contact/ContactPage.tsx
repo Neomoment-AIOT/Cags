@@ -134,7 +134,7 @@ const ContactPage = () => {
               <form id="contact-form" onSubmit={handleSubmit}>
                 <div className={styles.row}>
                   <div className={styles.column}>
-                    <input type="text" name="name" className={styles.formControl} placeholder="Name-Last Name *" required value={formData.name} onChange={handleChange} />
+                    <input type="text" name="name" className={styles.formControl} placeholder="Full Name *" required value={formData.name} onChange={handleChange} />
                     <input type="text" name="city" className={styles.formControl} placeholder="City *" required value={formData.city} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
@@ -174,12 +174,12 @@ const ContactPage = () => {
 
                 {status.success && (
                   <div className={styles.alertSuccess}>
-                    <strong>Success!</strong> Your message has been sent to us.
+                    Success! Your message has been sent to us.
                   </div>
                 )}
                 {status.error && (
                   <div className={styles.alertError}>
-                    <strong>Error!</strong> {status.error}
+                    Error! {status.error}
                   </div>
                 )}
               </form>
@@ -193,24 +193,29 @@ const ContactPage = () => {
           <div className={styles.row}>
             <div className={styles.column}>
               <div className={styles.mapWrapper}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.638424283842!2d28.98569481538392!3d41.03310397929845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab76508935c7d%3A0x2914e6bfc93e18a!2sTorun%20Center!5e0!3m2!1sen!2str!4v1678886425021"
-                  style={{ width: "100%", height: "310px", border: 0 }}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.1576534977803!2d28.995794175200384!3d41.06554641589782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab6ff113a5661%3A0x41e9a778a4dd953b!2sTorun%20Center!5e0!3m2!1sen!2s!4v1753183174298!5m2!1sen!2s" 
+                width="600" 
+                height="450" 
+                style={{ width: "100%", height: "310px", border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                >
+                </iframe>
               </div>
             </div>
             <div className={styles.column}>
               <div className={styles.mapWrapper}>
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.638424283842!2d28.98569481538392!3d41.03310397929845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab76508935c7d%3A0x2914e6bfc93e18a!2sTorun%20Center!5e0!3m2!1sen!2str!4v1678886425021"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11962.974418969688!2d27.030594713195274!3d41.44478469243411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b35d5edd872a91%3A0xa4759e6d45d99b9d!2sCAGS%20TOBACCO!5e0!3m2!1sen!2s!4v1753182854438!5m2!1sen!2s" 
+                width="600" 
+                height="450" 
                   style={{ width: "100%", height: "310px", border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                >
+
+                </iframe>
               </div>
             </div>
           </div>

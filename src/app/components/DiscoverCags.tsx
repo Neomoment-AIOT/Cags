@@ -15,47 +15,29 @@ type DiscoverCagsProps = {
     button: string;
   };
 };
-
-/**
- * This is a dynamic and reusable component.
- * It does NOT contain any hardcoded text.
- * It receives all its text content via the `content` prop from a parent component.
- */
 const DiscoverCags = ({ content }: DiscoverCagsProps) => {
-  // 2. Add a "guard clause". If for any reason the content isn't passed,
-  // the component will simply render nothing instead of crashing.
   if (!content) {
     return null;
   }
-
-  // 3. The JSX now acts as a template, filled in by the `content` prop variables.
   return (
     <div className={styles.pageSection}>
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
-
-          {/* Left Column: Heading */}
           <div className={styles.leftColumn}>
             <h2 className={styles.sectionTitle}>
               Discover<br />
               <span className={styles.bold}>Cags</span>
             </h2>
           </div>
-
-          {/* Right Column: Content and Button */}
           <div className={styles.rightColumn}>
             <div className={styles.textContent} style={{ textAlign: 'start', lineHeight: '28px' }}>
-              {/* The `dangerouslySetInnerHTML` is used for the line that contains <strong> tags */}
               <p dangerouslySetInnerHTML={{ __html: content.line1 }} />
               <p>Our journey begun more then 40 years ago in Turkey, the land of legendary Turkish Tobacco, as the first Rolling Paper Manufacturer producing with international standards. We’ve been the creator, producer and distributer of products enjoyed by millions around the world since then.</p>
               <p>{content.line3}</p>
             </div>
-
             <div className={styles.buttonContainer}>
               <Link
-                href="https://cagsgrp.com/Home/About"
-                className={styles.button}
-              >
+                href="/about" className={styles.button} >
                 {content.button} &nbsp;
                 <Image
                   src="/righticon.png"
@@ -67,7 +49,6 @@ const DiscoverCags = ({ content }: DiscoverCagsProps) => {
               </Link>
             </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ export async function subscribeNewsletter(prevState, formData) {
       from: 'Newsletter <onboarding@resend.dev>', // IMPORTANT: Use an email from your verified domain
       to: ['your-email@example.com'], // CHANGE THIS to your actual recipient email(s)
       subject: 'New Newsletter Subscription',
-      html: `<p>New subscription from: <strong>${email}</strong></p>`,
+      html: `<p>New subscription from: ${email}</p>`,
     });
     return { message: 'Success! Thank you for subscribing.' };
   } catch (error) {

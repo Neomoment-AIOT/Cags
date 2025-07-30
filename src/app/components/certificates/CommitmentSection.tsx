@@ -1,4 +1,5 @@
-import styles from '../CommitmentSection.module.css';
+// import styles from "../history/CommitmentSection.module.css";
+import styles from "./CertificateSection.module.css";
 
 const CommitmentSection = () => {
   return (

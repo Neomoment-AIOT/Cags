@@ -1,0 +1,30 @@
+nohup: ignoring input
+
+> cagsgrp@0.1.0 dev
+> next dev -p 3001
+
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3001
+   - Network:      http://5.189.160.57:3001
+
+ ✓ Starting...
+ ✓ Ready in 2.8s
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 3.1s (759 modules)
+ GET /admin/job-management 404 in 3988ms
+ GET /Content/Site/images/righticon.png 404 in 112ms
+ ✓ Compiled /favicon.ico in 421ms (439 modules)
+ GET /favicon.ico 200 in 632ms
+ ⚠ Cross origin request detected from 5.189.160.57 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ○ Compiling / ...
+ ✓ Compiled / in 1029ms (929 modules)
+Image with src "/fes7-2.jpg" has legacy prop "layout". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13
+Image with src "/fes7-2.jpg" has legacy prop "objectFit". Did you forget to run the codemod?
+Read more: https://nextjs.org/docs/messages/next-image-upgrade-to-13
+ GET / 200 in 1643ms
+ GET /Content/Site/images/righticon.png 404 in 119ms
+ GET /favicon.ico 200 in 67ms
+ GET / 200 in 213ms
+ GET /Content/Site/images/righticon.png 404 in 80ms

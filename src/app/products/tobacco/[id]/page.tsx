@@ -1,8 +1,23 @@
-import { allProducts, Product } from "@/app/products/data/products";
+// import { allProducts, Product } from "@/app/products/data/products";
+import { allProducts, Product } from './products';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import styles from "@/app/products/products.module.css";
+
+type Product = {
+  id: number;
+  category: string;
+  brand: string;
+  tip: string;
+  name: string;
+  imageUrl: string;
+  description: string;
+  naturalGum?: string;
+  specifications: {
+     imageUrl: string; label: string; value: string }[];
+  certifications: { name: string; imageUrl: string }[];
+};
 // This function now works correctly with the new flat data structure
 function getProductById({ id }: { id: string; }): Product | undefined {
   return allProducts.find(
@@ -25,10 +40,10 @@ export default function PaperDetailPage({ params }: { params: { id: string } }) 
             <div className={styles.pageTitleCont}>
                   <div className={`${styles.container} ${styles.relative} ${styles.alignLeft}`}>
                     <div className={styles.breadcrumbs}>
-                      <Link href="/">HOME</Link>
+                      <Link href="../../">HOME</Link>
                       <span className={styles.divider}>/</span>
                       {/* This link can be updated if you create a "Company" page */}
-                      <Link href="#" className={styles.productsLink}>PRODUCTS</Link>
+                      <Link href="../" className={styles.productsLink}>PRODUCTS</Link>
                       <span className={styles.divider}>/</span>
                       <span className={styles.currentProductName}>{product.name}</span>
                     </div>
@@ -58,7 +73,8 @@ export default function PaperDetailPage({ params }: { params: { id: string } }) 
                             >
                             <p className={styles.rightsidedtip}
                             >
-                                Individual Paper Tip
+                              {product.tip}
+                                {/* Individual Paper Tip */}
                             </p>
                             </div>
                     </div>
@@ -75,8 +91,8 @@ export default function PaperDetailPage({ params }: { params: { id: string } }) 
                                     >
                                          <Image src={spec.imageUrl}
                                               alt={spec.label}
-                                               width={150   } 
-                                               height={150  }
+                                            //    width={150   } 
+                                            //    height={150  }
                                                 />
                                           
                                         <dt className={styles.labelname}

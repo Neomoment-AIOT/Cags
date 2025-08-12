@@ -52,8 +52,9 @@
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: normal;
   letter-spacing: 2px;
-  padding: 10px 12px;
-  display: inline-block;
+  padding: 3px 12px;
+  display: inline-flex;
+    gap:20px;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
 }
@@ -298,4 +299,80 @@ padding: 0;
   position: relative;  /* relative */
   width: 100%;        /* w-full */
   height: 500px; 
+}
+
+
+
+
+@media screen and (min-width=1280){
+        .SubmenuMainContainer{
+        position: relative;
+      }
+      
+}
+/*Submenu Header*/
+.dropdownMainMenu_Item{
+  position:relative;
+  padding-top:3.4px;
+}
+.langMainmenu{
+  position: absolute;
+  margin-top: 1.25rem; /* space below main item */
+  width: 9rem; /* adjust as needed */
+  background-color: #E7E6E6;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);            
+}
+.langSubmenu{
+  width: 100%;                 /* w-full */
+  text-align: left;            /* text-left */
+  display: block;              /* block */
+  padding: 0.5rem 1rem 0.5rem 1rem;         /* py-2 px-4 */
+  font-size: 0.875rem;          /* text-sm (14px) */
+  line-height: 1.25rem;
+  color: #374151;               /* text-gray-700 */
+  background-color: transparent;
+  border: none;                 /* optional for button-like behavior */
+  cursor: pointer;      
+  display: block;
+}
+
+.langSubmenu:hover {
+  color: #000000;
+}
+
+
+
+
+/* Ensure main menu stays in view on mobile/tablet */
+@media screen and (max-width: 1024px) {
+  .submenu_Container_Row {
+    position: fixed; /* so it stays visible regardless of scroll */
+    top: 0;
+    left: 0;
+    margin-left: 0 !important;
+    width: 100% !important;
+    height: 100vh; /* fill viewport height */
+    overflow-y: auto; /* scroll if content is taller */
+    background-color: #E7E6E6;
+    z-index: 9999; /* above everything */
+    padding: 20px;
+  }
+
+  /* Optional: Adjust submenu columns for mobile */
+  .SubmenuContainer,
+  .ColumnConatiner {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .leftTitlecolumn,
+  .middleColumn,
+  .contactRightColumn {
+    min-width: auto;
+    border-right: none;
+    padding: 10px;
+  }
 }

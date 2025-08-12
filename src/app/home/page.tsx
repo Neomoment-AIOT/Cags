@@ -7,6 +7,7 @@ import StatsCounter from '../components/StatsCounter';
 import JourneySection from '../components/JourneySection';
 import JoinNetwork from '../components/JoinNetwork';
 import translations from '../locales/en.json';
+import Footer from '../components/Footer';
 
 export default function Homepage() {
   function handleConfirmAge(): void {
@@ -21,6 +22,7 @@ export default function Homepage() {
       <JourneySection/>
       <ProductGrid />
       <JoinNetwork/>
+        <Footer />
     </main>
     
   );

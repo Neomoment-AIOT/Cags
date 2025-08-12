@@ -15,8 +15,8 @@
   flex: 1;
   min-width: 320px;
   text-align: left;
-  padding-left: 9%;
-  padding-right: 9%;
+  padding-left: 12%;
+  padding-right: 11%;
   opacity: 0;
   transform: translateX(-50px);
   animation: slideInFromLeft 0.8s ease-out forwards;

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './BrandsPage.module.css';
+import Footer from '../Footer';
 
 const brandsData = [
   {
@@ -173,6 +174,7 @@ Our brand lineup boasts a rich history featuring renowned brands such as CRP®, 
           </div>
         </div>
       </section>
+         <Footer />
     </>
   );
 };

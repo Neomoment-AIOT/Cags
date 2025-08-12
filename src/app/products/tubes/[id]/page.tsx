@@ -1,5 +1,5 @@
-// import { allProducts, Product } from '../../data/products'; 
-import { allProducts, Product } from "@/app/products/data/products";
+import { allProducts, Product } from './products'; 
+// import { allProducts, Product } from "@/app/products/data/products";
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -11,6 +11,7 @@ type Product = {
   id: number;
   category: string;
   brand: string;
+  tip: string;
   name: string;
   imageUrl: string;
   description: string;
@@ -39,10 +40,10 @@ export default function tubesDetailPage({ params }: { params: { id: string } }) 
             <div className={styles.pageTitleCont}>
                   <div className={`${styles.container} ${styles.relative} ${styles.alignLeft}`}>
                     <div className={styles.breadcrumbs}>
-                      <Link href="/">HOME</Link>
+                      <Link href="../../">HOME</Link>
                       <span className={styles.divider}>/</span>
                       {/* This link can be updated if you create a "Company" page */}
-                      <Link href="#" className={styles.productsLink}>PRODUCTS</Link>
+                      <Link href="../" className={styles.productsLink}>PRODUCTS</Link>
                       <span className={styles.divider}>/</span>
                       <span className={styles.currentProductName}>{product.name}</span>
                     </div>
@@ -72,7 +73,8 @@ export default function tubesDetailPage({ params }: { params: { id: string } }) 
                             >
                         <p className={styles.rightsidedtip}
                         >
-                            Individual tubes Tip
+                             {product.tip}
+                             {/* Individual tubes Tip */}
                         </p>
                             </div>
                     </div>

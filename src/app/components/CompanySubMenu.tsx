@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Styles from "./style.module.css";
-
 export default function CompanySubMenu({ isOpen }: { isOpen: boolean }) {
   if (!isOpen) return null;
 

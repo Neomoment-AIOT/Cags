@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './FAQsPage.module.css';
+import Footer from '../Footer';
 
 const FAQsData = [
    {
@@ -139,6 +140,7 @@ const FAQsPage = () => {
             </div>
          </div>
       </section>
+        <Footer />
     </>
   );
 };

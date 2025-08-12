@@ -2,6 +2,7 @@
   background-color: #1c242d;
   color: white;
   width: 100%;
+  min-width: fit-content;
   /* Default padding for desktop */
   padding: 4rem 10% 0.5rem 10%;
 }
@@ -15,7 +16,7 @@
   display: grid;
   /* Desktop: 5-column layout with specific percentage widths */
   grid-template-columns: 6% 12% 12% 38% 36%;
-  gap: 2rem;
+  gap: 1.5%;
 }
 
 .col {
@@ -64,13 +65,14 @@
   margin-bottom: 1rem;    /* mb-4 (1rem = 16px) */
   color: rgb(156 163 175); /* text-gray-400 */
   width: 100%; 
+  padding-right:20%;
 }
 .formSubscribe{
   display: flex;
   flex-direction: column;
 }
 .inputEmail{
-   width: 90%;                  /* w-[70%] */
+   width: 70%;                  /* w-[70%] */
   background-color: transparent; /* bg-transparent */
   border-bottom: 1px solid white; /* border-b border-white */
   color: white;                /* text-white */
@@ -118,9 +120,6 @@
     grid-row: 2;
     margin-top: 15rem;
   }
-  .inputEmail {
-    width: 100%;
-  }
 }
 
 /* For Mobile */
@@ -131,6 +130,10 @@
     /* Center-align all text for a cleaner mobile view */
     text-align: left; 
   }
+  .NewsletterSubheading{
+    padding: 2% 0;
+    width: 100%;
+  }
 
   .colboxes {
     /* 2-row layout: first row has cols 1-3, second row has cols 4-5 */
@@ -138,7 +141,10 @@
     grid-template-rows: auto auto;
     gap: 2rem;
   }
-  
+  .inputEmail{
+    width:310px;
+    padding: 5% 1%;
+  }
   .col {
     /* Keep content left-aligned */
     align-items: flex-start;
@@ -168,9 +174,6 @@
     padding-right: 0;
   }
   
-  .inputEmail {
-    width: 100%;
-  }
   SubmitButton:hover{
 color:black;
   }

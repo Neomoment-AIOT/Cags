@@ -65,8 +65,7 @@ export default function Footer() {
           <div className={style.col}>
             <h4 className={style.newsletter}
             >Sign up to the newsletter</h4>
-            <p className={style.NewsletterSubheading}
-            >
+        <p className={style.NewsletterSubheading}>
               Enter your email address Be the first to know about new products and updates.
             </p>
             <form

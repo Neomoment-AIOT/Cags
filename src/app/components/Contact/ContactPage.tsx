@@ -4,6 +4,7 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import Link from 'next/link';
 import styles from './ContactPage.module.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Footer from '../Footer';
 
 const countries = [
   { value: "Afghanistan", label: "Afghanistan" },
@@ -241,6 +242,7 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+        <Footer />
     </>
   );
 };

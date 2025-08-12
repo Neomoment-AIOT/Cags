@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumb from './Breadcrumb'; // Assuming a shared breadcrumb component
 import styles from '../products.module.css';     // Reusing the same shared product styles
+import Footer from '@/app/components/Footer';
 
 // Type definition for Tobacco Products
 type TobaccoProduct = {
@@ -36,7 +37,7 @@ const allTobaccoProducts: TobaccoProduct[] = [
     { id: 16, brand: 'Watson', name: 'Watson RYO Gray 25', grammage: 25, imageUrl: '/products/tobacco/5b0a26426ef243dfb77bdc2cf9b58e66.png', detailUrl: '/products/tobacco/16' },
     { id: 17, brand: 'Watson', name: 'Watson RYO Yellow 25', grammage: 25, imageUrl: '/products/tobacco/a9527294f2f44ea2bd1f85f83104df61.png', detailUrl: '/products/tobacco/17' },
     { id: 18, brand: 'Watson', name: 'Watson RYO Beige 25', grammage: 25, imageUrl: '/products/tobacco/1d37419170a941e4bd25da16678614d1.png', detailUrl: '/products/tobacco/18' },
-    { id: 19, brand: 'Watson', name: 'Watson RYO Green 25', grammage: 25, imageUrl: '/products/tobacco/aff2cc68e67745f18b941c3cf33a5a76.png', detailUrl: '/products/tobacco/19' },
+    { id: 19, brand: 'Watson', name: 'Watson RYO Green 25', grammage: 25, imageUrl: "/products/tobacco/aff2cc68e67745f18b941c3cf33a5a76.png", detailUrl: '/products/tobacco/19' },
     { id: 20, brand: 'Watson', name: 'Watson RYO White 25', grammage: 25, imageUrl: '/products/tobacco/21e60afcef6b4047a2e32f9ad377b32c.png', detailUrl: '/products/tobacco/20' },
     { id: 21, brand: 'Watson', name: 'Watson RYO Black 25', grammage: 25, imageUrl: '/products/tobacco/d035325ca0cd46dd89c0b03b7a3c7917.png', detailUrl: '/products/tobacco/21' },
     { id: 22, brand: 'Watson', name: 'Watson RYO Dark Blue 25', grammage: 25, imageUrl: '/products/tobacco/1e23e4c3cc57432791d3b44c9ab2bc97.png', detailUrl: '/products/tobacco/22' },
@@ -179,6 +180,7 @@ export default function TobaccoPage() {
           )}
         </div>
       </div>
+      <Footer />
     </section>
   );
 }

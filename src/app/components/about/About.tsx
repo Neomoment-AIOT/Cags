@@ -3,6 +3,7 @@ import JourneySection from './JourneySection';
 import WeAreCagsSection from './WeAreCagsSection';
 import JoinNetwork from '../../components/JoinNetwork';
 import OurValuesSection from '../../components/OurValuesSection';
+import Footer from '../Footer';
 const About = () => {
   return (
     <main>
@@ -11,6 +12,7 @@ const About = () => {
       <WeAreCagsSection />
       <OurValuesSection/>
       <JoinNetwork/>
+        <Footer />
     </main>
   );
 };

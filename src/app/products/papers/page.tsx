@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumb from './Breadcrumb';
 import styles from '../products.module.css';
+import Footer from '@/app/components/Footer';
 
 // The type definition for a paper product
 type Product = {
@@ -627,6 +628,7 @@ export default function PapersPage() {
           )}
         </div>
       </div>
+      <Footer />
     </section>
   );
 }

@@ -14,18 +14,6 @@ const translations = {
     genericBrands: 'Generic Brands',
     trademarks: 'Registered Trademarks',
   },
-  Russian: {
-    countries: 'Страны',
-    flagshipBrands: 'Флагманские бренды',
-    genericBrands: 'Дженерики',
-    trademarks: 'Зарегистрированные товарные знаки',
-  },
-  French: {
-    countries: 'Pays',
-    flagshipBrands: 'Marques phares',
-    genericBrands: 'Marques génériques',
-    trademarks: 'Marques déposées',
-  },
   Arabic: {
     countries: 'دول',
     flagshipBrands: 'العلامات التجارية الرئيسية',

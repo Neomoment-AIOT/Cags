@@ -10,8 +10,7 @@ const Productinfosection = () => {
           <div className={styles.textContainer}>
             <h1>
               <b>Experience</b><br />
-              <span className={styles.fontLight}>The difference
-</span>
+              <span className={styles.fontLight}>The difference</span>
             </h1>
             <div className={styles.line}></div>
             <p>

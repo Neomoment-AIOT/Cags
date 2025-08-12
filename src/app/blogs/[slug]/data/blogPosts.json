@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1",
+    "slug": "nextjs-intro",
+    "title": "Getting Started with Next.js",
+    "image": "/placeholder-blog1.jpg",
+    "category": "Development",
+    "content": "Next.js is a React framework that enables server-side rendering and static site generation. It makes building SEO-friendly and scalable apps easy. This post covers the basics to help you get started quickly.",
+    "keywords": ["Next.js", "React", "SSR", "Static Site", "Routing"],
+    "published": true,
+    "date": "2023-06-15"
+  },
+  {
+    "id": "2",
+    "slug": "react-performance",
+    "title": "Optimizing React Performance",
+    "image": "/placeholder-blog2.jpg",
+    "category": "Development",
+    "content": "React apps can become slow if not optimized properly. Learn how to use memoization, lazy loading, and code splitting to make your apps faster and smoother for users.",
+    "keywords": ["React", "Performance", "Optimization", "Code Splitting"],
+    "published": true,
+    "date": "2023-05-22"
+  },
+  {
+     "id":"3",
+      "slug": "css-modern",
+      "title": "Modern CSS Techniques",
+      "image": "/placeholder-blog3.jpg",
+      "category": "Development",
+    "content": "React apps can become slow if not optimized properly. Learn how to use memoization, lazy loading, and code splitting to make your apps faster and smoother for users.",
+    "keywords": ["React", "Performance", "Optimization", "Code Splitting"],
+    "published": true,
+    "date": "2023-05-22"
+    }
+  
+]

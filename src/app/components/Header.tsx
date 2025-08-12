@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import CompanySubMenu from './CompanySubMenu';
-import ProductSubMenu from './ProductSubMenu';
-import ContactSubMenu from './ContactSubMenu';
 import Styles from './style.module.css';
 
 const IconChevronDown = ({ className }: { className: string }) => (
@@ -24,26 +21,173 @@ const IconX = ({ size }: { size: number }) => (
   </svg>
 );
 
-type Translation = { [key: string]: string };
-type Translations = { [lang: string]: Translation };
+type Translations = {
+  [lang: string]: {
+    home: string;
+    history: string;
+    vision: string;
+    mission: string;
+    certifications: string;
+    career: string;
+    faqs: string;
+    privacy: string;
+    overview: string;
+    homeUrl: string;
+    company: string;
+    companyUrl: string;
+    overviewUrl: string;
+    historyUrl: string;
+    visionUrl: string;
+    missionUrl: string;
+    certificationsUrl: string;
+    brands: string;
+    brandsUrl: string;
+    products: string;
+    productsUrl: string;
+    distribution: string;
+    distributionUrl: string;
+    news: string;
+    newsUrl: string;
+    contact: string;
+    contactUrl: string;
+    language: string;
+    papersUrl: string;
+    tubesUrl: string;
+    accessoriesUrl: string;
+    tobaccoUrl: string;
+    careerUrl: string;
+    faqsUrl: string;
+    privacyUrl: string;
+    tubes: string;
+    accessories: string;
+    tobacco: string;
+    papers: string;
+    communication: string;
+    communicationUrl: string;
+    waterpipe: string;
+    waterpipeUrl: string;
+  };
+};
 
 export default function TranslatedHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [language, setLanguage] = useState('English');
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  let timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const translations: Translations = {
-    English: { home: "Home", company: "Company", brands: "Brands", products: "Products", distribution: "Distribution", news: "News", contact: "Contact", language: "Language" },
-    Russian: { home: "Главная", company: "Компания", brands: "Бренды", products: "Продукты", distribution: "Дистрибуция", news: "Новости", contact: "Контакт", language: "Язык" },
-    French: { home: "Accueil", company: "Entreprise", brands: "Marques", products: "Produits", distribution: "Distribution", news: "Actualités", contact: "Contact", language: "Langue" },
-    Arabic: { home: "الرئيسية", company: "الشركة", brands: "العلامات التجارية", products: "المنتجات", distribution: "التوزيع", news: "الأخبار", contact: "اتصل بنا", language: "لغة" }
+    English: {
+      home: "Home", homeUrl: "/",
+      company: "Company", companyUrl: "/about",
+      brands: "Brands", brandsUrl: "/brands",
+      products: "Products", productsUrl: "/products",
+      distribution: "Distribution", distributionUrl: "/distribution",
+      news: "News", newsUrl: "/events",
+      contact: "Contact", contactUrl: "/contact",
+      language: "Language",
+      career: "Career", careerUrl: "/career",
+      faqs: "FAQs", faqsUrl: "/faqs",
+      privacy: "Privacy", privacyUrl: "/privacypolicy",
+      overview: "Overview", overviewUrl: "/about/overview",
+      history: "History", historyUrl: "/history",
+      vision: "Vision", visionUrl: "/about/vision",
+      mission: "Mission", missionUrl: "/about/mission",
+      certifications: "Certifications", certificationsUrl: "/about/certifications",
+      tubes: "Cigarette Tubes", tubesUrl: "/products/tubes",
+      accessories: "Accessories", accessoriesUrl: "/products/accessories",
+      tobacco: "Tobacco", tobaccoUrl: "/products/tobacco",
+      papers: "Rolling Papers", papersUrl: "/products/papers",
+      communication: "Communication", communicationUrl: "/contact",
+      waterpipe: "Waterpipes", waterpipeUrl: "http://www.my10bak.com/",
+    },
+    Russian: {
+      home: "Главная", homeUrl: "/home/HomeRu",
+      company: "Компания", companyUrl: "/about/aboutRu",
+      brands: "Бренды", brandsUrl: "/brands/brandsRu",
+      products: "Продукты", productsUrl: "/products/productsRu",
+      distribution: "Дистрибуция", distributionUrl: "/distribution/distributionRu",
+      news: "Новости", newsUrl: "/events/eventsRu",
+      contact: "Контакт", contactUrl: "/contact/contactRu",
+      language: "Язык",
+      career: "Карьера", careerUrl: "/career/careerRu",
+      faqs: "Частые вопросы", faqsUrl: "/faqs/faqsRu",
+      privacy: "Конфиденциальность", privacyUrl: "/privacypolicy/privacypolicyRu",
+      overview: "Обзор", overviewUrl: "/about/aboutRu",
+      history: "История", historyUrl: "/history/historyRu",
+      vision: "Видение", visionUrl: "/about/visionRu",
+      mission: "Миссия", missionUrl: "/about/missionRu",
+      certifications: "Сертификаты", certificationsUrl: "/certificates/certificatesRu",
+      tubes: "Трубки", tubesUrl: "/products/productsRu/tubes",
+      accessories: "Аксессуары", accessoriesUrl: "/products/productsRu/accessories",
+      tobacco: "Табак", tobaccoUrl: "/products/productsRu/tobacco",
+      papers: "Бумага", papersUrl: "/products/productsRu/papers",
+      communication: "Связь", communicationUrl: "/contact/contactRu",
+      waterpipe: "Вода", waterpipeUrl: "http://www.my10bak.com/",
+    },
+    French: {
+      home: "Accueil", homeUrl: "/home/HomeFr",
+      company: "Entreprise", companyUrl: "/about/aboutFr",
+      brands: "Marques", brandsUrl: "/brands/brandsFr",
+      products: "Produits", productsUrl: "/products/productsFr",
+      distribution: "Distribution", distributionUrl: "/distribution/distributionFr",
+      news: "Actualités", newsUrl: "/events/eventsFr",
+      contact: "Contact", contactUrl: "/contact/contactFr",
+      language: "Langue",
+      career: "Carrière", careerUrl: "/career/careerFr",
+      faqs: "FAQ", faqsUrl: "/faqs/faqsFr",
+      privacy: "Confidentialité", privacyUrl: "/privacypolicy/privacypolicyFr",
+      overview: "Aperçu", overviewUrl: "/about/aboutFr",
+      history: "Histoire", historyUrl: "/history/historyFr",
+      vision: "Vision", visionUrl: "/about/visionFr",
+      mission: "Mission", missionUrl: "/about/missionFr",
+      certifications: "Certifications", certificationsUrl: "/certificates/certificatesFr",
+      tubes: "Tubes", tubesUrl: "/products/productsFr/tubes",
+      accessories: "Accessoires", accessoriesUrl: "/products/productsFr/accessories",
+      tobacco: "Tabac", tobaccoUrl: "/products/productsFr/tobacco",
+      papers: "Papiers", papersUrl: "/products/productsFr/papers",
+      communication: "Communication", communicationUrl: "/contact/contactFr",
+      waterpipe: "Eau", waterpipeUrl: "http://www.my10bak.com/",
+    },
+    Arabic: {
+      home: "الرئيسية", homeUrl: "/home/HomeAr",
+      company: "الشركة", companyUrl: "/about/aboutAr",
+      brands: "العلامات التجارية", brandsUrl: "/brands/brandsAr",
+      products: "المنتجات", productsUrl: "/products/productsAr/",
+      distribution: "التوزيع", distributionUrl: "/distribution/distributionAr",
+      news: "الأخبار", newsUrl: "/events/eventsAr",
+      contact: "اتصل بنا", contactUrl: "/contact/contactAr",
+      language: "لغة",
+      career: "وظائف", careerUrl: "/career/careerAr",
+      faqs: "الأسئلة الشائعة", faqsUrl: "/faqs/faqsAr",
+      privacy: "الخصوصية", privacyUrl: "/privacypolicy/privacypolicyAr",
+      overview: "نظرة عامة", overviewUrl: "/about/aboutAr",
+      history: "التاريخ", historyUrl: "/history/historyAr",
+      vision: "الرؤية", visionUrl: "/about/visionAr",
+      mission: "المهمة", missionUrl: "/about/missionAr",
+      certifications: "الشهادات", certificationsUrl: "/certificates/certificatesAr",
+      tubes: "الأنابيب", tubesUrl: "/products/productsAr/tubes",
+      accessories: "الاكسسوارات", accessoriesUrl: "/products/productsAr/accessories",
+      tobacco: "التبغ", tobaccoUrl: "/products/productsAr/tobacco",
+      papers: "أوراق", papersUrl: "/products/productsAr/papers",
+      communication: "التواصل", communicationUrl: "/contact/contactAr",
+      waterpipe: "الماء", waterpipeUrl: "http://www.my10bak.com/",
+    }
   };
 
-  const t = (key: string): string => translations[language]?.[key] || key;
+  // Initialize language from localStorage or default to English
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage && translations[savedLanguage]) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
+  const t = translations[language];
+  const otherLanguages = ['English', 'French', 'Russian', 'Arabic'].filter(lang => lang !== language);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -53,11 +197,25 @@ export default function TranslatedHeader() {
   }, [language]);
 
   useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 1280;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setIsMenuOpen(false);
+      }
+    };
+    
+    handleResize(); // Set initial value
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        drawerRef.current && 
-        !drawerRef.current.contains(event.target as Node) && 
-        menuButtonRef.current && 
+        drawerRef.current &&
+        !drawerRef.current.contains(event.target as Node) &&
+        menuButtonRef.current &&
         !menuButtonRef.current.contains(event.target as Node)
       ) {
         setIsMenuOpen(false);
@@ -89,9 +247,7 @@ export default function TranslatedHeader() {
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setOpenDropdown(null);
-    }, 500);
+    timeoutRef.current = setTimeout(() => setOpenDropdown(null), 500);
   };
 
   const toggleDropdown = (name: string) => {
@@ -99,50 +255,163 @@ export default function TranslatedHeader() {
   };
 
   const handleLanguageChange = (lang: string) => {
+    localStorage.setItem('selectedLanguage', lang);
     setLanguage(lang);
     setOpenDropdown(null);
     setIsMenuOpen(false);
+    window.location.href = translations[lang].homeUrl;
   };
 
-  const otherLanguages = ['English', 'French', 'Russian', 'Arabic'].filter(lang => lang !== language);
+  const toggleMobileSubMenu = (name: string) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
+
+  // Submenu items data
+  const subMenus = {
+    company: [
+      { name: t.overview, url: t.companyUrl },
+      { name: t.history, url: t.historyUrl },
+      { name: t.certifications, url: t.certificationsUrl }
+    ],
+    products: [
+      { name: t.papers, url: t.papersUrl },
+      { name: t.tubes, url: t.tubesUrl },
+      { name: t.tobacco, url: t.tobaccoUrl },
+      { name: t.waterpipe, url: t.waterpipeUrl },
+      { name: t.accessories, url: t.accessoriesUrl }
+    ],
+    contact: [
+      { name: t.career, url: t.careerUrl },
+      { name: t.faqs, url: t.faqsUrl },
+      { name: t.communication, url: t.communicationUrl }
+    ]
+  };
 
   return (
     <header className={`w-full fixed top-0 z-[1000] transition-shadow duration-300 ${isScrolled ? 'shadow-lg bg-white/95 backdrop-blur-sm' : 'bg-white'}`}>
       <div className="border-b border-black">
         <div className="container-fluid mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 p-2">
+          <div className={`flex items-center justify-between h-20 p-2`}>
             <a href="/" className="flex-shrink-0 flex items-center">
               <img src="/Logo.png" alt="Logo" className="h-10 mr-4 ml-2 p-1" onError={(e) => e.currentTarget.src = 'https://placehold.co/150x40?text=Logo'} />
             </a>
 
-            {/* Desktop Navigation - Unchanged from your original */}
-            <nav className={`hidden xl:flex`}>
-              <a href="/" className={Styles.menu_item}>{t('home')}</a>
-              <div className={`${Styles.dropdownMenu_Item} relative group`} onMouseEnter={() => handleMouseEnter('company')} onMouseLeave={handleMouseLeave}>
-                <a href="#" className={Styles.menu_item}>{t('company')}</a>
-                <CompanySubMenu isOpen={openDropdown === 'company'} />
+            {/* Desktop Menu */}
+            <nav className={`hidden xl:flex ${language === 'Arabic' ? 'flex-row' : ''}`}>
+              <a href={t.homeUrl} className={Styles.menu_item}>{t.home}</a>
+              
+              {/* Company Dropdown */}
+              <div className={Styles.dropdownMainMenu_Item}>
+                <div
+                  className={`${Styles.menu_item} cursor-pointer`}
+                  onMouseEnter={() => handleMouseEnter('company')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {t.company}
+                </div>
+                {openDropdown === 'company' && (
+                  <div 
+                    className={`absolute mt-4 w-48 bg-[#E7E6E6] shadow-lg py-1 z-50`}
+                    onMouseEnter={() => handleMouseEnter('company')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {subMenus.company.map((item) => (
+                      <a 
+                        key={item.name}
+                        href={item.url}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-white-100"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-
-              <a href="/brands" className={Styles.menu_item}>{t('brands')}</a>
-              <div className={`${Styles.dropdownMenu_Item} relative group`} onMouseEnter={() => handleMouseEnter('products')} onMouseLeave={handleMouseLeave}>
-                <a href="#" className={Styles.menu_item}>{t('products')}</a>
-                <ProductSubMenu isOpen={openDropdown === 'products'} />
+              
+              <a href={t.brandsUrl} className={Styles.menu_item}>{t.brands}</a>
+              
+              {/* Products Dropdown */}
+              <div className={Styles.dropdownMainMenu_Item}>
+                <div
+                  className={`${Styles.menu_item} cursor-pointer`}
+                  onMouseEnter={() => handleMouseEnter('products')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {t.products}
+                </div>
+                {openDropdown === 'products' && (
+                  <div 
+                    className={`absolute mt-4 w-48 bg-[#E7E6E6] shadow-lg py-1 z-50`}
+                    onMouseEnter={() => handleMouseEnter('products')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {subMenus.products.map((item) => (
+                      <a 
+                        key={item.name}
+                        href={item.url}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-white-100"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-
-              <a href="/distribution" className={Styles.menu_item}>{t('distribution')}</a>
-              <a href="/events" className={Styles.menu_item}>{t('news')}</a>
-
-              <div className={`${Styles.dropdownMenu_Item} relative group`} onMouseEnter={() => handleMouseEnter('contact')} onMouseLeave={handleMouseLeave}>
-                <a href="/contact" className={Styles.menu_item}>{t('contact')}</a>
-                <ContactSubMenu isOpen={openDropdown === 'contact'} />
+              
+              <a href={t.distributionUrl} className={Styles.menu_item}>{t.distribution}</a>
+              <a href={t.newsUrl} className={Styles.menu_item}>{t.news}</a>
+              
+              {/* Contact Dropdown */}
+              <div className={Styles.dropdownMainMenu_Item}>
+                <div
+                  className={`${Styles.menu_item} cursor-pointer`}
+                  onMouseEnter={() => handleMouseEnter('contact')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {t.contact}
+                </div>
+                {openDropdown === 'contact' && (
+                  <div 
+                    className={`absolute mt-4 w-48 bg-[#E7E6E6] shadow-lg py-1 z-50`}
+                    onMouseEnter={() => handleMouseEnter('contact')}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {subMenus.contact.map((item) => (
+                      <a 
+                        key={item.name}
+                        href={item.url}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-white-100"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-
+              
+              {/* Language Dropdown */}
               <div className="relative">
-                <a onClick={() => toggleDropdown('language')} className={Styles.menu_item}>{t('language')}</a>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleDropdown('language');
+                  }}
+                  className={Styles.menu_item}
+                >
+                  {t.language}
+                </a>
                 {openDropdown === 'language' && (
-                  <div className="absolute right-0 mt-4 w-48 bg-[#E7E6E6] shadow-lg py-1 z-50">
+                  <div className={`${Styles.langMainmenu}`} style={{  top: '100%', [language === 'Arabic' ? 'left' : 'left']: 0, }}>
                     {otherLanguages.map(lang => (
-                      <button key={lang} onClick={() => handleLanguageChange(lang)} className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-white-100">
+                      <button 
+                        key={lang} 
+                        onClick={() => handleLanguageChange(lang)} 
+                        className={Styles.langSubmenu}>
                         {lang.toUpperCase()}
                       </button>
                     ))}
@@ -151,203 +420,134 @@ export default function TranslatedHeader() {
               </div>
             </nav>
 
-            {/* Mobile menu button - Now properly positioned */}
-            <div className="xl:hidden flex items-center  ml-2">
-              <button 
-                ref={menuButtonRef}
-                onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                className="text-gray-700 focus:outline-none p-2"
-                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              >
-                {isMenuOpen ? <IconX size={20} /> : <IconMenu size={20} />}
-              </button>
-            </div>
+            {/* Mobile Menu Button */}
+            {isMobile && (
+              <div className="xl:hidden flex items-center ml-2">
+                <button
+                  ref={menuButtonRef}
+                  onClick={toggleMenu}
+                  className="text-gray-700 focus:outline-none p-2"
+                  aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                >
+                  {isMenuOpen ? <IconX size={20} /> : <IconMenu size={20} />}
+                </button>
+              </div>
+            )}
           </div>
         </div>
+      </div>
 
-        {/* Mobile/Tab Drawer Navigation - Improved positioning and animation */}
+      {/* Mobile Drawer */}
+      {isMobile && isMenuOpen && (
         <div
           ref={drawerRef}
-          className={`fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-xl z-[1001] transform transition-transform duration-300 ease-in-out ${
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-          style={{ top: '80px' }}
+          className="fixed inset-0 z-[1001] bg-white transition-transform overflow-y-auto"
+          style={{ 
+            top: '5rem',
+            bottom: 0,
+            left: 0,
+            right: 0
+          }}
         >
-          <div className="h-full w-[100%] overflow-y-auto p-4 space-y-2">
-            {/* Home */}
-            <a
-              href="/"
-              className="block text-lg font-medium text-gray-700 hover:bg-gray-100 px-3 py-3 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('home')}
-            </a>
-
-            {/* Company */}
-            <div className="space-y-1">
-              <button
-                onClick={() => toggleDropdown('company-mobile')}
-                className="w-full flex justify-between items-center px-3 py-3 text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-md"
+          <nav className="flex flex-col p-4 space-y-4">
+            <a href={t.homeUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.home}</a>
+            
+            {/* Company Mobile Menu */}
+            <div>
+              <div 
+                className={`${Styles.menu_item} flex justify-between items-center cursor-pointer`}
+                onClick={() => toggleMobileSubMenu('company')}
               >
-                {t('company')}
-                <IconChevronDown className={`ml-2 h-4 w-4 transition-transform ${openDropdown === 'company-mobile' ? 'rotate-180' : ''}`} />
-              </button>
-              {openDropdown === 'company-mobile' && (
-                <div className="pl-4 mt-1 space-y-1">
-                  <a 
-                    href="/about" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Overview
-                  </a>
-                  <a 
-                    href="/history" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    History
-                  </a>
-                  <a 
-                    href="/certificates" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Certification
-                  </a>
+                <span>{t.company}</span>
+                <IconChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'company' ? 'rotate-180' : ''}`} />
+              </div>
+              {openDropdown === 'company' && (
+                <div className={`${language === 'Arabic' ? 'pr-4' : 'pl-4'} mt-2 space-y-2`}>
+                  {subMenus.company.map((item) => (
+                    <a 
+                      key={item.name}
+                      href={item.url}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
                 </div>
               )}
             </div>
-
-            {/* Brands */}
-            <a
-              href="/brands"
-              className="block text-lg font-medium text-gray-700 hover:bg-gray-100 px-3 py-3 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('brands')}
-            </a>
-
-            {/* Products */}
-            <div className="space-y-1">
-              <button
-                onClick={() => toggleDropdown('products-mobile')}
-                className="w-full flex justify-between items-center px-3 py-3 text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-md"
+            
+            <a href={t.brandsUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.brands}</a>
+            
+            {/* Products Mobile Menu */}
+            <div>
+              <div 
+                className={`${Styles.menu_item} flex justify-between items-center cursor-pointer`}
+                onClick={() => toggleMobileSubMenu('products')}
               >
-                {t('products')}
-                <IconChevronDown className={`ml-2 h-4 w-4 transition-transform ${openDropdown === 'products-mobile' ? 'rotate-180' : ''}`} />
-              </button>
-              {openDropdown === 'products-mobile' && (
-                <div className="pl-4 mt-1 space-y-1">
-                  <a 
-                    href="/products/papers" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Rolling Papers
-                  </a>
-                  <a 
-                    href="/products/tubes" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Cigarette Tubes
-                  </a>
-                  <a 
-                    href="/products/tobacco" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Tobacco
-                  </a>
-                  <a 
-                    href="http://www.my10bak.com/" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                   Water Pipe
-                  </a>
-                  <a 
-                    href="/products/accessories" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                   Accessories
-                  </a>
+                <span>{t.products}</span>
+                <IconChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'products' ? 'rotate-180' : ''}`} />
+              </div>
+              {openDropdown === 'products' && (
+                <div className={`${language === 'Arabic' ? 'pr-4' : 'pl-4'} mt-2 space-y-2`}>
+                  {subMenus.products.map((item) => (
+                    <a 
+                      key={item.name}
+                      href={item.url}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
                 </div>
               )}
             </div>
-
-            {/* Distribution */}
-            <a
-              href="/distribution"
-              className="block text-lg font-medium text-gray-700 hover:bg-gray-100 px-3 py-3 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('distribution')}
-            </a>
-
-            {/* News */}
-            <a
-              href="/events"
-              className="block text-lg font-medium text-gray-700 hover:bg-gray-100 px-3 py-3 rounded-md"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {t('news')}
-            </a>
-
-            {/* Contact */}
-            <div className="space-y-1">
-              <button
-                onClick={() => toggleDropdown('contact-mobile')}
-                className="w-full flex justify-between items-center px-3 py-3 text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-md"
+            
+            <a href={t.distributionUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.distribution}</a>
+            <a href={t.newsUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.news}</a>
+            
+            {/* Contact Mobile Menu */}
+            <div>
+              <div 
+                className={`${Styles.menu_item} flex justify-between items-center cursor-pointer`}
+                onClick={() => toggleMobileSubMenu('contact')}
               >
-                {t('contact')}
-                <IconChevronDown className={`ml-2 h-4 w-4 transition-transform ${openDropdown === 'contact-mobile' ? 'rotate-180' : ''}`} />
-              </button>
-              {openDropdown === 'contact-mobile' && (
-                <div className="pl-4 mt-1 space-y-1">
-                  <a 
-                    href="/career" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Career
-                  </a>
-                  <a 
-                    href="/faqs" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    FAQs
-                  </a>
-                  <a 
-                    href="/contact" 
-                    className="block px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Communications
-                  </a>
+                <span>{t.contact}</span>
+                <IconChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'contact' ? 'rotate-180' : ''}`} />
+              </div>
+              {openDropdown === 'contact' && (
+                <div className={`${language === 'Arabic' ? 'pr-4' : 'pl-4'} mt-2 space-y-2`}>
+                  {subMenus.contact.map((item) => (
+                    <a 
+                      key={item.name}
+                      href={item.url}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
                 </div>
               )}
             </div>
-
-            {/* Language Selector */}
-            <div className="space-y-1 border-t border-gray-200 pt-2">
-              <button
-                onClick={() => toggleDropdown('language-mobile')}
-                className="w-full flex justify-between items-center px-3 py-3 text-lg font-medium text-gray-700 hover:bg-gray-100 rounded-md"
+            
+            {/* Language Mobile Menu */}
+            <div className="border-gray-200">
+              <div 
+                className={`${Styles.menu_item} flex justify-between items-center cursor-pointer`}
+                onClick={() => toggleMobileSubMenu('language')}
               >
-                {t('language')}
-                <IconChevronDown className={`ml-2 h-4 w-4 transition-transform ${openDropdown === 'language-mobile' ? 'rotate-180' : ''}`} />
-              </button>
-              {openDropdown === 'language-mobile' && (
-                <div className="pl-4 mt-1 space-y-1">
+                <span>{t.language}</span>
+                <IconChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'language' ? 'rotate-180' : ''}`} />
+              </div>
+              {openDropdown === 'language' && (
+                <div className="mt-0 space-y-2">
                   {otherLanguages.map(lang => (
-                    <button
-                      key={lang}
-                      onClick={() => handleLanguageChange(lang)}
-                      className="block w-full text-left px-3 py-2 text-base text-gray-600 hover:bg-gray-50 rounded-md"
+                    <button 
+                      key={lang} 
+                      onClick={() => handleLanguageChange(lang)} 
+                      className="block text-left w-full px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"
                     >
                       {lang.toUpperCase()}
                     </button>
@@ -355,17 +555,9 @@ export default function TranslatedHeader() {
                 </div>
               )}
             </div>
-          </div>
+          </nav>
         </div>
-
-        {/* Overlay - Improved click handling */}
-        {isMenuOpen && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-50 z-[1000] transition-opacity duration-300"
-            onClick={() => setIsMenuOpen(false)}
-          />
-        )}
-      </div>
+      )}
     </header>
   );
 }

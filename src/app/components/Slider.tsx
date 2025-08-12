@@ -5,7 +5,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -21,7 +20,7 @@ const slides = [
 
 export default function Slider() {
   return (
-    <div className="relative w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[630px]">
+    <div className="relative mt-5 w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[480px] xl:h-[550px]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={0}

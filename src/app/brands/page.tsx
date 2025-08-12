@@ -1,7 +1,7 @@
 import React from 'react';
 import BrandsPage from '../components/Brands/BrandsPage';
 
-const Contact = () => {
+const Brands = () => {
   return (
     <main>
       <BrandsPage />
@@ -9,4 +9,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Brands;

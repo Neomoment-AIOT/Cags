@@ -6,10 +6,10 @@ const Breadcrumb = () => {
     <div className={styles.pageTitleCont}>
       <div className={`${styles.container} ${styles.relative} ${styles.alignLeft}`}>
         <div className={styles.breadcrumbs}>
-          <Link href="/">HOME</Link>
+          <Link href="../">HOME</Link>
           <span className={styles.divider}>/</span>
           {/* This link can be updated if you create a "Company" page */}
-          <Link href="#" className={styles.productsLink}>PRODUCTS</Link>
+          <Link href="./" className={styles.productsLink}>PRODUCTS</Link>
           <span className={styles.divider}>/</span>
           <span className={styles.current}>TOBACCO</span>
         </div>

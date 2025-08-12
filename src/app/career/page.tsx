@@ -6,7 +6,7 @@ const Career = () => {
   return (
     <main>
       <CareerPage />
-      
+       
     </main>
   );
 };

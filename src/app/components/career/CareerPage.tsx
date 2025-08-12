@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './CareerPage.module.css';
+import Footer from '../Footer';
 // --- The Main Career Page Component ---
 const CareerPage = () => {
   return (
@@ -67,6 +68,7 @@ const CareerPage = () => {
            </div>
          </div>
       </section>
+        <Footer />
     </>
   );
 };

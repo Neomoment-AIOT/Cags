@@ -11,8 +11,8 @@
 
 .container {
   width: 100%;
-  max-width: 1140px;
-  padding: 0 15px;
+  max-width: 1280px;
+  padding: 0 30px;
   margin: 0 auto;
   opacity: 0;
   animation: fadeIn 0.6s ease-out forwards;
@@ -52,7 +52,7 @@
 
 /* --- Breadcrumbs --- */
 .pageTitleContainer {
-  padding: 20px 0;
+  padding: 6% 0 0 0;
   background-color: #f5f5f5;
   border-bottom: 0px solid #161616;
 }
@@ -75,8 +75,8 @@
 }
 
 .slash-divider {
-  margin-right: 7%;
-  margin-left: 7%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 /* --- Content Styles (reusable for hero and features) --- */
@@ -139,7 +139,7 @@ span.fontLight {
 
 .closingBanner {
   background-color: #f5f5f5;
-  padding: 20px 16px;
+  padding: 20px 0px;
   border-radius: 8px;
   text-align: left;
   opacity: 0;

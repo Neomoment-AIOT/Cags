@@ -9,6 +9,7 @@ import JourneySection from './components/JourneySection';
 import JoinNetwork from './components/JoinNetwork';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import Homepage from './home/page';
+import Footer from './components/Footer';
 
 export default function Page() {
   return (
@@ -51,6 +52,7 @@ function MainContent() {
       // content={content.joinNetwork} 
       />*/}
       <Homepage/> 
+     
     </main>
   );
 }

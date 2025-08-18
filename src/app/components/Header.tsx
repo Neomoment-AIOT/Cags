@@ -96,7 +96,7 @@ export default function TranslatedHeader() {
       history: "History", historyUrl: "/history",
       vision: "Vision", visionUrl: "/about/vision",
       mission: "Mission", missionUrl: "/about/mission",
-      certifications: "Certifications", certificationsUrl: "/about/certifications",
+      certifications: "Certifications", certificationsUrl: "/certificates",
       tubes: "Cigarette Tubes", tubesUrl: "/products/tubes",
       accessories: "Accessories", accessoriesUrl: "/products/accessories",
       tobacco: "Tobacco", tobaccoUrl: "/products/tobacco",

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumb from './Breadcrumb'; // Assuming a shared breadcrumb component
 import styles from '@/app/products/products.module.css';     // Reusing the same shared product styles
-
+import FooterAr from "@/app/components/FooterAr";
 // Type definition for Tobacco Products
 type TobaccoProduct = {
   id: number;
@@ -179,6 +179,7 @@ export default function TobaccoPage() {
           )}
         </div>
       </div>
+      <FooterAr />
     </section>
   );
 }

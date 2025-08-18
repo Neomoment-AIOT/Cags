@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import styles from "@/app/products/products.module.css";
+import Footer from "@/app/components/Footer";
 
 // Define the type for a single Product 
 // This should match the structure of an object in your new allProducts array
@@ -136,6 +137,7 @@ export default function tubesDetailPage({ params }: { params: { id: string } }) 
                 </div>
             </div>
         </div>
+        <Footer />
     </section>
   );
 }

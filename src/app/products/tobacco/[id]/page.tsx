@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import styles from "@/app/products/products.module.css";
+import Footer from "@/app/components/Footer";
 
 type Product = {
   id: number;
@@ -123,6 +124,7 @@ export default function PaperDetailPage({ params }: { params: { id: string } }) 
                 </div>
             </div>
         </div>
+        <Footer />
     </section>
   );
 }

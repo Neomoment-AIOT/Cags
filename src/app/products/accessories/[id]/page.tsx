@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaChevronRight } from 'react-icons/fa';
 import styles from "@/app/products/products.module.css";
-
+import Footer from "@/app/components/Footer";
 // Define the type for a single Product 
 // This should match the structure of an object in your new allProducts array
 type Product = {
@@ -129,7 +129,8 @@ export default function PaperDetailPage({ params }: { params: { id: string } }) 
                     )}
                 </div>
             </div>
-        </div>
+        </div> <Footer />
     </section>
+   
   );
 }

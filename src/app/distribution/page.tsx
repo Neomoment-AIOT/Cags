@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './distribution.module.css';
-
+import Footer from '@/app/components/Footer';
 const DistributionPage = () => {
   return (
     <>
@@ -86,7 +86,9 @@ const DistributionPage = () => {
             </p>
           </div>
         </div>
+       
       </section>
+       <Footer />
     </>
   );
 };

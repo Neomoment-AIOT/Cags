@@ -1,8 +1,9 @@
 /* components/DiscoverCags.module.css */
 
 /* Main Section Layout */
-.pageSection {
-  padding: 10% 0 5% 0;
+.DiscoverCagspageSection,
+.pageSection{
+  padding: 15% 0 15% 0;
   background-color: #f5f5f5; 
  
 }

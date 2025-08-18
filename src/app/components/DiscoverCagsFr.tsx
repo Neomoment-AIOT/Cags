@@ -20,7 +20,7 @@ const DiscoverCagsFr = ({ content }: DiscoverCagsProps) => {
     return null;
   }
   return (
-    <div className={styles.pageSection}>
+    <div className={styles.DiscoverCagspageSection}>
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.leftColumn}>
@@ -30,7 +30,7 @@ const DiscoverCagsFr = ({ content }: DiscoverCagsProps) => {
             </h2>
           </div>
           <div className={styles.rightColumn}>
-            <div className={styles.textContent} style={{ textAlign: 'start', lineHeight: '28px' }}>
+            <div className={styles.textContent} style={{ textAlign: 'start', lineHeight: '100%' }}>
               <p dangerouslySetInnerHTML={{ __html: content.line1 }} />
               <p><b>Définir l'avenir, honorer le passé.</b></p>
               <p>Notre voyage a commencé il y a plus de 40 ans en Turquie, terre légendaire du tabac turc, en tant que premier fabricant de papiers à rouler selon des normes internationales. Depuis lors, nous sommes les créateurs, producteurs et distributeurs de produits appréciés par des millions de personnes à travers le monde.</p>

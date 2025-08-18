@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumb from './Breadcrumb'; // Assuming a shared component
 import styles from "@/app/products/products.module.css";    // Reusing the same shared product styles
-
+import FooterAr from "@/app/components/FooterAr";
 // --- 1. Product Type Definition (FIXED) ---
 // The 'size' type is now updated to match the data for Cigarette Tubes.
 type TubeProduct = {
@@ -323,6 +323,7 @@ export default function TubesPage() {
           )}
         </div>
       </div>
+      <FooterAr />
     </section>
     
   );

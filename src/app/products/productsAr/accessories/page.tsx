@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumb from './Breadcrumb'; // Assuming a shared component
 import styles from "@/app/products/products.module.css";     // Assuming a shared component
-
+import FooterAr from "@/app/components/FooterAr";
 
 // 1. UPDATED Product Type: Added a 'type' property for better filtering.
 type AccessoryProduct = {
@@ -156,6 +156,7 @@ export default function AccessoriesPage() {
           )}
         </div>
       </div>
+      <FooterAr />
     </section>
   );
 }

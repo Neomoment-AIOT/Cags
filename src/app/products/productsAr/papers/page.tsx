@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Breadcrumb from './Breadcrumb'; // Assuming a shared component
 import styles from "@/app/products/products.module.css";     // Assuming a shared component
-
+import FooterAr from "@/app/components/FooterAr";
 // The type definition for a paper product
 type Product = {
   id: number;
@@ -627,6 +627,7 @@ export default function PapersPage() {
           )}
         </div>
       </div>
+      <FooterAr />
     </section>
   );
 }

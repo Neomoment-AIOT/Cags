@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaChevronRight } from 'react-icons/fa';
 import styles from "@/app/products/products.module.css";
-import FooterRu from '@/app/components/FooterRu';
+import FooterAr from '@/app/components/FooterAr';
 type Product = {
   id: number;
   category: string;
@@ -125,7 +125,7 @@ export default function PaperDetailPage({ params }: { params: { id: string } }) 
             </div>
         </div>
          <main>
-      <FooterRu />
+      <FooterAr />
     </main>
     </section>
   );

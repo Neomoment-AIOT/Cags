@@ -392,7 +392,7 @@
 
 .specification {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   width: 100%;
 }
@@ -403,7 +403,7 @@
 }
 @media (min-width: 768px) and (max-width: 890px) {
   .rightsidedtip {
-    margin-left: 55%;
+    margin-left: 1%;
   }
   .Arabcrightsidedtip{
 margin-right: 8rem;
@@ -411,7 +411,7 @@ margin-right: 8rem;
 }
 @media (min-width: 890px) and (max-width: 992px) {
   .rightsidedtip {
-    margin-left: 105%;
+    margin-left: 5%;
   }
     .Arabcrightsidedtip{
   margin-right: 10rem;
@@ -431,7 +431,7 @@ margin-right: 8rem;
 }
 @media (min-width: 1024px) and (max-width:1190px) {
   .rightsidedtip {
-    margin-left: 140%;
+    margin-left: 13%;
   }
     .Arabcrightsidedtip{
   margin-right: 15rem;
@@ -439,7 +439,7 @@ margin-right: 8rem;
 }
 @media (min-width: 1190px) and (max-width:1280px) {
   .rightsidedtip {
-    margin-left: 190%;
+    margin-left: 85%;
   }
     .Arabcrightsidedtip{
   margin-right: 20rem;
@@ -447,7 +447,7 @@ margin-right: 8rem;
 }
 @media (min-width: 1280px) and (max-width:1440px) {
   .rightsidedtip {
-    margin-left: 290%;
+    margin-left: 160%;
   }
     .Arabcrightsidedtip{
   margin-right: 25rem;
@@ -455,7 +455,7 @@ margin-right: 8rem;
 }
 @media (min-width: 1440px) and (max-width:1620px) {
   .rightsidedtip {
-    margin-left: 401%;
+    margin-left:140%;
   }
     .Arabcrightsidedtip{
   margin-right: 33rem;
@@ -572,7 +572,7 @@ margin-right: 8rem;
   text-align: right;
 }
     .specification {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
     padding: 0;
     margin:0;

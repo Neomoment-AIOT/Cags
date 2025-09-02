@@ -2,7 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './ProductGrid.module.css';
 
-const ProductCard = ({ title, subtitle, link, productImg, isExternal = false }) => {
+interface ProductCardProps {
+  title: string;
+  subtitle: string;
+  link: string;
+  productImg: string;
+  isExternal?: boolean;
+}
+
+const ProductCard = ({ title, subtitle, link, productImg, isExternal = false }: ProductCardProps) => {
   // --- A NOTE ON IMAGE PATHS ---
   // The paths "/fav.png" and "/righticon.png" assume these images
   // are located directly inside your project's "public" folder.

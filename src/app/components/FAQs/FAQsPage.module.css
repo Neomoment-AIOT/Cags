@@ -1,5 +1,5 @@
 /* BrandsPage.module.css */
-body {
+.pageContainer {
   background-color: #f5f5f5;
 }
 
@@ -39,7 +39,7 @@ padding: 0 5%;
 
 /* --- Breadcrumbs --- */
 .pageTitleContainer {
-  padding: 9% 0;
+  padding: 3% 0;
   background-color: #f5f5f5;
   border-bottom: 0px solid #161616;
 }

@@ -46,16 +46,19 @@
 }
 
 .menu_item {
-  color: #1c242d;
-  text-decoration: none;
+  /* margin-top:0.5%; */
   font-size: 14px;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-  font-weight: normal;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #1c242d;
   letter-spacing: 2px;
-  padding: 3px 12px;
+  padding: 3px 15px;
   display: inline-flex;
     gap:20px;
   cursor: pointer;
+  -webkit-font-smoothing: antialiased !important;
+    -webkit-text-size-adjust: 100% !important;
   transition: color 0.2s ease-in-out;
 }
 
@@ -68,7 +71,7 @@
 .contactSubMenu_ItemArrow {
   color: #1c242d;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: 600;
   text-transform: uppercase;
@@ -79,7 +82,9 @@
     /* font-size: 15px; */
 }
 .Submenu_Item {
-  line-height: 40px;
+  line-height: auto;
+  padding: 10%;
+  max-width: 90%;
 
 }
 
@@ -87,8 +92,7 @@
   font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: normal;
   color: #1c242d;
-  font-size: 14px;
-  line-height: 24px;
+  line-height: 25px;
   margin-bottom: 10%;
 }
 

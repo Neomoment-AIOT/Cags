@@ -7,6 +7,13 @@ import { FaChevronRight } from 'react-icons/fa';
 import styles from "@/app/products/products.module.css";
 import FooterRu from '@/app/components/FooterRu';
 
+export async function generateStaticParams() {
+  return allProducts
+    .filter((product) => product.category === 'tobacco')
+    .map((product) => ({
+      id: product.id.toString(),
+    }));
+}
 // Define the type for a single Product 
 // This should match the structure of an object in your new allProducts array
 type Product = {
@@ -24,14 +31,18 @@ type Product = {
 };
 
 // This function now works correctly with the new flat data structure
-function getProductById({ id }: { id: string; }): Product | undefined {
+//function getProductById({ id }: { id: string; }): Product | undefined {
+function getProductById(id: string): Product | undefined {
   return allProducts.find(
     (product) => product.category === 'tobacco' && product.id.toString() === id
   );
 }
 
-export default function PaperDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById({ id: params.id });
+//export default function PaperDetailPage({ params }: { params: { id: string } }) {
+export default async function PaperDetailPage({ params }: { params: Promise<{ id: string }> }) {
+//const product = getProductById({ id: params.id });
+const { id } = await params;
+const product = getProductById(id);
 
   if (!product) {
     notFound();

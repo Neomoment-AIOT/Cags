@@ -20,8 +20,9 @@ async function getPostData(slug: string): Promise<Post | undefined> {
   return posts.find((post) => post.slug === slug && post.published);
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPostData(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = await getPostData(resolvedParams.slug);
   if (!post) return {};
   return {
     title: post.title,
@@ -40,8 +41,9 @@ export async function generateStaticParams() {
     .map((post) => ({ slug: post.slug }));
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
-  const post = await getPostData(params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const post = await getPostData(resolvedParams.slug);
 
   if (!post) {
     notFound();
@@ -49,29 +51,29 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
   return (
     <div>
-    <main className={styles.singlepostContainer}>
-      <header className={styles.singlepostHeader}>
-        <img src={post.image} alt={post.title} className={styles.singlepostImage}  />
-        <h1 className={styles.singlepostTitle}>{post.title}</h1>
-        <p className={styles.postDate}>
-          <em>Published on {new Date(post.date).toLocaleDateString()}</em>
-        </p>
-      </header>
+      <main className={styles.singlepostContainer}>
+        <header className={styles.singlepostHeader}>
+          <img src={post.image} alt={post.title} className={styles.singlepostImage} />
+          <h1 className={styles.singlepostTitle}>{post.title}</h1>
+          <p className={styles.postDate}>
+            <em>Published on {new Date(post.date).toLocaleDateString()}</em>
+          </p>
+        </header>
 
-      <article className={styles.singlepostContent}>{post.content}</article>
+        <article className={styles.singlepostContent}>{post.content}</article>
 
-      <footer className={styles.singlepostFooter}>
-        <strong>Keywords:</strong>
-        <div className={styles.keywords}>
-          {post.keywords.map((keyword, index) => (
-            <span key={index} className={styles.keyword}>
-              {keyword}
-            </span>
-          ))}
-        </div>
-      </footer>
-    </main>
-    <Footer/>
+        <footer className={styles.singlepostFooter}>
+          <strong>Keywords:</strong>
+          <div className={styles.keywords}>
+            {post.keywords.map((keyword, index) => (
+              <span key={index} className={styles.keyword}>
+                {keyword}
+              </span>
+            ))}
+          </div>
+        </footer>
+      </main>
+      <Footer />
     </div>
   );
 }

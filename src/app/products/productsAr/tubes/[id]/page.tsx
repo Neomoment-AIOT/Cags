@@ -5,6 +5,17 @@ import { notFound } from 'next/navigation';
 import { FaChevronRight } from 'react-icons/fa';
 import styles from "@/app/products/products.module.css";
 import FooterAr from '@/app/components/FooterAr';
+
+
+export async function generateStaticParams() {
+  return allProducts
+    .filter((product) => product.category === 'tubes')
+    .map((product) => ({
+      id: product.id.toString(),
+    }));
+}
+
+
 type Product = {
   id: number;
   category: string;
@@ -20,14 +31,31 @@ type Product = {
 };
 
 // This function now works correctly with the new flat data structure
-function getProductById({ id }: { id: string; }): Product | undefined {
-  return allProducts.find(
+//function getProductById({ id }: { id: string; }): Product | undefined {
+function getProductById(id: string): Product | undefined {
+
+const product = allProducts.find(
     (product) => product.category === 'tubes' && product.id.toString() === id
   );
+
+  if (!product) return undefined;
+
+  // 🔹 Fix: filter out undefined certifications to match Product type
+  return {
+    ...product,
+    certifications: product.certifications?.filter(
+      (cert): cert is { name: string; imageUrl: string } => cert !== undefined
+    ) ?? [],
+  };
 }
 
-export default function PaperDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById({ id: params.id });
+
+//export default function PaperDetailPage({ params }: { params: { id: string } }) {
+export default async function PaperDetailPage({ params }: { params: Promise<{ id: string }> }) {
+ 
+//const product = getProductById({ id: params.id });
+const { id } = await params;
+const product = getProductById(id);
 
   if (!product) {
     notFound();

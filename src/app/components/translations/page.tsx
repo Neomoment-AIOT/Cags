@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
 
 // You can imagine this is your page component located at a path like `app/translations/page.tsx`

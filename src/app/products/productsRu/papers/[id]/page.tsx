@@ -9,6 +9,14 @@ import { FaChevronRight } from 'react-icons/fa';
 import styles from "@/app/products/products.module.css";
 import FooterRu from '@/app/components/FooterRu';
 
+
+export async function generateStaticParams() {
+  return allProducts
+    .filter((product) => product.category === 'papers')
+    .map((product) => ({
+      id: product.id.toString(),
+    }));
+}
 // Define the type for a single Product 
 // This should match the structure of an object in your new allProducts array
 type Product = {
@@ -24,18 +32,34 @@ type Product = {
      imageUrl: string; label: string; value: string }[];
   certifications: { name: string; imageUrl: string }[];
 };
+function getProductById(id: string): Product | undefined {
 
 // This function now works correctly with the new flat data structure
-function getProductById({ id }: { id: string; }): Product | undefined {
-  return allProducts.find(
+//function getProductById({ id }: { id: string; }): Product | undefined {
+  const product = allProducts.find(
     (product) => product.category === 'papers' && product.id.toString() === id
   );
+
+  if (!product) return undefined;
+
+  // 🔹 Fix: filter out undefined certifications to match Product type
+  return {
+    ...product,
+    certifications: product.certifications?.filter(
+      (cert): cert is { name: string; imageUrl: string } => cert !== undefined
+    ) ?? [],
+  };
 }
 
 
 
-export default function PaperDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById({ id: params.id });
+
+//export default function PaperDetailPage({ params }: { params: { id: string } }) {
+  //const product = getProductById({ id: params.id });
+export default async function PaperDetailPage({ params }: { params: Promise<{ id: string }> }) {
+
+  const { id } = await params;
+const product = getProductById(id);
 
   if (!product) {
     notFound();

@@ -20,7 +20,7 @@ const slides = [
 
 export default function Slider() {
   return (
-    <div className="relative mt-5 w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[480px] xl:h-[550px]">
+    <div className="relative w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[480px] xl:h-[550px]">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={0}

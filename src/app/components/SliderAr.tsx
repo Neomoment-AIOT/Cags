@@ -15,7 +15,7 @@ const slides = [
 export default function Slider() {
   return (
     <div
-      className="relative mt-5 w-full h-[200px] sm:h-[300px] md:h-[550px] lg:h-[600px] xl:h-[680px]"
+      className="relative mt-0 w-full h-[200px] sm:h-[300px] md:h-[550px] lg:h-[600px] xl:h-[680px]"
       dir="rtl" // Important for Arabic direction
     >
       <Swiper

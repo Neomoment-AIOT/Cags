@@ -3,7 +3,16 @@ import Link from 'next/link';
 import styles from './BrandsPage.module.css';
 import Footer from '../Footer';
 
-const brandsData = [
+// Define the type for brand data
+interface BrandData {
+  title: string;
+  tagline: string;
+  description: string;
+  imageUrl: string;
+  imagePosition: 'left' | 'right';
+}
+
+const brandsData: BrandData[] = [
   {
     title: 'Watson',
     tagline: 'A Time-Honored Tradition of Quality.',
@@ -42,7 +51,7 @@ const brandsData = [
   {
     title: 'Young Master',
     tagline: 'For the Bold and Adventurous.',
-    description: "Inspired by the free-spirited and daring, the Young Master brand curates a selection of unbleached brown rolling papers, cigarette tubes, and paper tips that that echo the call of the wild. Designed for wanderers, rebels, and dreamers, each product, especially our distinctive rolling papers, celebrates the unconventional. Their unique specifications serve as a testament to the brand's daring nature. Immerse yourself in the thrill of Young Master's offerings, and let every roll of our unbleached brown paper ignite the adventurous spirit in you.",
+    description: "Inspired by the free-spirited and daring, the Young Master brand curates a selection of unbleached brown rolling papers, cigarette tubes, and paper tips that echo the call of the wild. Designed for wanderers, rebels, and dreamers, each product, especially our distinctive rolling papers, celebrates the unconventional. Their unique specifications serve as a testament to the brand's daring nature. Immerse yourself in the thrill of Young Master's offerings, and let every roll of our unbleached brown paper ignite the adventurous spirit in you.",
     imageUrl: '/brands/860c9cdd0b974149bfbe914829c56c86.png',
     imagePosition: 'left'
   },
@@ -62,7 +71,16 @@ const brandsData = [
   },
 ];
 
-const BrandFeature = ({ title, tagline, description, imageUrl, imagePosition }) => {
+// Define the props interface for BrandFeature component
+interface BrandFeatureProps {
+  title: string;
+  tagline: string;
+  description: string;
+  imageUrl: string;
+  imagePosition: 'left' | 'right';
+}
+
+const BrandFeature = ({ title, tagline, description, imageUrl, imagePosition }: BrandFeatureProps) => {
   const desktopLayoutClass = imagePosition === 'right' 
     ? styles.imageRightOnDesktop 
     : styles.imageLeftOnDesktop;
@@ -138,10 +156,7 @@ const BrandsPage = () => {
                 </div>
                 <div className={styles.lineSeparator}></div>
                 <p className={styles.description}>
-                 
-
-Our brand lineup boasts a rich history featuring renowned brands such as CRP®, SIR BADGER®, WATSON®, YOUNG MASTER®, 10BAK®, IMPRT®, ALLS®, and many others. With over four decades in the industry, our legacy is marked by innovation, outstanding product quality, and an enduring bond with our customers. Spanning 33 countries, our influence is strengthened by our variety of registered trademarks and esteemed brands that have won the hearts of global followers.
-
+                  Our brand lineup boasts a rich history featuring renowned brands such as CRP®, SIR BADGER®, WATSON®, YOUNG MASTER®, 10BAK®, IMPRT®, ALLS®, and many others. With over four decades in the industry, our legacy is marked by innovation, outstanding product quality, and an enduring bond with our customers. Spanning 33 countries, our influence is strengthened by our variety of registered trademarks and esteemed brands that have won the hearts of global followers.
                 </p>
               </div>
             </div>

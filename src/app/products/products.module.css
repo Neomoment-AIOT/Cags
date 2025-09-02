@@ -195,6 +195,7 @@
   border-bottom: none;
   background-color: #f5f5f5;
   opacity: 0;
+  /* margin-top: 6%; */
   animation: fadeIn 0.6s ease-out 0.2s forwards;
 }
 
@@ -544,6 +545,9 @@ margin-right: 8rem;
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+  .pageTitleCont{
+    margin-top: 10%;
+  }
   .filterContainer {
     max-width: 100%;
     flex-direction: column;
@@ -583,6 +587,7 @@ margin-right: 8rem;
 @media (max-width: 480px) {
   .pageTitleCont {
     padding-bottom: 50px;
+    margin-top: 15%;
   }
   
   .productGrid {

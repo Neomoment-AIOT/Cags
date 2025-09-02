@@ -6,6 +6,14 @@ import { notFound } from 'next/navigation';
 import styles from "@/app/products/products.module.css";
 import Footer from "@/app/components/Footer";
 
+
+export async function generateStaticParams() {
+  return allProducts
+    .filter((product) => product.category === 'tubes')
+    .map((product) => ({
+      id: product.id.toString(),
+    }));
+}
 // Define the type for a single Product 
 // This should match the structure of an object in your new allProducts array
 type Product = {
@@ -22,15 +30,34 @@ type Product = {
 };
 
 // This function now works correctly with the new flat data structure
-function getProductById({ id }: { id: string; }): Product | undefined {
-  return allProducts.find(
+//function getProductById({ id }: { id: string; }): Product | undefined {
+function getProductById(id: string): Product | undefined {
+  
+const product = allProducts.find(
     (product) => product.category === 'tubes' && product.id.toString() === id
   );
+
+  if (!product) return undefined;
+
+  // 🔹 Fix: filter out undefined certifications to match Product type
+  return {
+    ...product,
+    certifications: product.certifications?.filter(
+      (cert): cert is { name: string; imageUrl: string } => cert !== undefined
+    ) ?? [],
+  };
 }
 
-export default function tubesDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById({ id: params.id });
 
+
+//export default function tubesDetailPage({ params }: { params: { id: string } }) {
+  //const product = getProductById({ id: params.id });
+export default async function tubesDetailPage({ params }: { params: Promise<{ id: string }> }) {
+
+  const { id } = await params;
+  const product = getProductById(id);
+
+//const product = getProductById({ id });
   if (!product) {
     notFound();
   }

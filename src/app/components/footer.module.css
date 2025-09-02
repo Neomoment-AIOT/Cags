@@ -29,19 +29,20 @@
   outline: none !important;
   text-decoration: none;
   font-size: 14px;
-  line-height: 25px;
+    line-height: 25px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
   color: rgba(255, 255, 255, .7);
 }
 
 .footer .newsletter {
   padding-right: 10%;
-  font-size: 21px;
-  font-family: 'Lato', Arial, Helvetica, sans-serif;
-  font-weight: lighter;
-  color: white;
+  /* font-size: 21px; */
+  /* font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-weight: lighter; */
+  /* color: white; */
   padding-right: 30px;
+  margin-bottom: 1% ;
 }
 
 .footer .social {
@@ -57,7 +58,7 @@
 }
 .ul{
   font-weight: 600;
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
 .NewsletterSubheading{
    font-size: 0.875rem;    /* text-sm (14px) */
@@ -173,11 +174,11 @@
     /* Remove padding that can cause alignment issues on mobile */
     padding-right: 0;
   }
-  
-  SubmitButton:hover{
+/*   
+.SubmitButton:hover{
 color:black;
   }
-  
+   */
   .bottombarCopyright {
     text-align: left;
     margin-top: 2rem;

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Styles from './style.module.css';
+import Link from 'next/link';
 
 const IconChevronDown = ({ className }: { className: string }) => (
   <svg className={className} viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +67,9 @@ type Translations = {
     communicationUrl: string;
     waterpipe: string;
     waterpipeUrl: string;
+        tagline: string;   // ✅ Added tagline
+    contactCta: string; // ✅ Added CTA text
+
   };
 };
 
@@ -78,6 +82,11 @@ export default function TranslatedHeader() {
   let timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const dropdownRefs = {
+    company: useRef<HTMLDivElement>(null),
+    products: useRef<HTMLDivElement>(null),
+    contact: useRef<HTMLDivElement>(null)
+  };
 
   const translations: Translations = {
     English: {
@@ -85,7 +94,7 @@ export default function TranslatedHeader() {
       company: "Company", companyUrl: "/about",
       brands: "Brands", brandsUrl: "/brands",
       products: "Products", productsUrl: "/products",
-      distribution: "Distribution", distributionUrl: "/distribution",
+      distribution: "Distribution", distributionUrl: '/distribution',
       news: "News", newsUrl: "/events",
       contact: "Contact", contactUrl: "/contact",
       language: "Language",
@@ -103,6 +112,9 @@ export default function TranslatedHeader() {
       papers: "Rolling Papers", papersUrl: "/products/papers",
       communication: "Communication", communicationUrl: "/contact",
       waterpipe: "Waterpipes", waterpipeUrl: "http://www.my10bak.com/",
+      tagline: "Join Our Distribution Network and Grow Your Business",
+      contactCta: "CONTACT US ➜"
+
     },
     Russian: {
       home: "Главная", homeUrl: "/home/HomeRu",
@@ -127,6 +139,9 @@ export default function TranslatedHeader() {
       papers: "Бумага", papersUrl: "/products/productsRu/papers",
       communication: "Связь", communicationUrl: "/contact/contactRu",
       waterpipe: "Вода", waterpipeUrl: "http://www.my10bak.com/",
+            tagline: "Присоединяйтесь к нашей дистрибьюторской сети и развивайте свой бизнес",
+      contactCta: "СВЯЖИТЕСЬ С НАМИ ➜"
+
     },
     French: {
       home: "Accueil", homeUrl: "/home/HomeFr",
@@ -151,6 +166,10 @@ export default function TranslatedHeader() {
       papers: "Papiers", papersUrl: "/products/productsFr/papers",
       communication: "Communication", communicationUrl: "/contact/contactFr",
       waterpipe: "Eau", waterpipeUrl: "http://www.my10bak.com/",
+            tagline: "Rejoignez notre réseau de distribution et développez votre entreprise",
+
+            contactCta: "CONTACTEZ-NOUS ➜"
+
     },
     Arabic: {
       home: "الرئيسية", homeUrl: "/home/HomeAr",
@@ -175,6 +194,8 @@ export default function TranslatedHeader() {
       papers: "أوراق", papersUrl: "/products/productsAr/papers",
       communication: "التواصل", communicationUrl: "/contact/contactAr",
       waterpipe: "الماء", waterpipeUrl: "http://www.my10bak.com/",
+        tagline: "انضم إلى شبكة التوزيع الخاصة بنا وادعم أعمالك التجارية",
+      contactCta: "← اتصل بنا"
     }
   };
 
@@ -220,6 +241,15 @@ export default function TranslatedHeader() {
       ) {
         setIsMenuOpen(false);
       }
+      
+      // Check if click is outside any dropdown
+      const isOutsideAllDropdowns = Object.values(dropdownRefs).every(
+        ref => ref.current && !ref.current.contains(event.target as Node)
+      );
+      
+      if (isOutsideAllDropdowns && openDropdown) {
+        setOpenDropdown(null);
+      }
     };
 
     if (isMenuOpen) {
@@ -233,7 +263,7 @@ export default function TranslatedHeader() {
       document.removeEventListener('mousedown', handleClickOutside);
       document.body.style.overflow = 'auto';
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, openDropdown]);
 
   useEffect(() => {
     return () => {
@@ -247,7 +277,7 @@ export default function TranslatedHeader() {
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpenDropdown(null), 500);
+    timeoutRef.current = setTimeout(() => setOpenDropdown(null), 300);
   };
 
   const toggleDropdown = (name: string) => {
@@ -292,110 +322,61 @@ export default function TranslatedHeader() {
   };
 
   return (
-    <header className={`w-full fixed top-0 z-[1000] transition-shadow duration-300 ${isScrolled ? 'shadow-lg bg-white/95 backdrop-blur-sm' : 'bg-white'}`}>
+    <header className={`w-full mb-0 top-0 z-[1000] transition-shadow duration-300 ${isScrolled ? 'shadow-lg bg-white/95 backdrop-blur-sm' : 'bg-white'}`}>
       <div className="border-b border-black">
         <div className="container-fluid mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`flex items-center justify-between h-20 p-2`}>
-            <a href="/" className="flex-shrink-0 flex items-center">
+            <Link href="/" className="flex-shrink-0 flex items-center">
               <img src="/Logo.png" alt="Logo" className="h-10 mr-4 ml-2 p-1" onError={(e) => e.currentTarget.src = 'https://placehold.co/150x40?text=Logo'} />
-            </a>
+            </Link>
 
             {/* Desktop Menu */}
             <nav className={`hidden xl:flex ${language === 'Arabic' ? 'flex-row' : ''}`}>
-              <a href={t.homeUrl} className={Styles.menu_item}>{t.home}</a>
+              <Link href={t.homeUrl} className={Styles.menu_item}>{t.home}</Link>
               
               {/* Company Dropdown */}
-              <div className={Styles.dropdownMainMenu_Item}>
+              <div 
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('company')}
+                onMouseLeave={handleMouseLeave}
+                ref={dropdownRefs.company}
+              >
                 <div
                   className={`${Styles.menu_item} cursor-pointer`}
-                  onMouseEnter={() => handleMouseEnter('company')}
-                  onMouseLeave={handleMouseLeave}
                 >
                   {t.company}
                 </div>
-                {openDropdown === 'company' && (
-                  <div 
-                    className={`absolute mt-4 w-48 bg-[#E7E6E6] shadow-lg py-1 z-50`}
-                    onMouseEnter={() => handleMouseEnter('company')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {subMenus.company.map((item) => (
-                      <a 
-                        key={item.name}
-                        href={item.url}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-white-100"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
               </div>
               
-              <a href={t.brandsUrl} className={Styles.menu_item}>{t.brands}</a>
+              <Link href={t.brandsUrl} className={Styles.menu_item}>{t.brands}</Link>
               
               {/* Products Dropdown */}
-              <div className={Styles.dropdownMainMenu_Item}>
+              <div 
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('products')}
+                onMouseLeave={handleMouseLeave}
+                ref={dropdownRefs.products}
+              >
                 <div
                   className={`${Styles.menu_item} cursor-pointer`}
-                  onMouseEnter={() => handleMouseEnter('products')}
-                  onMouseLeave={handleMouseLeave}
                 >
                   {t.products}
                 </div>
-                {openDropdown === 'products' && (
-                  <div 
-                    className={`absolute mt-4 w-48 bg-[#E7E6E6] shadow-lg py-1 z-50`}
-                    onMouseEnter={() => handleMouseEnter('products')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {subMenus.products.map((item) => (
-                      <a 
-                        key={item.name}
-                        href={item.url}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-white-100"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
               </div>
               
-              <a href={t.distributionUrl} className={Styles.menu_item}>{t.distribution}</a>
-              <a href={t.newsUrl} className={Styles.menu_item}>{t.news}</a>
+              <Link href={t.distributionUrl} className={Styles.menu_item}>{t.distribution}</Link>
+              <Link href={t.newsUrl} className={Styles.menu_item}>{t.news}</Link>
               
               {/* Contact Dropdown */}
-              <div className={Styles.dropdownMainMenu_Item}>
-                <div
-                  className={`${Styles.menu_item} cursor-pointer`}
-                  onMouseEnter={() => handleMouseEnter('contact')}
-                  onMouseLeave={handleMouseLeave}
-                >
+              <div className="relative" onMouseEnter={() => handleMouseEnter('contact')} onMouseLeave={handleMouseLeave} ref={dropdownRefs.contact}  >
+                <div className={`${Styles.menu_item} cursor-pointer`}>
                   {t.contact}
                 </div>
-                {openDropdown === 'contact' && (
-                  <div 
-                    className={`absolute mt-4 w-48 bg-[#E7E6E6] shadow-lg py-1 z-50`}
-                    onMouseEnter={() => handleMouseEnter('contact')}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {subMenus.contact.map((item) => (
-                      <a 
-                        key={item.name}
-                        href={item.url}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-white-100"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
               </div>
               
               {/* Language Dropdown */}
               <div className="relative">
-                <a
+                <Link
                   href="#"
                   onClick={(e) => {
                     e.preventDefault();
@@ -404,21 +385,206 @@ export default function TranslatedHeader() {
                   className={Styles.menu_item}
                 >
                   {t.language}
-                </a>
+                </Link>
                 {openDropdown === 'language' && (
                   <div className={`${Styles.langMainmenu}`} style={{  top: '100%', [language === 'Arabic' ? 'left' : 'left']: 0, }}>
                     {otherLanguages.map(lang => (
-                      <button 
-                        key={lang} 
-                        onClick={() => handleLanguageChange(lang)} 
-                        className={Styles.langSubmenu}>
-                        {lang.toUpperCase()}
-                      </button>
+                      <Link 
+                          key={lang} 
+    href={translations[lang].homeUrl}
+    onClick={() => handleLanguageChange(lang)} 
+    className="block text-left w-full px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"
+>                        {lang.toUpperCase()}
+                      </Link>
                     ))}
                   </div>
                 )}
               </div>
             </nav>
+
+            {/* Full-width dropdown container - positioned fixed at the top below header */}
+            <div className="hidden xl:block fixed left-0 right-0 top-20 z-40">
+              {/* Company Dropdown - Handles English + Arabic in one block */}
+{openDropdown === 'company' && (
+  <div 
+    className={`w-[96%] bg-[#E7E6E6] shadow-lg py-6 px-6 ml-8 mr-4 transition-all duration-300 ease-in-out ${language === 'Arabic' ? 'text-right' : ''}`}
+    style={{ animation: 'fadeIn 0.3s ease-in-out' }}
+    onMouseEnter={() => handleMouseEnter('company')}
+    onMouseLeave={handleMouseLeave}
+  >
+    <div className={`container mx-auto px-4 flex ${language === 'Arabic' ? 'flex-row' : ''}`}>
+      
+      {/* Title Column */}
+      <div className={`w-2/8 ${language === 'Arabic' ? 'pl-8 border-l-[3px]' : 'pr-8 border-r-[3px]'} border-white`}>
+        <h3 className="text-[20px] leading-[25px] mt-1 mb-[3px] pb-[10px] m-2 uppercase font-lato font-lighter text-[#585a5f] border-b border-[#585a5f]">
+          {t.company}
+        </h3>
+      </div>
+
+      {/* Submenu Links */}
+      <div className={`w-2/8 grid grid-cols-1 gap-4 ${language === 'Arabic' ? 'pr-4' : 'pl-8'}`}>
+        {subMenus.company.map((item, index) => (
+          <Link 
+            key={item.name}
+            href={item.url}
+            className="text-[15px] text-[#1c242d] block uppercase
+            font-semibold leading-[20px] no-underline pl-0
+            min-w-[160px] hover:text-gray-600"
+            style={{ animationDelay: `${index * 0.05}s` }}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Contact / CTA */}
+      <div className={`w-4/8 ${language === 'Arabic' ? 'pr-6' : 'pl-8'}`}>
+        {language === 'Arabic' ? (
+          <>
+            <p className="text-lg w-full text-black mb-2">
+              انضم إلى شبكة التوزيع الخاصة بنا وادعم أعمالك التجارية
+            </p>
+            <Link href={t.contactUrl} className="flex justify-start text-[20px] text-black font-bold transition-colors hover:text-gray-700">
+              ← اتصل بنا
+            </Link>
+          </>
+        ) : (
+          <>
+      <p className="text-lg font-light w-full text-black mb-8">{t.tagline}</p>
+            <Link href={t.contactUrl} className="flex text-[20px] text-black font-light mt-6 transition-colors">
+                  {t.contactCta}
+
+            </Link>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+
+              
+              
+              {/* Products Dropdown */}
+              {openDropdown === 'products' && (
+              <div 
+    className={`w-[96%] bg-[#E7E6E6] shadow-lg py-6 px-6 ml-8 mr-4 transition-all duration-300 ease-in-out ${language === 'Arabic' ? 'text-right' : ''}`}
+    style={{ animation: 'fadeIn 0.3s ease-in-out' }}
+    onMouseEnter={() => handleMouseEnter('products')}
+    onMouseLeave={handleMouseLeave}
+  >
+                  <div className="container mx-auto px-4 flex">
+                    {/* Main Title Section */}
+                    <div className={`w-2/8 ${language === 'Arabic' ? 'pl-8 border-l-[3px]' : 'pr-8 border-r-[3px]'} border-white`}>
+                      <h3 className="text-[20px] leading-[25px] mt-1 mb-[3px] pb-[10px] m-0 uppercase font-lato font-lighter text-[#585a5f] border-b border-[#585a5f]">{t.products}</h3>
+                      <Link 
+                        href={t.productsUrl}
+                        className="text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                      >
+                        {/* {t.overview} */}
+                      </Link>
+                    </div>
+                   
+                    
+                    {/* Submenu Items */}
+                    <div  className={`w-2/8 grid grid-cols-1 gap-4 ${language === 'Arabic' ? 'pr-4' : 'pl-8'}`}>
+                      {subMenus.products.map((item, index) => (
+                        <Link 
+                          key={item.name}
+                          href={item.url}
+                          className="text-[15px] text-[#1c242d] uppercase block font-semibold leading-[20px] no-underline min-w-[160px] p-[2px] pl-0"
+                          style={{ animationDelay: `${index * 0.05}s` }}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                    
+                    {/*Right Sided Column*/}
+                    <div className={`w-4/8 ${language === 'Arabic' ? 'pr-6' : 'pl-8'}`}>
+        {language === 'Arabic' ? (
+          <>
+            <p className="text-lg w-full text-black mb-2">
+              انضم إلى شبكة التوزيع الخاصة بنا وادعم أعمالك التجارية
+            </p>
+            <Link href={t.contactUrl} className="flex justify-start text-[20px] text-black font-bold transition-colors hover:text-gray-700">
+              ← اتصل بنا
+            </Link>
+          </>
+        ) : (
+          <>
+      <p className="text-lg font-light w-full text-black mb-8">{t.tagline}</p>
+            <Link href={t.contactUrl} className="flex text-[20px] text-black font- mt-6 transition-colors">
+        {t.contactCta}
+
+            </Link>
+
+          </>
+        )}
+      </div>
+
+                  </div>
+                </div>
+              )}
+              
+              {/* Contact Dropdown */}
+              {openDropdown === 'contact' && (
+          <div 
+    className={`w-[96%] bg-[#E7E6E6] shadow-lg py-6 px-6 ml-8 mr-4 transition-all duration-300 ease-in-out ${language === 'Arabic' ? 'text-right' : ''}`}
+    style={{ animation: 'fadeIn 0.3s ease-in-out' }}
+    onMouseEnter={() => handleMouseEnter('contact')}
+    onMouseLeave={handleMouseLeave}
+  >
+                  <div className="container mx-auto ml-2 flex">
+                    {/* Main Title Section */}
+                    <div className={`w-2/8 ${language === 'Arabic' ? 'pl-8 border-l-[3px]' : 'pr-8 border-r-[3px]'} border-white`}>
+                      <h3 className="text-[20px] leading-[25px] mt-1 mb-[3px] pb-[10px] m-0 uppercase font-lato font-lighter text-[#585a5f] border-b border-[#585a5f]">{t.contact}</h3>
+                      <Link 
+                        href={t.contactUrl}
+                        className="text-sm text-gray-700 hover:text-gray-900 transition-colors "
+                      >
+                      </Link>
+                    </div>
+                    
+                    {/* Submenu Items */}
+                    <div  className={`w-2/8 grid grid-cols-1 gap-4 ${language === 'Arabic' ? 'pr-4' : 'pl-8'}`}>
+                      {subMenus.contact.map((item, index) => (
+                        <Link 
+                          key={item.name}
+                          href={item.url}
+                          className="text-[15px] uppercase text-[#1c242d] block font-semibold leading-[20px] no-underline min-w-[160px] p-[2px] pl-0 "
+                          style={{ animationDelay: `${index * 0.05}s` }}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                    {/*Right Sided Column*/}
+                    <div className={`w-4/8 ${language === 'Arabic' ? 'pr-6' : 'pl-8'}`}>
+        {language === 'Arabic' ? (
+          <>
+            <p className="text-lg w-full text-black mb-2">
+              انضم إلى شبكة التوزيع الخاصة بنا وادعم أعمالك التجارية
+            </p>
+            <Link href={t.contactUrl} className="flex justify-start text-[20px] text-black font-bold transition-colors hover:text-gray-700">
+              ← اتصل بنا
+            </Link>
+          </>
+        ) : (
+          <>
+      <p className="text-lg font-light w-full text-black mb-8">{t.tagline}</p>
+            <Link href={t.contactUrl} className="flex text-[20px] text-black font- mt-6 transition-colors">
+         {t.contactCta}
+
+            </Link>
+          </>
+        )}
+      </div>
+
+
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Mobile Menu Button */}
             {isMobile && (
@@ -450,7 +616,7 @@ export default function TranslatedHeader() {
           }}
         >
           <nav className="flex flex-col p-4 space-y-4">
-            <a href={t.homeUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.home}</a>
+            <Link href={t.homeUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.home}</Link>
             
             {/* Company Mobile Menu */}
             <div>
@@ -464,20 +630,20 @@ export default function TranslatedHeader() {
               {openDropdown === 'company' && (
                 <div className={`${language === 'Arabic' ? 'pr-4' : 'pl-4'} mt-2 space-y-2`}>
                   {subMenus.company.map((item) => (
-                    <a 
+                    <Link 
                       key={item.name}
                       href={item.url}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
             
-            <a href={t.brandsUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.brands}</a>
+            <Link href={t.brandsUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.brands}</Link>
             
             {/* Products Mobile Menu */}
             <div>
@@ -491,21 +657,21 @@ export default function TranslatedHeader() {
               {openDropdown === 'products' && (
                 <div className={`${language === 'Arabic' ? 'pr-4' : 'pl-4'} mt-2 space-y-2`}>
                   {subMenus.products.map((item) => (
-                    <a 
+                    <Link 
                       key={item.name}
                       href={item.url}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
             
-            <a href={t.distributionUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.distribution}</a>
-            <a href={t.newsUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.news}</a>
+            <Link href={t.distributionUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.distribution}</Link>
+            <Link href={t.newsUrl} className={Styles.menu_item} onClick={() => setIsMenuOpen(false)}>{t.news}</Link>
             
             {/* Contact Mobile Menu */}
             <div>
@@ -519,14 +685,14 @@ export default function TranslatedHeader() {
               {openDropdown === 'contact' && (
                 <div className={`${language === 'Arabic' ? 'pr-4' : 'pl-4'} mt-2 space-y-2`}>
                   {subMenus.contact.map((item) => (
-                    <a 
+                    <Link 
                       key={item.name}
                       href={item.url}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -544,7 +710,7 @@ export default function TranslatedHeader() {
               {openDropdown === 'language' && (
                 <div className="mt-0 space-y-2">
                   {otherLanguages.map(lang => (
-                    <button 
+                    <button
                       key={lang} 
                       onClick={() => handleLanguageChange(lang)} 
                       className="block text-left w-full px-4 py-2 text-gray-700 hover:bg-gray-100 rounded"
@@ -558,6 +724,19 @@ export default function TranslatedHeader() {
           </nav>
         </div>
       )}
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </header>
   );
 }

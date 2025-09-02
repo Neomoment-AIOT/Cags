@@ -63,7 +63,15 @@ const brandsData = [
   },
 ];
 
-const BrandFeature = ({ title, tagline, description, imageUrl, imagePosition }) => {
+interface BrandFeatureProps {
+  title: string;
+  tagline: string;
+  description: string;
+  imageUrl: string;
+  imagePosition: string;
+}
+
+const BrandFeature = ({ title, tagline, description, imageUrl, imagePosition }: BrandFeatureProps) => {
   const desktopLayoutClass = imagePosition === 'left' 
     ? styles.imageRightOnDesktop 
     : styles.imageLeftOnDesktop;

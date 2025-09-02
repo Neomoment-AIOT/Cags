@@ -6,6 +6,15 @@ import { notFound } from 'next/navigation';
 import styles from "@/app/products/products.module.css";
 import Footer from "@/app/components/Footer";
 
+export async function generateStaticParams() {
+  return allProducts
+    .filter((product) => product.category === 'tobacco')
+    .map((product) => ({
+      id: product.id.toString(),
+    }));
+} 
+
+
 type Product = {
   id: number;
   category: string;
@@ -20,15 +29,20 @@ type Product = {
   certifications: { name: string; imageUrl: string }[];
 };
 // This function now works correctly with the new flat data structure
-function getProductById({ id }: { id: string; }): Product | undefined {
+//function getProductById({ id }: { id: string; }): Product | undefined {
+function getProductById(id: string): Product | undefined {
+
   return allProducts.find(
     (product) => product.category === 'tobacco' && product.id.toString() === id
   );
 }
 
-export default function PaperDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById({ id: params.id });
-
+//export default function PaperDetailPage({ params }: { params: { id: string } }) {
+export default async function PaperDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  
+//const product = getProductById({ id: params.id });
+const { id } = await params;
+const product = getProductById(id);
   // If the product doesn't exist, call notFound() to render the 404 page.
   // Returning it makes the control flow explicit.
   if (!product) {

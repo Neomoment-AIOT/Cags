@@ -89,7 +89,7 @@ const FAQsPage = () => {
       </div>
 
       {/* Hero Section */}
-      <section className={styles.pageSection}>
+      <section className={styles.pageContainer} > 
         <div className={styles.containerFluid}>
           <div className={styles.row}>
             <div className={styles.column}>

@@ -26,7 +26,7 @@ const DiscoverCags = ({ content }: DiscoverCagsProps) => {
           <div className={styles.leftColumn}>
             <h2 className={styles.sectionTitle}>
               Discover<br />
-              <span className={styles.bold}>Cags</span>
+              <span className={styles.bold}>CAGS</span>
             </h2>
           </div>
           <div className={styles.rightColumn}>

@@ -65,7 +65,7 @@ export default function FooterAr() {
           {/* Column 4: Newsletter */}
           <div className={style.col}>
             <h4 className={style.newsletter}>اشترك في النشرة الإخبارية</h4>
-        <p className={style.NewsletterSubheading}>
+        <p className={'${style.NewsletterSubheading},pr-0 pl-10'}>
               أدخل عنوان بريدك الإلكتروني كن أول من يعرف عن المنتجات الجديدة والتحديثات
             </p>
             <form

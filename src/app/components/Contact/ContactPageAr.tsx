@@ -28,8 +28,7 @@ const contactInfoData = [
   {
     icon: 'fas fa-map',
     title: 'عنوان المصنع',
-    details:
-      'Dindoğru Mahallesi, Pehlivanköy Yolu, Çimenlidere Mevkii, Bekler Küme Evleri No:1/11 Babaeski-Kırklareli',
+    details: 'Dindoğru Mahallesi, Pehlivanköy Yolu, Çimenlidere Mevkii, Bekler Küme Evleri No:1/11 Babaeski-Kırklareli',
   },
   {
     icon: 'fas fa-envelope',
@@ -38,32 +37,34 @@ const contactInfoData = [
   },
   {
     icon: 'fas fa-mobile',
-    title: 'رقم الهاتف ',
+    title: 'رقم الهاتف',
     details: <a href="tel:+902129162727">+90 212 916 27 27</a>,
   },
 ];
 
+// MODIFICATION 1: Update interface to match the working structure
 interface FormData {
-  name: string;
-  city: string;
-  country: string;
-  district: string;
-  email: string;
-  phone: string;
-  message: string;
-  consent: boolean;
+  'الاسم الكامل': string;
+  'المدينة': string;
+  'الدولة': string;
+  'الحي': string;
+  'البريد الإلكتروني': string;
+  'الهاتف': string;
+  'الرسالة': string;
+  'الموافقة': boolean;
 }
 
 const ContactPageAr = () => {
+  // MODIFICATION 2: Update initial state to match the new interface
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    city: '',
-    country: '',
-    district: '',
-    email: '',
-    phone: '',
-    message: '',
-    consent: false,
+    'الاسم الكامل': '',
+    'المدينة': '',
+    'الدولة': '',
+    'الحي': '',
+    'البريد الإلكتروني': '',
+    'الهاتف': '',
+    'الرسالة': '',
+    'الموافقة': false,
   });
 
   const [status, setStatus] = useState({
@@ -90,49 +91,52 @@ const ContactPageAr = () => {
     }
   };
 
+  // MODIFICATION 3: Revise submission logic to be consistent with other versions
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: '' });
 
+    const submissionData = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      submissionData.append(key, String(value));
+    });
+
+    submissionData.append('_subject', 'إرسال جديد من نموذج الاتصال (العربية)');
+    submissionData.append('_template', 'table');
+    submissionData.append('_cc', 'info@cagstobacco.com');
+    submissionData.append('_replyto', formData['البريد الإلكتروني']);
+
     try {
-      // Using FormSubmit.co service to send emails without backend
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-      
-      // Add additional hidden fields for better email formatting
-      formData.append('_subject', 'New Contact Form Submission from CAGS Website (Arabic)');
-      formData.append('_template', 'table');
-      formData.append('_cc', 'info@cagstobacco.com');
-      formData.append('_replyto', formData.get('email') as string);
-      
-      const response = await fetch('https://formsubmit.co/ajax/satis@cagstobacco.com', {
+      const response = await fetch('https://formsubmit.co/ajax/sales@cagstobacco.com', {
         method: 'POST',
-        body: formData,
+        body: submissionData,
+        headers: {
+            'Accept': 'application/json'
+        }
       });
 
       const result = await response.json();
       
       if (result.success) {
         setStatus({ submitting: false, success: true, error: '' });
-        // Reset form after successful submission
         setFormData({
-          name: '',
-          city: '',
-          country: '',
-          district: '',
-          email: '',
-          phone: '',
-          message: '',
-          consent: false,
+          'الاسم الكامل': '',
+          'المدينة': '',
+          'الدولة': '',
+          'الحي': '',
+          'البريد الإلكتروني': '',
+          'الهاتف': '',
+          'الرسالة': '',
+          'الموافقة': false,
         });
       } else {
-        throw new Error('Failed to send message');
+        throw new Error(result.message || 'فشل إرسال الرسالة');
       }
-    } catch (err) {
+    } catch (err: any) {
       setStatus({
         submitting: false,
         success: false,
-        error: 'There was an error sending your message. Please try again later.',
+        error: err.message || 'حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى في وقت لاحق.',
       });
     }
   };
@@ -152,9 +156,7 @@ const ContactPageAr = () => {
       <section className={`${styles.pageSection} ${styles.clearfix}`}>
         <div className={styles.container}>
           <div className={styles.formContainer}>
-            <h2 
-            className="text-right mr-62"
-            >
+            <h2 className="text-right mr-62">
               <span className={styles.fontLight}>اتصل بنا</span>
             </h2>
             <p className={styles.introText}>
@@ -165,62 +167,57 @@ const ContactPageAr = () => {
 
             <div className={styles.formWrapper}>
               <form id="contact-form" onSubmit={handleSubmit}>
-                {/* Add hidden honeypot field to prevent spam */}
                 <input type="checkbox" name="_honeypot" style={{display: 'none'}} tabIndex={-1} autoComplete="off" />
                 
+                {/* MODIFICATION 4: Update name attributes to match the new state keys */}
                 <div className={styles.row}>
                   <div className={styles.column}>
-                    <input type="text" name="name" className={styles.formControl} placeholder="الاسم-اللقب  *" required value={formData.name} onChange={handleChange} />
-                    <input type="text" name="city" className={styles.formControl} placeholder="المدينة *" required value={formData.city} onChange={handleChange} />
+                    <input type="text" name="الاسم الكامل" className={styles.formControl} placeholder="الاسم الكامل *" required value={formData['الاسم الكامل']} onChange={handleChange} />
+                    <input type="text" name="المدينة" className={styles.formControl} placeholder="المدينة *" required value={formData['المدينة']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <select name="country" className={styles.formControl} required value={formData.country} onChange={handleChange}>
-                      <option value="">الدولة  *</option>
+                    <select name="الدولة" className={styles.formControl} required value={formData['الدولة']} onChange={handleChange}>
+                      <option value="">الدولة *</option>
                       {countries.map((country) => (
                         <option key={country.value} value={country.value}>{country.label}</option>
                       ))}
                     </select>
-                    <input type="text" name="district" className={styles.formControl} placeholder="الحي  *" required value={formData.district} onChange={handleChange} />
+                    <input type="text" name="الحي" className={styles.formControl} placeholder="الحي *" required value={formData['الحي']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <input type="email" name="email" className={styles.formControl} placeholder="البريد الإلكتروني  * *" required value={formData.email} onChange={handleChange} />
-                    <input type="text" name="phone" className={styles.formControl} placeholder="رقم الهاتف  *" required value={formData.phone} onChange={handleChange} />
+                    <input type="email" name="البريد الإلكتروني" className={styles.formControl} placeholder="البريد الإلكتروني *" required value={formData['البريد الإلكتروني']} onChange={handleChange} />
+                    <input type="text" name="الهاتف" className={styles.formControl} placeholder="رقم الهاتف *" required value={formData['الهاتف']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <textarea name="message" rows={3} className={styles.formControl} placeholder="الرسالة *" required value={formData.message} onChange={handleChange}></textarea>
+                    <textarea name="الرسالة" rows={3} className={styles.formControl} placeholder="الرسالة *" required value={formData['الرسالة']} onChange={handleChange}></textarea>
                   </div>
                 </div>
 
                 <div className={styles.consentRow}>
                   <div className={styles.checkboxWrapper}>
-                    <input type="checkbox" name="consent" id="consent" required checked={formData.consent} onChange={handleChange} />
+                    <input type="checkbox" name="الموافقة" id="consent" required checked={formData['الموافقة']} onChange={handleChange} />
                   </div>
                   <div className={styles.consentText}>
                     <label htmlFor="consent" className={styles.label}>
-                      
-                                                    بالاشتراك في نشرتنا الإخبارية وتقديم عنوان بريدك الإلكتروني، فإنك توافق على معالجة ومشاركة معلوماتك الشخصية، بما في ذلك ولكن لا يقتصر على استقبال التحديثات، والعروض، والترقيات، والاتصالات البريدية المماثلة من
-                                                    CAGS TOBACCO AND TOBACCO PRODUCTS INC
-                                                    .، وشركاتها التابعة، وموظفيها، ومقدمي الخدمات الطرف الثالث المشاركين في خدمات الرسائل. يتم تقديم هذا الإشعار بما يتوافق مع لائحة حماية البيانات العامة ("GDPR") ويهدف إلى ضمان المعالجة القانونية وحماية بياناتك الشخصية. لمعرفة المزيد عن حقوقك فيما يتعلق بجمع ومعالجة بياناتك الشخصية، يرجى مراجعة سياسة الخصوصية لدينا أو الاتصال بنا على
-
-                                        
+                      بالاشتراك في نشرتنا الإخبارية وتقديم عنوان بريدك الإلكتروني، فإنك توافق على معالجة ومشاركة معلوماتك الشخصية، بما في ذلك ولكن لا يقتصر على استقبال التحديثات، والعروض، والترقيات، والاتصالات البريدية المماثلة من CAGS TOBACCO AND TOBACCO PRODUCTS INC.، وشركاتها التابعة، وموظفيها، ومقدمي الخدمات الطرف الثالث المشاركين في خدمات الرسائل. يتم تقديم هذا الإشعار بما يتوافق مع لائحة حماية البيانات العامة ("GDPR") ويهدف إلى ضمان المعالجة القانونية وحماية بياناتك الشخصية. لمعرفة المزيد عن حقوقك فيما يتعلق بجمع ومعالجة بياناتك الشخصية، يرجى مراجعة سياسة الخصوصية لدينا أو الاتصال بنا.
                     </label>
                   </div>
                 </div>
 
                 <div className={styles.submitRow}>
                   <button type="submit" className={styles.submitButton} disabled={status.submitting}>
-                    {status.submitting ? 'SENDING...' : 'إرسال  '}
+                    {status.submitting ? '...جارٍ الإرسال' : 'إرسال'}
                   </button>
                 </div>
 
                 {status.success && (
                   <div className={styles.alertSuccess}>
-                    Success! Your message has been sent to us.
+                    !نجاح! تم إرسال رسالتك بنجاح
                   </div>
                 )}
                 {status.error && (
                   <div className={styles.alertError}>
-                    Error! {status.error}
+                    !خطأ {status.error}
                   </div>
                 )}
               </form>
@@ -255,7 +252,6 @@ const ContactPageAr = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 >
-
                 </iframe>
               </div>
             </div>
@@ -270,7 +266,7 @@ const ContactPageAr = () => {
               <div key={index} className={styles.contactInfoColumn}>
                 <div className={styles.contactInfoBlock}>
                   <div className={styles.iconWrapper}>
-                    <i className={info.icon} style={{ fontSize: '35px', color: '#7e8082', verticalAlign: 'middle', }}></i>
+                    <i className={info.icon} style={{ fontSize: '35px', color: '#7e8082', verticalAlign: 'middle' }}></i>
                   </div>
                   <div className={styles.textWrapper}>
                     <h3><span className={styles.bold}>{info.title}</span></h3>
@@ -282,7 +278,7 @@ const ContactPageAr = () => {
           </div>
         </div>
       </section>
-        <FooterAr />
+      <FooterAr />
     </>
   );
 };

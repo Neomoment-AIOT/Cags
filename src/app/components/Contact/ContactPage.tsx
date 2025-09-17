@@ -4,7 +4,6 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import Link from 'next/link';
 import styles from './ContactPage.module.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-// import countries from './countryList.json'; // Removed as requested
 import Footer from '../Footer';
 
 const countries = [
@@ -15,56 +14,57 @@ const countries = [
   { value: "Andorra", label: "Andorra" },
   { value: "Angola", label: "Angola" },
   { value: "Pakistan", label: "Pakistan" },
-  { value: "Yemen", label: "Y Yemen" },
+  { value: "Yemen", label: "Yemen" },
   { value: "Zambia", label: "Zambia" },
   { value: "Zimbabwe", label: "Zimbabwe" },
 ];
 
 const contactInfoData = [
-  {
-    icon: 'fas fa-map',
-    title: 'HQ Address',
-    details: 'Torun Center Garden Office A Blok No:46 Şişli–İstanbul',
-  },
-  {
-    icon: 'fas fa-map',
-    title: 'Factory Address',
-    details:
-      'Dindoğru Mahallesi, Pehlivanköy Yolu, Çimenlidere Mevkii, Bekler Küme Evleri No:1/11 Babaeski-Kırklareli',
-  },
-  {
-    icon: 'fas fa-envelope',
-    title: 'Email',
-    details: <a href="mailto:info@cagstobacco.com">info@cagstobacco.com</a>,
-  },
-  {
-    icon: 'fas fa-mobile',
-    title: 'Call Us',
-    details: <a href="tel:+902129162727">+90 212 916 27 27</a>,
-  },
+    {
+        icon: 'fas fa-map',
+        title: 'HQ Address',
+        details: 'Torun Center Garden Office A Blok No:46 Şişli–İstanbul',
+    },
+    {
+        icon: 'fas fa-map',
+        title: 'Factory Address',
+        details: 'Dindoğru Mahallesi, Pehlivanköy Yolu, Çimenlidere Mevkii, Bekler Küme Evleri No:1/11 Babaeski-Kırklareli',
+    },
+    {
+        icon: 'fas fa-envelope',
+        title: 'Email',
+        details: <a href="mailto:info@cagstobacco.com">info@cagstobacco.com</a>,
+    },
+    {
+        icon: 'fas fa-mobile',
+        title: 'Call Us',
+        details: <a href="tel:+902129162727">+90 212 916 27 27</a>,
+    },
 ];
 
+// MODIFICATION 1: Update the interface to use your desired labels
 interface FormData {
-  name: string;
-  city: string;
-  country: string;
-  district: string;
-  email: string;
-  phone: string;
-  message: string;
-  consent: boolean;
+  'Full Name': string;
+  'City': string;
+  'Select Country': string;
+  'District': string;
+  'Email': string;
+  'Phone': string;
+  'Message': string;
+  'Consent': boolean;
 }
 
 const ContactPage = () => {
+  // MODIFICATION 2: Update the initial state to match the new interface
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    city: '',
-    country: '',
-    district: '',
-    email: '',
-    phone: '',
-    message: '',
-    consent: false,
+    'Full Name': '',
+    'City': '',
+    'Select Country': '',
+    'District': '',
+    'Email': '',
+    'Phone': '',
+    'Message': '',
+    'Consent': false,
   });
 
   const [status, setStatus] = useState({
@@ -95,26 +95,25 @@ const ContactPage = () => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: '' });
 
-    // **FIX START: Manually build FormData from state**
     const submissionData = new FormData();
-    // Append all key-value pairs from the component's state
+    // This will now use the updated keys like 'Full Name'
     Object.entries(formData).forEach(([key, value]) => {
       submissionData.append(key, String(value));
     });
 
-    // Add additional hidden fields for better email formatting
-    submissionData.append('_subject', 'New Contact Form Submission from CAGS Website');
+    // MODIFICATION 3: Update hidden fields for the new email template
+    submissionData.append('_subject', 'Query submitted from Contact Us page');
     submissionData.append('_template', 'table');
     submissionData.append('_cc', 'info@cagstobacco.com');
-    submissionData.append('_replyto', formData.email);
-    // **FIX END**
+    // Access the email using the new key
+    submissionData.append('_replyto', formData['Email']);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/rnasir15@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/sales@cagstobacco.com', {
         method: 'POST',
-        body: submissionData, // Use the manually created FormData
+        body: submissionData,
         headers: {
-            'Accept': 'application/json' // Recommended for FormSubmit AJAX
+            'Accept': 'application/json'
         }
       });
 
@@ -122,19 +121,18 @@ const ContactPage = () => {
       
       if (result.success) {
         setStatus({ submitting: false, success: true, error: '' });
-        // Reset form after successful submission
+        // Reset form using the new keys
         setFormData({
-          name: '',
-          city: '',
-          country: '',
-          district: '',
-          email: '',
-          phone: '',
-          message: '',
-          consent: false,
+            'Full Name': '',
+            'City': '',
+            'Select Country': '',
+            'District': '',
+            'Email': '',
+            'Phone': '',
+            'Message': '',
+            'Consent': false,
         });
       } else {
-        // Use the message from FormSubmit if available, otherwise use a generic one
         throw new Error(result.message || 'Failed to send message');
       }
     } catch (err: any) {
@@ -145,7 +143,6 @@ const ContactPage = () => {
       });
     }
   };
-
 
   return (
     <>
@@ -173,35 +170,35 @@ const ContactPage = () => {
 
             <div className={styles.formWrapper}>
               <form id="contact-form" onSubmit={handleSubmit}>
-                {/* Add hidden honeypot field to prevent spam */}
                 <input type="checkbox" name="_honeypot" style={{display: 'none'}} tabIndex={-1} autoComplete="off" />
                 
+                {/* MODIFICATION 4: Update the name and value attributes in your form inputs */}
                 <div className={styles.row}>
                   <div className={styles.column}>
-                    <input type="text" name="name" className={styles.formControl} placeholder="Full Name *" required value={formData.name} onChange={handleChange} />
-                    <input type="text" name="city" className={styles.formControl} placeholder="City *" required value={formData.city} onChange={handleChange} />
+                    <input type="text" name="Full Name" className={styles.formControl} placeholder="Full Name *" required value={formData['Full Name']} onChange={handleChange} />
+                    <input type="text" name="City" className={styles.formControl} placeholder="City *" required value={formData['City']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <select name="country" className={styles.formControl} required value={formData.country} onChange={handleChange}>
+                    <select name="Select Country" className={styles.formControl} required value={formData['Select Country']} onChange={handleChange}>
                       <option value="">Select Country *</option>
                       {countries.map((country) => (
                         <option key={country.value} value={country.value}>{country.label}</option>
                       ))}
                     </select>
-                    <input type="text" name="district" className={styles.formControl} placeholder="District *" required value={formData.district} onChange={handleChange} />
+                    <input type="text" name="District" className={styles.formControl} placeholder="District *" required value={formData['District']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <input type="email" name="email" className={styles.formControl} placeholder="E-mail *" required value={formData.email} onChange={handleChange} />
-                    <input type="text" name="phone" className={styles.formControl} placeholder="Phone Number *" required value={formData.phone} onChange={handleChange} />
+                    <input type="email" name="Email" className={styles.formControl} placeholder="E-mail *" required value={formData['Email']} onChange={handleChange} />
+                    <input type="text" name="Phone" className={styles.formControl} placeholder="Phone Number *" required value={formData['Phone']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <textarea name="message" rows={3} className={styles.formControl} placeholder="MESSAGE *" required value={formData.message} onChange={handleChange}></textarea>
+                    <textarea name="Message" rows={3} className={styles.formControl} placeholder="MESSAGE *" required value={formData['Message']} onChange={handleChange}></textarea>
                   </div>
                 </div>
 
                 <div className={styles.consentRow}>
                   <div className={styles.checkboxWrapper}>
-                    <input type="checkbox" name="consent" id="consent" required checked={formData.consent} onChange={handleChange} />
+                    <input type="checkbox" name="Consent" id="consent" required checked={formData['Consent']} onChange={handleChange} />
                   </div>
                   <div className={styles.consentText}>
                     <label htmlFor="consent" className={styles.label}>

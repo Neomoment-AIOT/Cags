@@ -4,7 +4,7 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import Link from 'next/link';
 import styles from './ContactPage.module.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Footer from '../Footer';
+import Footer from '../Footer'; // Assuming you have a French Footer component, you might want to change this import
 
 const countries = [
   { value: "Afghanistan", label: "Afghanistan" },
@@ -22,14 +22,13 @@ const countries = [
 const contactInfoData = [
   {
     icon: 'fas fa-map',
-    title: 'Adresse du siège social ',
+    title: 'Adresse du siège social',
     details: 'Torun Center Garden Office A Blok No:46 Şişli–İstanbul',
   },
   {
     icon: 'fas fa-map',
     title: "Adresse de l'usine",
-    details:
-      'Dindoğru Mahallesi, Pehlivanköy Yolu, Çimenlidere Mevkii, Bekler Küme Evleri No:1/11 Babaeski-Kırklareli',
+    details: 'Dindoğru Mahallesi, Pehlivanköy Yolu, Çimenlidere Mevkii, Bekler Küme Evleri No:1/11 Babaeski-Kırklareli',
   },
   {
     icon: 'fas fa-envelope',
@@ -43,27 +42,29 @@ const contactInfoData = [
   },
 ];
 
+// MODIFICATION 1: Update interface to match the working structure
 interface FormData {
-  name: string;
-  city: string;
-  country: string;
-  district: string;
-  email: string;
-  phone: string;
-  message: string;
-  consent: boolean;
+  'Nom complet': string;
+  'Ville': string;
+  'Pays': string;
+  'Quartier': string;
+  'Email': string;
+  'Téléphone': string;
+  'Message': string;
+  'Consentement': boolean;
 }
 
 const ContactPageFr = () => {
+  // MODIFICATION 2: Update initial state to match the new interface
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    city: '',
-    country: '',
-    district: '',
-    email: '',
-    phone: '',
-    message: '',
-    consent: false,
+    'Nom complet': '',
+    'Ville': '',
+    'Pays': '',
+    'Quartier': '',
+    'Email': '',
+    'Téléphone': '',
+    'Message': '',
+    'Consentement': false,
   });
 
   const [status, setStatus] = useState({
@@ -90,49 +91,54 @@ const ContactPageFr = () => {
     }
   };
 
+  // MODIFICATION 3: Revise submission logic to be consistent with other versions
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: '' });
 
+    const submissionData = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      submissionData.append(key, String(value));
+    });
+
+    // Add hidden fields for the email template
+    submissionData.append('_subject', 'Nouvelle soumission depuis le formulaire de contact (Français)');
+    submissionData.append('_template', 'table');
+    submissionData.append('_cc', 'info@cagstobacco.com');
+    submissionData.append('_replyto', formData['Email']);
+
     try {
-      // Using FormSubmit.co service to send emails without backend
-      const form = e.currentTarget;
-      const formDataObj = new FormData(form);
-      
-      // Add additional hidden fields for better email formatting
-      formDataObj.append('_subject', 'New Contact Form Submission from CAGS Website (French)');
-      formDataObj.append('_template', 'table');
-      formDataObj.append('_cc', 'info@cagstobacco.com');
-      formDataObj.append('_replyto', formData.email);
-      
-      const response = await fetch('https://formsubmit.co/ajax/satis@cagstobacco.com', {
+      const response = await fetch('https://formsubmit.co/ajax/sales@cagstobacco.com', {
         method: 'POST',
-        body: formDataObj,
+        body: submissionData,
+        headers: {
+            'Accept': 'application/json'
+        }
       });
 
       const result = await response.json();
       
       if (result.success) {
         setStatus({ submitting: false, success: true, error: '' });
-        // Reset form after successful submission
+        // Reset form using the new keys
         setFormData({
-          name: '',
-          city: '',
-          country: '',
-          district: '',
-          email: '',
-          phone: '',
-          message: '',
-          consent: false,
+          'Nom complet': '',
+          'Ville': '',
+          'Pays': '',
+          'Quartier': '',
+          'Email': '',
+          'Téléphone': '',
+          'Message': '',
+          'Consentement': false,
         });
       } else {
-        throw new Error('Failed to send message');
+        throw new Error(result.message || 'Échec de l\'envoi du message');
       }
-    } catch (err) {
+    } catch (err: any) {
       setStatus({
         submitting: false,
         success: false,
-        error: 'There was an error sending your message. Please try again later.',
+        error: err.message || 'Une erreur s\'est produite lors de l\'envoi de votre message. Veuillez réessayer plus tard.',
       });
     }
   };
@@ -153,67 +159,67 @@ const ContactPageFr = () => {
         <div className={styles.container}>
           <div className={styles.formContainer}>
             <h2 className="text-left">
-              <span className={styles.fontLight}>Contactez-nous </span>
+              <span className={styles.fontLight}>Contactez-nous</span>
             </h2>
             <p className={styles.introText}>
               <strong className={styles.textleft}>Rejoignez notre réseau de distribution et développez votre entreprise.</strong>
               <br />
-             Si vous souhaitez vous joindre à nous dans cette aventure, où nous soutenons toujours nos distributeurs avec nos actions de production, d'exploitation, de communication marketing et nos applications de support après-vente, et obtenir plus d'informations, il vous suffit de remplir le formulaire de distribution et de prendre contact avec notre équipe ! 
+              Si vous souhaitez vous joindre à nous dans cette aventure, où nous soutenons toujours nos distributeurs avec nos actions de production, d'exploitation, de communication marketing et nos applications de support après-vente, et obtenir plus d'informations, il vous suffit de remplir le formulaire de distribution et de prendre contact avec notre équipe ! 
             </p>
 
             <div className={styles.formWrapper}>
               <form id="contact-form" onSubmit={handleSubmit}>
-                {/* Add hidden honeypot field to prevent spam */}
                 <input type="checkbox" name="_honeypot" style={{display: 'none'}} tabIndex={-1} autoComplete="off" />
                 
+                {/* MODIFICATION 4: Update name attributes to match the new state keys */}
                 <div className={styles.row}>
                   <div className={styles.column}>
-                    <input type="text" name="name" className={styles.formControl} placeholder="Nom-Prénom *" required value={formData.name} onChange={handleChange} />
-                    <input type="text" name="city" className={styles.formControl} placeholder="Ville *" required value={formData.city} onChange={handleChange} />
+                    <input type="text" name="Nom complet" className={styles.formControl} placeholder="Nom complet *" required value={formData['Nom complet']} onChange={handleChange} />
+                    <input type="text" name="Ville" className={styles.formControl} placeholder="Ville *" required value={formData['Ville']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <select name="country" className={styles.formControl} required value={formData.country} onChange={handleChange}>
-                      <option value="">Pays  *</option>
+                    <select name="Pays" className={styles.formControl} required value={formData['Pays']} onChange={handleChange}>
+                      <option value="">Pays *</option>
                       {countries.map((country) => (
                         <option key={country.value} value={country.value}>{country.label}</option>
                       ))}
                     </select>
-                    <input type="text" name="district" className={styles.formControl} placeholder="Quartier *" required value={formData.district} onChange={handleChange} />
+                    <input type="text" name="Quartier" className={styles.formControl} placeholder="Quartier *" required value={formData['Quartier']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <input type="email" name="email" className={styles.formControl} placeholder="E-mail *" required value={formData.email} onChange={handleChange} />
-                    <input type="text" name="phone" className={styles.formControl} placeholder="Numéro de téléphone *" required value={formData.phone} onChange={handleChange} />
+                    <input type="email" name="Email" className={styles.formControl} placeholder="E-mail *" required value={formData['Email']} onChange={handleChange} />
+                    <input type="text" name="Téléphone" className={styles.formControl} placeholder="Numéro de téléphone *" required value={formData['Téléphone']} onChange={handleChange} />
                   </div>
                   <div className={styles.column}>
-                    <textarea name="message" rows={3} className={styles.formControl} placeholder="MESSAGE *" required value={formData.message} onChange={handleChange}></textarea>
+                    <textarea name="Message" rows={3} className={styles.formControl} placeholder="MESSAGE *" required value={formData['Message']} onChange={handleChange}></textarea>
                   </div>
                 </div>
 
                 <div className={styles.consentRow}>
                   <div className={styles.checkboxWrapper}>
-                    <input type="checkbox" name="consent" id="consent" required checked={formData.consent} onChange={handleChange} />
+                    <input type="checkbox" name="Consentement" id="consent" required checked={formData['Consentement']} onChange={handleChange} />
                   </div>
                   <div className={styles.consentText}>
                     <label htmlFor="consent" className={styles.label}>
-                     En vous abonnant à notre newsletter et en fournissant votre adresse e-mail, vous consentez au traitement et au partage de vos informations personnelles, y compris, mais sans s'y limiter, à la réception de mises à jour, d'offres, de promotions et de communications similaires par e-mail de la part de CAGS TOBACCO TOBACCO AND TOBACCO PRODUCTS INC., de ses sociétés affiliées, de ses employés et de prestataires de services tiers engagés dans les services de messagerie. Cette notification est provided conformément au Règlement Général sur la Protection des Données ("RGPD") et vise à garantir le traitement légal et la protection de vos données personnelles. Pour en savoir plus sur vos droits concernant la collecte et le traitement de vos données personnelles, veuillez consulter notre politique de confidentialité ou nous contacter.
+                      En vous abonnant à notre newsletter et en fournissant votre adresse e-mail, vous consentez au traitement et au partage de vos informations personnelles, y compris, mais sans s'y limiter, à la réception de mises à jour, d'offres, de promotions et de communications similaires par e-mail de la part de CAGS TOBACCO TOBACCO AND TOBACCO PRODUCTS INC., de ses sociétés affiliées, de ses employés et de prestataires de services tiers engagés dans les services de messagerie. Cette notification est fournie conformément au Règlement Général sur la Protection des Données ("RGPD") et vise à garantir le traitement légal et la protection de vos données personnelles. Pour en savoir plus sur vos droits concernant la collecte et le traitement de vos données personnelles, veuillez consulter notre politique de confidentialité ou nous contacter.
                     </label>
                   </div>
                 </div>
 
                 <div className={styles.submitRow}>
                   <button type="submit" className={styles.submitButton} disabled={status.submitting}>
-                    {status.submitting ? 'SENDING...' : 'ENVOYER'}
+                    {status.submitting ? 'ENVOI EN COURS...' : 'ENVOYER'}
                   </button>
                 </div>
 
                 {status.success && (
                   <div className={styles.alertSuccess}>
-                    Success! Your message has been sent to us.
+                    Succès ! Votre message nous a été envoyé.
                   </div>
                 )}
                 {status.error && (
                   <div className={styles.alertError}>
-                    Error! {status.error}
+                    Erreur ! {status.error}
                   </div>
                 )}
               </form>
@@ -248,7 +254,6 @@ const ContactPageFr = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 >
-
                 </iframe>
               </div>
             </div>
@@ -263,7 +268,7 @@ const ContactPageFr = () => {
               <div key={index} className={styles.contactInfoColumn}>
                 <div className={styles.contactInfoBlock}>
                   <div className={styles.iconWrapper}>
-                    <i className={info.icon} style={{ fontSize: '35px', color: '#7e8082', verticalAlign: 'middle', }}></i>
+                    <i className={info.icon} style={{ fontSize: '35px', color: '#7e8082', verticalAlign: 'middle' }}></i>
                   </div>
                   <div className={styles.textWrapper}>
                     <h3><span className={styles.bold}>{info.title}</span></h3>
@@ -275,9 +280,8 @@ const ContactPageFr = () => {
           </div>
         </div>
       </section>
-        <Footer />
+      <Footer />
     </>
   );
 };
-
 export default ContactPageFr;

@@ -11,6 +11,10 @@
     --foreground: #ededed;
   }
 }
+a{
+  color:#1c242d;
+  text-decoration:none;
+}
 .pt-20{
 padding-top:0 !important;
 }

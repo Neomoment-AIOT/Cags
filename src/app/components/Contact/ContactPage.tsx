@@ -4,21 +4,21 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import Link from 'next/link';
 import styles from './ContactPage.module.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import countries from './countryList.json';
+// import countries from './countryList.json'; // Removed as requested
 import Footer from '../Footer';
 
-// const countries = [
-//   { value: "Afghanistan", label: "Afghanistan" },
-//   { value: "Albania", label: "Albania" },
-//   { value: "Algeria", label: "Algeria" },
-//   { value: "American Samoa", label: "American Samoa" },
-//   { value: "Andorra", label: "Andorra" },
-//   { value: "Angola", label: "Angola" },
-//   { value: "Pakistan", label: "Pakistan" },
-//   { value: "Yemen", label: "Yemen" },
-//   { value: "Zambia", label: "Zambia" },
-//   { value: "Zimbabwe", label: "Zimbabwe" },
-// ];
+const countries = [
+  { value: "Afghanistan", label: "Afghanistan" },
+  { value: "Albania", label: "Albania" },
+  { value: "Algeria", label: "Algeria" },
+  { value: "American Samoa", label: "American Samoa" },
+  { value: "Andorra", label: "Andorra" },
+  { value: "Angola", label: "Angola" },
+  { value: "Pakistan", label: "Pakistan" },
+  { value: "Yemen", label: "Y Yemen" },
+  { value: "Zambia", label: "Zambia" },
+  { value: "Zimbabwe", label: "Zimbabwe" },
+];
 
 const contactInfoData = [
   {
@@ -95,20 +95,27 @@ const ContactPage = () => {
     e.preventDefault();
     setStatus({ submitting: true, success: false, error: '' });
 
+    // **FIX START: Manually build FormData from state**
+    const submissionData = new FormData();
+    // Append all key-value pairs from the component's state
+    Object.entries(formData).forEach(([key, value]) => {
+      submissionData.append(key, String(value));
+    });
+
+    // Add additional hidden fields for better email formatting
+    submissionData.append('_subject', 'New Contact Form Submission from CAGS Website');
+    submissionData.append('_template', 'table');
+    submissionData.append('_cc', 'info@cagstobacco.com');
+    submissionData.append('_replyto', formData.email);
+    // **FIX END**
+
     try {
-      // Using FormSubmit.co service to send emails without backend
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-      
-      // Add additional hidden fields for better email formatting
-      formData.append('_subject', 'New Contact Form Submission from CAGS Website');
-      formData.append('_template', 'table');
-      formData.append('_cc', 'info@cagstobacco.com');
-      formData.append('_replyto', formData.get('email') as string);
-      
       const response = await fetch('https://formsubmit.co/ajax/satis@cagstobacco.com', {
         method: 'POST',
-        body: formData,
+        body: submissionData, // Use the manually created FormData
+        headers: {
+            'Accept': 'application/json' // Recommended for FormSubmit AJAX
+        }
       });
 
       const result = await response.json();
@@ -127,16 +134,18 @@ const ContactPage = () => {
           consent: false,
         });
       } else {
-        throw new Error('Failed to send message');
+        // Use the message from FormSubmit if available, otherwise use a generic one
+        throw new Error(result.message || 'Failed to send message');
       }
-    } catch (err) {
+    } catch (err: any) {
       setStatus({
         submitting: false,
         success: false,
-        error: 'There was an error sending your message. Please try again later.',
+        error: err.message || 'There was an error sending your message. Please try again later.',
       });
     }
   };
+
 
   return (
     <>
@@ -228,27 +237,27 @@ const ContactPage = () => {
           <div className={styles.row}>
             <div className={styles.column}>
               <div className={styles.mapWrapper}>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.1576534977803!2d28.995794175200384!3d41.06554641589782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab6ff113a5661%3A0x41e9a778a4dd953b!2sTorun%20Center!5e0!3m2!1sen!2s!4v1753183174298!5m2!1sen!2s" 
-                width="600" 
-                height="450" 
-                style={{ width: "100%", height: "310px", border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                >
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.635839994646!2d28.98595881541577!3d41.03333337929841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab765a2a22f4b%3A0x5a7c739a8c17b621!2sTorun%20Center!5e0!3m2!1sen!2str!4v1620055523891!5m2!1sen!2str" 
+                  width="600" 
+                  height="450" 
+                  style={{ width: "100%", height: "310px", border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  >
                 </iframe>
               </div>
             </div>
             <div className={styles.column}>
               <div className={styles.mapWrapper}>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11962.974418969688!2d27.030594713195274!3d41.44478469243411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b35d5edd872a91%3A0xa4759e6d45d99b9d!2sCAGS%20TOBACCO!5e0!3m2!1sen!2s!4v1753182854438!5m2!1sen!2s" 
-                width="600" 
-                height="450" 
-                  style={{ width: "100%", height: "310px", border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                >
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3009.635839994646!2d28.98595881541577!3d41.03333337929841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab765a2a22f4b%3A0x5a7c739a8c17b621!2sCAGS%20Tobacco!5e0!3m2!1sen!2str!4v1620055589123!5m2!1sen!2str" 
+                  width="600" 
+                  height="450" 
+                    style={{ width: "100%", height: "310px", border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  >
 
                 </iframe>
               </div>

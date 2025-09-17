@@ -96,7 +96,9 @@ const BLOCKED = new Set(['IN']); // block India
 const isProd = process.env.NODE_ENV === 'production';
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|_next/data|favicon.ico|api|blocked).*)'],
+  matcher: [
+    '/((?!_next/static|_next/image|_next/data|favicon.ico|api|blocked|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico)$).*)',
+  ],
 };
 
 export function middleware(req: NextRequest) {

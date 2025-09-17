@@ -289,7 +289,6 @@ export default function TranslatedHeader() {
     setLanguage(lang);
     setOpenDropdown(null);
     setIsMenuOpen(false);
-    window.location.href = translations[lang].homeUrl;
   };
 
   const toggleMobileSubMenu = (name: string) => {

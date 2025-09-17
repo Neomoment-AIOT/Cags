@@ -26,7 +26,7 @@ CAGS — это надежный бренд, известный своим ка�
             </p>
             <div className={styles.linksContainer}>
               <Link href="/distribution/distributionRu" className={styles.learnMoreLink}>
-                <h4 className={styles.ctalink}>
+                <h5 className={styles.ctalink}>
                  Узнать больше  &nbsp; &nbsp;
                   <Image
                     src="/righticon.png"
@@ -35,10 +35,10 @@ CAGS — это надежный бренд, известный своим ка�
                     height={20}
                     style={{ maxWidth: '20px' }}
                   />
-                </h4>
+                </h5>
               </Link>
               <Link href="/contact/contactRu" className={styles.learnMoreLink}>
-                <h4 className={styles.ctalink}>
+                <h5 className={styles.ctalink}>
                  Свяжитесь с нами&nbsp; &nbsp;
                   <Image
                     src="/righticon.png"
@@ -47,7 +47,7 @@ CAGS — это надежный бренд, известный своим ка�
                     height={20}
                     style={{ maxWidth: '20px' }}
                   />
-                </h4>
+                </h5>
               </Link>
             </div>
           </div>

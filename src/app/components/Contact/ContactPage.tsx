@@ -95,14 +95,44 @@ const ContactPage = () => {
     setStatus({ submitting: true, success: false, error: '' });
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log('Form Submitted:', formData);
-      setStatus({ submitting: false, success: true, error: '' });
+      // Using FormSubmit.co service to send emails without backend
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      
+      // Add additional hidden fields for better email formatting
+      formData.append('_subject', 'New Contact Form Submission from CAGS Website');
+      formData.append('_template', 'table');
+      formData.append('_cc', 'info@cagstobacco.com');
+      formData.append('_replyto', formData.get('email') as string);
+      
+      const response = await fetch('https://formsubmit.co/ajax/satis@cagstobacco.com', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setStatus({ submitting: false, success: true, error: '' });
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          city: '',
+          country: '',
+          district: '',
+          email: '',
+          phone: '',
+          message: '',
+          consent: false,
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (err) {
       setStatus({
         submitting: false,
         success: false,
-        error: 'There was an error sending your message.',
+        error: 'There was an error sending your message. Please try again later.',
       });
     }
   };
@@ -133,6 +163,9 @@ const ContactPage = () => {
 
             <div className={styles.formWrapper}>
               <form id="contact-form" onSubmit={handleSubmit}>
+                {/* Add hidden honeypot field to prevent spam */}
+                <input type="checkbox" name="_honeypot" style={{display: 'none'}} tabIndex={-1} autoComplete="off" />
+                
                 <div className={styles.row}>
                   <div className={styles.column}>
                     <input type="text" name="name" className={styles.formControl} placeholder="Full Name *" required value={formData.name} onChange={handleChange} />

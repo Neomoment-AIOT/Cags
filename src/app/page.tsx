@@ -1,58 +1,21 @@
-'use client'; // Required to use hooks like useLanguage
+import type { Metadata } from "next";
+import PageClient from "./PageClient"; // 👈 new client-only component
 
-// Import your page components
-import ProductGrid from './components/ProductGrid';
-import DiscoverCags from './components/DiscoverCags';
-import Slider from './components/Slider';
-import StatsCounter from './components/StatsCounter';
-import JourneySection from './components/JourneySection';
-import JoinNetwork from './components/JoinNetwork';
-import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
-import Homepage from './home/page';
-import Footer from './components/Footer';
+export const metadata: Metadata = {
+  title: "CAGS | Premium Rolling Papers, Cigarette Tubes & Tobacco",
+  description:
+    "Discover CAGS, a global tobacco company with 40+ years of expertise. Premium rolling papers, cigarette tubes, and waterpipe tobacco distributed worldwide.",
+  alternates: {
+    canonical: "https://cagsgrp.com",
+    languages: {
+      en: "https://cagsgrp.com",
+      fr: "https://cagsgrp.com/home/HomeFr",
+      ru: "https://cagsgrp.com/home/HomeRu",
+      ar: "https://cagsgrp.com/home/HomeAr",
+    },
+  },
+};
 
 export default function Page() {
-  return (
-    <LanguageProvider>
-      <MainContent />
-    </LanguageProvider>
-  );
-}
-
-function MainContent() {
-  const { content } = useLanguage();
-
-  if (!content) {
-    return <div>Loading...</div>;
-  }
-
-// export default function Page() {
-//   // 3. CALL the hook to get the dynamic content object
-//   const { content } = useLanguage();
-
-//   // 4. ADD a loading state to prevent errors
-//   if (!content) {
-//     return <div>Loading...</div>;
-//   }
-
-  return (
-    <main>
-      {/* <Slider />
-      <DiscoverCags/>
-      <StatsCounter   
-      // language={language}
-       />
-      <JourneySection 
-      // content={content.journeySection} 
-      />
-      <ProductGrid    
-      // content={content.productGrid} 
-      />
-      <JoinNetwork    
-      // content={content.joinNetwork} 
-      />*/}
-      <Homepage/> 
-     
-    </main>
-  );
+  return <PageClient />; // ✅ client logic is inside PageClient
 }

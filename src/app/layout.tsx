@@ -1,56 +1,39 @@
-// app/layout.tsx
-"use client";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import { Lato } from "next/font/google";
 import "./globals.css";
-import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
-import AgeVerificationPopup from './components/AgeVerificationPopup';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { LanguageProvider } from './context/LanguageContext';
-
+import ClientLayout from './components/ClientLayout';
+import { LanguageProvider } from "@/app/contexts/LanguageContext";  // ✅ import provider
+import type { Metadata } from 'next';
 const latoFont = Lato({ 
   subsets: ["latin"], 
   weight: ['400', '700'], 
   display: 'swap'
 });
+export const metadata: Metadata = {
+  title: 'CAGS | Premium Rolling Papers, Cigarette Tubes & Tobacco Accessories',
+  description: 'Discover CAGS, a global tobacco company with 40+ years of expertise. Premium rolling papers, cigarette tubes, and waterpipe tobacco distributed worldwide.',
+  icons: {
+    icon: '/fav.png',       // default
+    shortcut: '/fav.png',   // optional
+    apple: '/fav.png', // optional (for iOS)
+  },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [showPopup, setShowPopup] = useState(false);
-  const [hasMounted, setHasMounted] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    setHasMounted(true);
-    setShowPopup(true);
-  }, [pathname]);
-
-  const handleConfirmAge = () => {
-    setShowPopup(false);
-  };
-
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={latoFont.className}
-        suppressHydrationWarning
-      >
-        <LanguageProvider>
-          <Header />
-          <main className="pt-20">
+      <body className={latoFont.className} suppressHydrationWarning>
+        <LanguageProvider>   {/* ✅ wrap here */}
+          <ClientLayout>
             {children}
-          </main>
-          {/* <Footer /> */}
-          {hasMounted && showPopup && (
-            <AgeVerificationPopup onConfirm={handleConfirmAge} />
-          )}
+          </ClientLayout>
+          
         </LanguageProvider>
       </body>
     </html>

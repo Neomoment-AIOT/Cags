@@ -24,10 +24,10 @@ const DiscoverCags = ({ content }: DiscoverCagsProps) => {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.leftColumn}>
-            <h2 className={styles.sectionTitle}>
+            <h1 className={styles.sectionTitle}>
               Discover<br />
               <span className={styles.bold}>CAGS</span>
-            </h2>
+            </h1>
           </div>
           <div className={styles.rightColumn}>
             <div className={styles.textContent} style={{ textAlign: 'start', lineHeight: '28px' }}>

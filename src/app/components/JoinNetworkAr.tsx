@@ -2,6 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './JoinNetwork.module.css';
 
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "CAGS | الصفحة الرئيسية",
+  description: "اكتشف CAGS - منتجات التبغ الفاخرة والمعايير العالمية منذ أكثر من 40 عامًا.",
+};
 const JoinNetworkAr = () => {
   return (
     <div className={`${styles.pageSection} ${styles.bgLightGray}`}>
@@ -25,7 +30,7 @@ const JoinNetworkAr = () => {
             </p>
             <div className={styles.linksContainer}>
               <Link href="/distribution" className={styles.learnMoreLink}>
-                <h4 className={styles.ctalink}>
+                <h5 className={styles.ctalink}>
                  اعرف المزيد &nbsp; &nbsp;
                   <Image
                     src="/righticon.png"
@@ -34,10 +39,10 @@ const JoinNetworkAr = () => {
                     height={20}
                     style={{ maxWidth: '20px' }}
                   />
-                </h4>
+                </h5>
               </Link>
               <Link href="/contact" className={styles.learnMoreLink}>
-                <h4 className={styles.ctalink}>                
+                <h5 className={styles.ctalink}>                
 اتصل بنا &nbsp; &nbsp;
                   <Image
                     src="/righticon.png"
@@ -46,7 +51,7 @@ const JoinNetworkAr = () => {
                     height={20}
                     style={{ maxWidth: '20px' }}
                   />
-                </h4>
+                </h5>
               </Link>
             </div>
           </div>

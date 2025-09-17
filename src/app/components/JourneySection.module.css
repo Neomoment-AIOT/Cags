@@ -27,12 +27,13 @@
 }
 .sectionheading{
   color: #1c242d;
+  font-size: 20px;
 }
 .textContent {
   max-width: 500px; /* Constrain the width of the text for readability */
 }
 
-.textContent h1 {
+.textContent h1,  .textContent h2{
   font-size: 2rem;
   margin-bottom: 2rem;
 }

@@ -21,7 +21,7 @@ const ProductCard = ({ title, subtitle, link, productImg, isExternal = false }: 
       <h3>
         {title} <Image src="/fav.png" alt="Icon" width={20} height={20} />
       </h3>
-      <span>{subtitle}</span>
+      <span><h6>{subtitle}</h6></span>
       <div className={styles.arrowIcon}>
         <Image src="/righticon.png" alt="Go to page" width={20} height={20} />
       </div>

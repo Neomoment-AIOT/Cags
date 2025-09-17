@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 
 // ✅ Import all page components
@@ -5,14 +6,53 @@ import Slider from '../../components/Slider';
 import JourneySectionFr from '../../components/JourneySectionFr';
 import ProductGridFr from '../../components/ProductGridFr';
 import JoinNetworkFr from '../../components/JoinNetworkFr';
-import StatsCounterFr from '../../components/StatsCounterFr';
 import FooterFr from '@/app/components/FooterFr';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from "../../components/DiscoverCags.module.css";
+import styles from '@/app/components/DiscoverCags.module.css';
+
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
+import style from '@/app/components/StatsCounter.module.css';
+// ❌ wrong
+// import { useLanguage } from "@/app/context/LanguageContext";
+// ✅ fixed
+import { useLanguage } from "@/app/contexts/LanguageContext";
+
+// Define translations with type safety
+const translations = {
+  French: {
+    countries: 'Pays',
+    flagshipBrands: 'Marques phares',
+    genericBrands: 'Marques génériques',
+    trademarks: 'Marques déposées',
+  },
+} as const;
+
+type TranslationKey = keyof typeof translations['French'];
+type Language = keyof typeof translations;
 
 export default function HomeFr() {
-  // ✅ Provide default fallback content
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { language } = useLanguage();
+
+  const currentLanguage: Language = translations.hasOwnProperty(language)
+    ? (language as Language)
+    : 'French';
+
+  const t = (key: TranslationKey) => translations[currentLanguage][key];
+
+  const statsData = [
+    { number: 33, titleKey: 'countries' as const },
+    { number: 14, titleKey: 'flagshipBrands' as const },
+    { number: 100, titleKey: 'genericBrands' as const },
+    { number: 110, titleKey: 'trademarks' as const },
+  ];
+
   const content = {
     title: "Découvrir",
     boldTitle: "CAGS",
@@ -75,8 +115,24 @@ export default function HomeFr() {
         </div>
       </div>
 
-      {/* Other sections */}
-      <StatsCounterFr />
+      {/* Stats Counter */}
+      <div id="counter-1" className={style.pageSection}>
+        <div className={style.container}>
+          <div ref={ref} className={style.statsGrid}>
+            {statsData.map((stat, index) => (
+              <div key={index} className={style.statItem}>
+                <div className={style.countNumber}>
+                  {inView ? <CountUp end={stat.number} duration={2.75} /> : 0}
+                </div>
+                <div className={style.countDescr}>
+                  <span className={style.countTitle}>{t(stat.titleKey)}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <JourneySectionFr />
       <ProductGridFr />
       <JoinNetworkFr />

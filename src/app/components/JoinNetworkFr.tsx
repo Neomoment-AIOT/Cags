@@ -24,7 +24,7 @@ const JoinNetworkFr = () => {
             </p>
             <div className={styles.linksContainer}>
               <Link href="/distribution/distributionFr" className={styles.learnMoreLink}>
-                <h4 className={styles.ctalink}>
+                <h5 className={styles.ctalink}>
                  En savoir plus  &nbsp; &nbsp;
                   <Image
                     src="/righticon.png"
@@ -33,10 +33,10 @@ const JoinNetworkFr = () => {
                     height={20}
                     style={{ maxWidth: '20px' }}
                   />
-                </h4>
+                </h5>
               </Link>
               <Link href="/contact/contactFr" className={styles.learnMoreLink}>
-                <h4 className={styles.ctalink}>
+                <h5 className={styles.ctalink}>
                  Contactez nous&nbsp; &nbsp;
                   <Image
                     src="/righticon.png"
@@ -45,7 +45,7 @@ const JoinNetworkFr = () => {
                     height={20}
                     style={{ maxWidth: '20px' }}
                   />
-                </h4>
+                </h5>
               </Link>
             </div>
           </div>

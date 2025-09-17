@@ -95,14 +95,44 @@ const ContactPageFr = () => {
     setStatus({ submitting: true, success: false, error: '' });
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log('Form Submitted:', formData);
-      setStatus({ submitting: false, success: true, error: '' });
+      // Using FormSubmit.co service to send emails without backend
+      const form = e.currentTarget;
+      const formDataObj = new FormData(form);
+      
+      // Add additional hidden fields for better email formatting
+      formDataObj.append('_subject', 'New Contact Form Submission from CAGS Website (French)');
+      formDataObj.append('_template', 'table');
+      formDataObj.append('_cc', 'info@cagstobacco.com');
+      formDataObj.append('_replyto', formData.email);
+      
+      const response = await fetch('https://formsubmit.co/ajax/satis@cagstobacco.com', {
+        method: 'POST',
+        body: formDataObj,
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setStatus({ submitting: false, success: true, error: '' });
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          city: '',
+          country: '',
+          district: '',
+          email: '',
+          phone: '',
+          message: '',
+          consent: false,
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (err) {
       setStatus({
         submitting: false,
         success: false,
-        error: 'There was an error sending your message.',
+        error: 'There was an error sending your message. Please try again later.',
       });
     }
   };
@@ -133,6 +163,9 @@ const ContactPageFr = () => {
 
             <div className={styles.formWrapper}>
               <form id="contact-form" onSubmit={handleSubmit}>
+                {/* Add hidden honeypot field to prevent spam */}
+                <input type="checkbox" name="_honeypot" style={{display: 'none'}} tabIndex={-1} autoComplete="off" />
+                
                 <div className={styles.row}>
                   <div className={styles.column}>
                     <input type="text" name="name" className={styles.formControl} placeholder="Nom-Prénom *" required value={formData.name} onChange={handleChange} />
@@ -162,7 +195,7 @@ const ContactPageFr = () => {
                   </div>
                   <div className={styles.consentText}>
                     <label htmlFor="consent" className={styles.label}>
-                     En vous abonnant à notre newsletter et en fournissant votre adresse e-mail, vous consentez au traitement et au partage de vos informations personnelles, y compris, mais sans s'y limiter, à la réception de mises à jour, d'offres, de promotions et de communications similaires par e-mail de la part de CAGS TOBACCO TOBACCO AND TOBACCO PRODUCTS INC., de ses sociétés affiliées, de ses employés et de prestataires de services tiers engagés dans les services de messagerie. Cette notification est fournie conformément au Règlement Général sur la Protection des Données ("RGPD") et vise à garantir le traitement légal et la protection de vos données personnelles. Pour en savoir plus sur vos droits concernant la collecte et le traitement de vos données personnelles, veuillez consulter notre politique de confidentialité ou nous contacter.
+                     En vous abonnant à notre newsletter et en fournissant votre adresse e-mail, vous consentez au traitement et au partage de vos informations personnelles, y compris, mais sans s'y limiter, à la réception de mises à jour, d'offres, de promotions et de communications similaires par e-mail de la part de CAGS TOBACCO TOBACCO AND TOBACCO PRODUCTS INC., de ses sociétés affiliées, de ses employés et de prestataires de services tiers engagés dans les services de messagerie. Cette notification est provided conformément au Règlement Général sur la Protection des Données ("RGPD") et vise à garantir le traitement légal et la protection de vos données personnelles. Pour en savoir plus sur vos droits concernant la collecte et le traitement de vos données personnelles, veuillez consulter notre politique de confidentialité ou nous contacter.
                     </label>
                   </div>
                 </div>

@@ -18,9 +18,9 @@ const JourneySection = () => {
       {/* Right side: Content */}
       <div className={styles.contentContainer}>
         <div className={styles.textContent}>
-          <h1 className={styles.sectionheading}>
+          <h2 className={styles.sectionheading}>
             <span className={styles.fontLight}>Follow Our remarkable journey</span>
-          </h1>
+          </h2>
           <p className={styles.mb60}>
             Discover CAGS, a family-owned tobacco brand with a rich heritage and a commitment to excellence. Experience our state-of-the-art facilities, innovation, and customer satisfaction. Join our journey in shaping the future of the tobacco industry with a trusted and preferred brand.
           </p>

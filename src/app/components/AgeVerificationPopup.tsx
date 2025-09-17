@@ -60,6 +60,9 @@ export default function AgeVerificationPopup({ onConfirm }: AgeVerificationPopup
           <p className={styles.popupparagraph}>
             This website contains images of tobacco products. Please verify your age to continue.
           </p>
+          <p>4207 sayılı Kanun gereği, Türkiye sınırları içerisinde tütün ve tütün ürünlerinin üretimi ve satışı kanunlar çerçevesinde yasaklanmıştır.
+ 
+Bu internet sitesi, yalnızca ihracat müşterilerini bilgilendirme amacıyla hazırlanmış olup, Türkiye iç pazarına yönelik herhangi bir satış veya pazarlama faaliyetinde bulunmamaktadır.</p>
         </div>
         <div className={styles.popupAgeconfimation}>
           <p className={styles.popupAgeverification}>

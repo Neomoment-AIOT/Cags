@@ -190,12 +190,10 @@
 
 /* Breadcrumb styling */
 .pageTitleCont {
-  /* padding: 7% 0 0 6% ; */
-    padding: 7% 0 5% 0;
+    padding: 0% 0 2% 0;
   border-bottom: none;
   background-color: #f5f5f5;
   opacity: 0;
-  /* margin-top: 6%; */
   animation: fadeIn 0.6s ease-out 0.2s forwards;
 }
 

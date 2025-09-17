@@ -1,60 +1,50 @@
-// app/contexts/LanguageContext.js
-'use client';
+"use client";
 
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from "react";
+import enContent from "../locales/en.json";
+import frContent from "../locales/fr.json";
+import ruContent from "../locales/ru.json";
+import arContent from "../locales/ar.json";
 
-// 1. Import all your translation files from the locales folder
-import enContent from '../locales/en.json';
-import frContent from '../locales/fr.json';
-import ruContent from '../locales/ru.json';
-// Assuming you have an ar.json file for Arabic based on your header
-import arContent from '../locales/ar.json';
-
-// 2. Combine all translations into a single object for easy access
 const translations = {
   en: enContent,
   fr: frContent,
   ru: ruContent,
-  ar: arContent
+  ar: arContent,
 };
 
-// 3. Create the context that components will subscribe to
 const LanguageContext = createContext();
 
-// 4. Create the Provider component that will wrap your application
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('en'); // Default language is English
-  const [content, setContent] = useState(translations.en); // Default content
+  const [language, setLanguage] = useState("en");
+  const [content, setContent] = useState(translations.en);
 
-  // This effect hook runs whenever the 'language' state changes
   useEffect(() => {
-    // Set the content to the newly selected language's translations
-    setContent(translations[language]);
+    const savedLang = localStorage.getItem("lang");
+    if (savedLang && translations[savedLang]) {
+      setLanguage(savedLang);
+      setContent(translations[savedLang]);
+    }
+  }, []);
 
-    // Update the document's text direction for RTL languages like Arabic
-    document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+  useEffect(() => {
+    setContent(translations[language]);
+    document.documentElement.setAttribute("dir", language === "ar" ? "rtl" : "ltr");
+    document.documentElement.setAttribute("lang", language);
+    localStorage.setItem("lang", language);
   }, [language]);
 
-  // The value object holds the state and functions to be shared globally
-  const value = {
-    language,    // The current language code (e.g., 'en')
-    setLanguage, // The function to change the language
-    content      // The full object of translated text
-  };
-
   return (
-    <LanguageContext.Provider value={value}>
+    <LanguageContext.Provider value={{ language, setLanguage, content }}>
       {children}
     </LanguageContext.Provider>
   );
 }
 
-// 5. Create a custom hook to make using the context simpler in other components
 export function useLanguage() {
   const context = useContext(LanguageContext);
-  if (context === undefined) {
-    // This error ensures you don't use the hook outside of the provider
-    throw new Error('useLanguage must be used within a LanguageProvider');
+  if (!context) {
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 }

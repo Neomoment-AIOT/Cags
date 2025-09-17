@@ -94,8 +94,8 @@ export default function FooterAr() {
             <h4 className={style.social}>اتبع CAGS</h4>
             <div className={style.socialLinkswithPrivacy}>
             <ul className="space-y-2 font-semibold mb-6">
-              <li><a href="https://www.instagram.com/cagssocial/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a></li>
-              <li><a href="https://twitter.com/cagssocial" target="_blank" rel="noopener noreferrer" className="hover:text-white">Twitter</a></li>
+              <li><a href="https://www.instagram.com/cagsgrp?igsh=MXI1MnZ2MXNsYmVvdw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-white">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/cagsgrp/" target="_blank" rel="noopener noreferrer" className="hover:text-white">Linkedin</a></li>
               <li><a href="https://www.facebook.com/cagssocial" target="_blank" rel="noopener noreferrer" className="hover:text-white">Facebook</a></li>
             </ul>
             <ul className="space-y-2 font-semibold text-sm pt-[60px]">

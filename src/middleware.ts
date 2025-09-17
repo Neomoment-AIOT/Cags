@@ -92,7 +92,7 @@
 // middleware.ts
 import { NextRequest, NextResponse } from 'next/server';
 
-const BLOCKED = new Set(['PK','TR']); 
+const BLOCKED = new Set(['TR']); 
 const isProd = process.env.NODE_ENV === 'production';
 
 export const config = {

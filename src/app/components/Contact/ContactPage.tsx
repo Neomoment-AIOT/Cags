@@ -110,7 +110,7 @@ const ContactPage = () => {
     // **FIX END**
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/satis@cagstobacco.com', {
+      const response = await fetch('https://formsubmit.co/ajax/rnasir15@gmail.com', {
         method: 'POST',
         body: submissionData, // Use the manually created FormData
         headers: {

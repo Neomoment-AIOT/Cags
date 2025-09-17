@@ -4,20 +4,21 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 import Link from 'next/link';
 import styles from './ContactPage.module.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import countries from './countryList.json';
 import Footer from '../Footer';
 
-const countries = [
-  { value: "Afghanistan", label: "Afghanistan" },
-  { value: "Albania", label: "Albania" },
-  { value: "Algeria", label: "Algeria" },
-  { value: "American Samoa", label: "American Samoa" },
-  { value: "Andorra", label: "Andorra" },
-  { value: "Angola", label: "Angola" },
-  { value: "Pakistan", label: "Pakistan" },
-  { value: "Yemen", label: "Yemen" },
-  { value: "Zambia", label: "Zambia" },
-  { value: "Zimbabwe", label: "Zimbabwe" },
-];
+// const countries = [
+//   { value: "Afghanistan", label: "Afghanistan" },
+//   { value: "Albania", label: "Albania" },
+//   { value: "Algeria", label: "Algeria" },
+//   { value: "American Samoa", label: "American Samoa" },
+//   { value: "Andorra", label: "Andorra" },
+//   { value: "Angola", label: "Angola" },
+//   { value: "Pakistan", label: "Pakistan" },
+//   { value: "Yemen", label: "Yemen" },
+//   { value: "Zambia", label: "Zambia" },
+//   { value: "Zimbabwe", label: "Zimbabwe" },
+// ];
 
 const contactInfoData = [
   {
